@@ -1,0 +1,70 @@
+{
+  "slug": "what-a-computer-really-does",
+  "date": "2026-09-07",
+  "day_number": 1,
+  "track": "Software & Systems",
+  "track_lesson": 1,
+  "read_minutes": 7,
+  "title": "What a Computer Really Does",
+  "subtitle": "Strip away the apps, the windows, the AI — underneath, a computer is doing one stupefyingly simple thing, billions of times a second.",
+  "hook": "A modern laptop can render a movie, run a game, and hold a video call at once. It feels impossibly clever. But underneath every bit of that is a machine doing something almost embarrassingly simple: **fetch an instruction, do it, repeat.** No magic, no understanding — just a mindless loop run so fast that intelligence *appears*. Today's lesson is the bedrock of this whole track: once you see the loop, every layer above it — operating systems, databases, the cloud — becomes a story about hiding that simplicity behind useful lies.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The whole machine, in one loop",
+      "body": "At the center of a computer is the **CPU**. It does nothing but repeat a cycle called **fetch–decode–execute**:\n\n1. **Fetch** the next instruction from memory.\n2. **Decode** what it means (add? compare? jump?).\n3. **Execute** it — usually a tiny operation on a couple of numbers.\n\nThen it does it again. And again. A few billion times per second. Every program you've ever run is just a long list of these micro-instructions. The CPU has no idea it's \"running a browser\" — it only ever sees the next instruction."
+    },
+    {
+      "type": "diagram",
+      "caption": "The loop that runs everything. The Program Counter tracks where you are; each turn fetches one instruction, decodes it, executes it, and advances.",
+      "mermaid": "flowchart LR\n    PC[\"Program Counter\\npoints at next instruction\"] --> F[\"FETCH\\nread instruction\\nfrom memory\"]\n    F --> D[\"DECODE\\nwhat operation?\"]\n    D --> E[\"EXECUTE\\ndo it (add, compare, jump...)\"]\n    E --> U[\"advance / update PC\"]\n    U --> PC\n    style F fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style E fill:#cfe3ff,stroke:#2b6cb0,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The one idea to keep",
+      "body": "Speed plus simplicity *looks* like intelligence. The CPU is dumb; it's just fast and relentless. Everything that feels smart about computers is built on stacking simple, reliable operations — a theme we'll hit again and again in this track."
+    },
+    {
+      "type": "prose",
+      "heading": "Why we build 'abstraction layers'",
+      "body": "No human writes billions of raw CPU instructions by hand. So we build **layers**, each hiding the messy layer below and offering something friendlier:\n\n- **Machine code** (raw instructions) →\n- **Programming languages** (Python, C) that compile down to it →\n- **Operating systems** that manage memory and hardware for you →\n- **Applications** you actually click on.\n\nEach layer is a *useful lie*: it lets you ignore the details underneath so you can think bigger. When you write `print(\"hi\")`, you're standing on a tower of abstractions that eventually becomes fetch–decode–execute. Almost all of software engineering is choosing the right layer to think at — and knowing that a real, simple machine is always at the bottom."
+    },
+    {
+      "type": "video",
+      "youtube_id": "Z5JC9Ve1sfI",
+      "caption": "A short, concrete walk through the fetch–execute cycle — what the CPU is literally doing each tick."
+    }
+  ],
+  "takeaways": [
+    "A CPU endlessly repeats one loop: **fetch → decode → execute**.",
+    "Every program is just a long list of these tiny instructions; the CPU never sees the 'big picture'.",
+    "Apparent intelligence comes from **simple operations run incredibly fast**, not from cleverness.",
+    "Software is built as **abstraction layers**, each hiding the one below (machine code → languages → OS → apps).",
+    "Good engineering is picking the right layer to think at — while remembering a simple machine sits at the bottom."
+  ],
+  "quiz": [
+    {
+      "q": "What are the three steps of the CPU's core cycle, in order?",
+      "options": ["Read, Write, Delete", "Fetch, Decode, Execute", "Compile, Link, Run", "Input, Process, Output"],
+      "answer": 1,
+      "explain": "Fetch the next instruction, decode what it means, execute it — then repeat, billions of times a second."
+    },
+    {
+      "q": "Why do we say each abstraction layer is a 'useful lie'?",
+      "options": ["It hides the messy layer below so you can think at a higher level", "It runs slower but looks nicer", "It stores false data for security", "It only works on some computers"],
+      "answer": 0,
+      "explain": "Each layer lets you ignore the details beneath it. `print(\"hi\")` hides a whole tower that ends in raw CPU instructions."
+    },
+    {
+      "q": "Where does a computer's apparent 'intelligence' actually come from?",
+      "options": ["The CPU understanding your goals", "A special reasoning chip", "Simple operations executed extremely fast and reliably", "The amount of RAM installed"],
+      "answer": 2,
+      "explain": "The CPU is 'dumb' — it just does one tiny thing at a time, but so fast and so reliably that intelligence emerges from the stack above it."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Crash Course CS — the CPU", "url": "https://www.youtube.com/watch?v=FZGugFqdr60", "note": "Builds the fetch-execute machine up from logic gates."},
+    {"label": "Wikipedia — Instruction cycle", "url": "https://en.wikipedia.org/wiki/Instruction_cycle", "note": "The precise mechanics, with the registers involved."}
+  ]
+}

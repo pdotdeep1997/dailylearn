@@ -1,0 +1,79 @@
+{
+  "slug": "time-value-of-money",
+  "date": "2026-09-12",
+  "day_number": 6,
+  "track": "Money & Markets",
+  "track_lesson": 2,
+  "read_minutes": 7,
+  "title": "Why a Dollar Today Beats a Dollar Tomorrow",
+  "subtitle": "The single most important idea in all of finance is almost childishly simple — and once it clicks, you can value nearly anything.",
+  "hook": "Would you rather have $100 now or $100 in a year? Obviously now — but *why*, exactly? Pin down the reason and you've unlocked the idea that underlies loans, investments, mortgages, company valuations, and that yield curve we'll get to later. It's called the **time value of money**, and it's the beating heart of the entire Money & Markets track. Yesterday we established money is a store of value; today we discover that the store leaks over time — and that leak is measurable.",
+  "builds_on": [
+    {"slug": "what-money-actually-is", "label": "What money actually is"}
+  ],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Why money has a time value",
+      "body": "A dollar today is worth more than a dollar tomorrow for three stacked reasons:\n\n- **Opportunity** — you could invest today's dollar and have more later.\n- **Risk** — a promised future dollar might never arrive.\n- **Inflation** — a future dollar likely buys less than today's.\n\nPut together, they mean future money must be **discounted** back to compare it with money now. The rate at which we do that — the **interest rate** — is essentially the price of time."
+    },
+    {
+      "type": "prose",
+      "heading": "Compounding: interest on interest",
+      "body": "Invest money at an interest rate and it grows. The magic is that next year you earn interest *on last year's interest too* — this is **compounding**, and it grows not in a straight line but a curve.\n\n$100 at 10% a year becomes $110 after year one, $121 after year two (not $120 — you earned $1 of interest on the $10), $133 after three... After 30 years it's about **$1,745** — over 17x, from a modest 10%. The formula is `Future = Present × (1 + r)^n`. That little exponent `n` is where the drama lives."
+    },
+    {
+      "type": "diagram",
+      "caption": "Simple interest adds the same amount each year (a line). Compounding earns interest on interest, curving upward — the gap widens dramatically over time.",
+      "mermaid": "flowchart LR\n    P[\"$100 today\"] --> Y1[\"Year 1: x1.1\\n= $110\"]\n    Y1 --> Y2[\"Year 2: x1.1\\n= $121\"]\n    Y2 --> Y3[\"Year 3: x1.1\\n= $133\"]\n    Y3 --> Yn[\"Year n:\\n100 x (1.1)^n\"]\n    Yn --> Big[\"Year 30\\n= ~$1,745\"]\n    style Big fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Run it backwards = value anything",
+      "body": "Here's the payoff. If money *grows* forward by multiplying by (1 + r), then to find what a *future* payment is worth **today**, you run it backwards — you **divide**. That's **discounting**: `Present = Future / (1 + r)^n`. $110 a year from now, at 10%, is worth $100 today. This one operation lets you translate any future cash — a bond's payments, a company's future profits, a rental income — into today's dollars so you can compare and price them. Nearly all of valuation is just discounting future money back to now."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The intuition trap",
+      "body": "Humans instinctively think **linearly**, so we badly underestimate compounding. 'A few percent' sounds boring, yet over decades it dominates everything — which is exactly why fees, debt, and small rate differences matter far more than they feel like they should. (We'll meet this same blind spot in the Ideas track under 'exponential intuition'.)"
+    },
+    {
+      "type": "video",
+      "youtube_id": "XKnL2FI4mr0",
+      "caption": "A clean walkthrough of time value, compound interest, and discounting with worked examples."
+    }
+  ],
+  "takeaways": [
+    "Money has a **time value**: a dollar now beats a dollar later due to opportunity, risk, and inflation.",
+    "The **interest rate** is the price of time — how we translate value across time.",
+    "**Compounding** earns interest on interest: `Future = Present × (1 + r)^n`, growing as a curve.",
+    "**Discounting** runs it backwards (`Present = Future / (1 + r)^n`) — the key to valuing any future cash flow.",
+    "We underestimate compounding because we think linearly — so small rates and fees matter enormously over time."
+  ],
+  "quiz": [
+    {
+      "q": "Which is NOT one of the reasons a dollar today is worth more than a dollar next year?",
+      "options": ["You could invest it now (opportunity)", "The future payment might not arrive (risk)", "Inflation erodes future buying power", "Banks charge a fee to hold dollars"],
+      "answer": 3,
+      "explain": "The three real reasons are opportunity, risk, and inflation. A holding fee isn't part of the time-value concept."
+    },
+    {
+      "q": "$100 invested at 10% compounded annually is worth how much after 2 years?",
+      "options": ["$120", "$121", "$110", "$200"],
+      "answer": 1,
+      "explain": "$110 after year 1, then 10% on $110 = $121. The extra $1 over 'simple' $120 is interest earned on the first year's interest."
+    },
+    {
+      "q": "To find what a future payment is worth today, you…",
+      "options": ["Multiply by (1 + r)^n", "Divide by (1 + r)^n — i.e. discount it", "Add the interest rate", "Ignore the interest rate"],
+      "answer": 1,
+      "explain": "Discounting reverses compounding: Present = Future / (1 + r)^n. This is the operation behind valuing bonds, stocks, and any future cash flow."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Investopedia — Time Value of Money", "url": "https://www.investopedia.com/terms/t/timevalueofmoney.asp", "note": "The formulas and more worked examples."},
+    {"label": "The Rule of 72 (quick compounding math)", "url": "https://www.investopedia.com/terms/r/ruleof72.asp", "note": "A mental shortcut: 72 ÷ rate ≈ years to double."}
+  ]
+}

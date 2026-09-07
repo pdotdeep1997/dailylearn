@@ -1,0 +1,82 @@
+{
+  "slug": "thinking-in-probabilities",
+  "date": "2026-09-10",
+  "day_number": 4,
+  "track": "Ideas & Minds",
+  "track_lesson": 1,
+  "read_minutes": 6,
+  "title": "Thinking in Probabilities",
+  "subtitle": "Almost nothing in life is certain, yet our minds crave yes-or-no answers. Learning to think in odds instead of certainties is the first upgrade to how you reason.",
+  "hook": "Ask most people \"will it rain tomorrow?\" and they want a yes or no. But the honest answer is a *number* — a 30% chance, say. The world runs on uncertainty, and the single most useful mental upgrade you can make is to stop demanding certainty and start thinking in **probabilities**. This is lesson one of the Ideas & Minds track, and it's the foundation for everything that follows: updating beliefs with evidence, weighing decisions, and spotting where your gut lies to you.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Probability is just a proportion",
+      "body": "A probability is a number from **0 (impossible)** to **1 (certain)** — often written as a percentage — measuring how likely something is. The cleanest way to picture it: out of all the ways things could turn out, what *fraction* are the outcome you care about?\n\nRoll a fair die. There are 6 equally likely outcomes. Rolling a 4 is **1 out of 6 ≈ 0.17 (17%)**. Rolling an even number is **3 out of 6 = 0.5 (50%)**. That's the whole core idea: favorable outcomes ÷ total possible outcomes, when each is equally likely."
+    },
+    {
+      "type": "diagram",
+      "caption": "Probability as a slice of all possible outcomes. The 'sample space' is everything that could happen; the event is the part you care about.",
+      "mermaid": "flowchart LR\n    SS[\"Sample space:\\nall 6 die faces\\n1 2 3 4 5 6\"] --> Ev[\"Event: 'even'\\n= 2, 4, 6\"]\n    Ev --> P[\"P = favorable / total\\n= 3 / 6 = 0.5\"]\n    style P fill:#e6dcff,stroke:#6b46c1,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Two ways to read a probability",
+      "body": "There are two honest interpretations, and good thinkers switch between them. **Frequency:** over many repeats, how often does it happen? (A coin lands heads ~50% of *many* flips.) **Degree of belief:** how confident am I in this one-off claim? ('70% chance this startup ships on time.') Some events can't be 'repeated' — but you can still assign a probability to your confidence. This second view is what powers Bayes' theorem, coming next lesson."
+    },
+    {
+      "type": "steps",
+      "heading": "How to reason with simple probabilities",
+      "items": [
+        "Count the **total** equally-likely outcomes (the sample space).",
+        "Count the outcomes that **count as your event**.",
+        "Divide: event ÷ total. That's your probability.",
+        "For 'A **and** B' of independent events, **multiply** (two coins both heads = ½ × ½ = ¼).",
+        "For 'A **or** B' of mutually exclusive events, **add** (rolling a 1 or a 2 = ⅙ + ⅙ = ⅓)."
+      ]
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Where intuition fails",
+      "body": "Human brains are terrible at this. We treat a 90% chance as basically certain and then feel 'cheated' by the 10%. We ignore how rare an event is to begin with (the base rate). And we see patterns in pure randomness. Simply *forcing yourself to name a number* — 'I'm about 60% sure' — instantly makes your thinking sharper and more honest than a vague 'probably'."
+    },
+    {
+      "type": "video",
+      "youtube_id": "CBnGs9t6RxY",
+      "caption": "A clear primer on the basic concepts — sample spaces, events, and computing simple probabilities."
+    }
+  ],
+  "takeaways": [
+    "A probability is a number from **0 to 1**: favorable outcomes ÷ total equally-likely outcomes.",
+    "Two valid readings: long-run **frequency**, and **degree of belief** in a one-off claim.",
+    "Combine independent events with **multiply** (and) and mutually-exclusive ones with **add** (or).",
+    "Human intuition is bad at odds — we over-trust high probabilities and ignore base rates.",
+    "Naming an actual number ('~60% sure') beats vague words and sets up Bayesian updating next."
+  ],
+  "quiz": [
+    {
+      "q": "You roll one fair six-sided die. What's the probability of rolling a number greater than 4?",
+      "options": ["1/6", "2/6 (i.e. 1/3)", "3/6 (i.e. 1/2)", "4/6 (i.e. 2/3)"],
+      "answer": 1,
+      "explain": "'Greater than 4' means 5 or 6 — that's 2 favorable outcomes out of 6, so 2/6 = 1/3 ≈ 0.33."
+    },
+    {
+      "q": "You flip a fair coin twice. What's the probability of getting heads BOTH times?",
+      "options": ["1/2", "1/4", "1/3", "3/4"],
+      "answer": 1,
+      "explain": "Independent events combine by multiplying: ½ × ½ = ¼. Two heads in a row happens a quarter of the time."
+    },
+    {
+      "q": "What does it mean to read a probability as a 'degree of belief'?",
+      "options": ["It's always wrong for real events", "A measure of your confidence in a claim, even a one-off that can't be repeated", "The number of times you've seen it happen", "A guaranteed prediction"],
+      "answer": 1,
+      "explain": "Some events can't be repeated, but you can still express how confident you are ('70% sure') — the view that underlies Bayesian reasoning."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Khan Academy — Probability basics", "url": "https://www.khanacademy.org/math/statistics-probability/probability-library", "note": "Interactive practice with sample spaces and simple events."},
+    {"label": "Why we're bad at probability (base rates)", "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy", "note": "The classic way intuition betrays us — sets up next week's biases lesson."}
+  ]
+}

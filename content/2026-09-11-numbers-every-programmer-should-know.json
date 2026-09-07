@@ -1,0 +1,73 @@
+{
+  "slug": "numbers-every-programmer-should-know",
+  "date": "2026-09-11",
+  "day_number": 5,
+  "track": "Software & Systems",
+  "track_lesson": 2,
+  "read_minutes": 7,
+  "title": "The Numbers Every Programmer Should Know",
+  "subtitle": "Your CPU is blindingly fast — so why is software ever slow? Because not all memory is equal, and the gaps between them are staggering.",
+  "hook": "Yesterday we saw the CPU rip through instructions billions of times a second. So why does anything ever feel slow? Here's the secret that separates people who *write* code from people who make it *fast*: the CPU spends most of its life **waiting** — for data to arrive from memory. And the difference in wait times between the fastest and slowest storage isn't 2x or 10x. It's roughly the difference between a **second and a decade**. Internalize these gaps and you'll understand performance, caching, and half of systems design.",
+  "builds_on": [
+    {"slug": "what-a-computer-really-does", "label": "What a computer really does"}
+  ],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The memory hierarchy",
+      "body": "There isn't one kind of memory — there's a **hierarchy**, trading speed for size and cost. Near the CPU sit tiny, blisteringly-fast stores; far away sit huge, slow ones:\n\n- **CPU registers / L1 cache** — tiny, essentially instant.\n- **L2 / L3 cache** — small, very fast.\n- **RAM (main memory)** — gigabytes, but ~100x slower than cache.\n- **SSD** — huge, but far slower than RAM.\n- **Network / disk far away** — enormous, and glacial by comparison.\n\nThe CPU can only compute on data that's close. If the data it needs is far down the hierarchy, it stalls — doing nothing — until it arrives."
+    },
+    {
+      "type": "callout",
+      "style": "number",
+      "label": "The gaps, scaled to human time",
+      "body": "Multiply every real latency by ~a billion so it's human-readable. **L1 cache = 1 second.** RAM = a couple of **minutes**. An SSD read = a few **days**. A spinning disk seek = a few **months**. A network round-trip across the world = **years**. Same units, wildly different worlds. When your program is slow, it's almost never 'too much math' — it's waiting on the far end of this ladder."
+    },
+    {
+      "type": "diagram",
+      "caption": "Closer to the CPU = faster but smaller. Every step down is a large jump in latency, which is why *where* your data lives dominates performance.",
+      "mermaid": "flowchart TD\n    CPU[\"CPU core\"] --> L1[\"L1/L2 cache\\n~1 ns  (‘1 second’)\"]\n    L1 --> RAM[\"RAM\\n~100 ns  (‘minutes’)\"]\n    RAM --> SSD[\"SSD\\n~100 us  (‘days’)\"]\n    SSD --> NET[\"Network / disk\\nms+  (‘months–years’)\"]\n    style L1 fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style NET fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "prose",
+      "heading": "Locality: the trick that saves us",
+      "body": "The reason computers aren't hopelessly slow is a pattern called **locality of reference**: programs tend to reuse the same data (temporal locality) and data stored near it (spatial locality). Hardware bets on this by **caching** — quietly keeping recently- and nearby-used data in the fast tiers.\n\nSo the practical lesson for building anything fast: **keep the data you need close, and touch it in predictable patterns.** Looping over a compact array is fast because it streams neatly into cache; chasing pointers all over memory is slow because every jump risks a trip down the hierarchy. This single idea — mind where your data lives — reappears in caching, databases, and distributed systems throughout this track."
+    },
+    {
+      "type": "video",
+      "youtube_id": "SAk-6gVkio0",
+      "caption": "Computerphile on how CPU caches work and why the memory hierarchy exists at all."
+    }
+  ],
+  "takeaways": [
+    "The CPU is fast, so real-world slowness is usually **waiting for data**, not computing.",
+    "Memory is a **hierarchy**: registers/cache → RAM → SSD → network, trading speed for size.",
+    "The latency gaps are enormous — scaled up, L1 ≈ 1 second while a global network hop ≈ years.",
+    "**Locality of reference** (reusing recent/nearby data) lets caching hide most of the cost.",
+    "To go fast: keep needed data **close** and access it in **predictable patterns** (arrays beat pointer-chasing)."
+  ],
+  "quiz": [
+    {
+      "q": "If a modern program feels slow, what's the most common underlying cause?",
+      "options": ["The CPU can't do the math fast enough", "It's waiting on data from slower tiers of the memory hierarchy", "Too many abstraction layers", "The screen refresh rate"],
+      "answer": 1,
+      "explain": "CPUs are extremely fast at arithmetic; the usual bottleneck is stalling while data travels up from RAM, disk, or the network."
+    },
+    {
+      "q": "Roughly how does RAM latency compare to L1 cache latency?",
+      "options": ["About the same", "RAM is ~2x slower", "RAM is ~100x slower", "RAM is faster than cache"],
+      "answer": 2,
+      "explain": "RAM is on the order of 100x slower than L1 cache — scaled to human time, seconds vs. minutes. That's why keeping hot data in cache matters so much."
+    },
+    {
+      "q": "What does 'locality of reference' let hardware do?",
+      "options": ["Run instructions out of order", "Cache recently- and nearby-used data in fast tiers, since programs tend to reuse it", "Store data on the network", "Skip the fetch-execute cycle"],
+      "answer": 1,
+      "explain": "Programs reuse recent data (temporal) and nearby data (spatial), so caches keep that data close — hiding most of the latency ladder."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Latency Numbers Every Programmer Should Know", "url": "https://gist.github.com/jboner/2841832", "note": "The famous table of real latencies this lesson is built around."},
+    {"label": "AlgoMaster — the memory hierarchy & why latency matters", "url": "https://algomaster.io/learn/operating-systems/the-memory-hierarchy", "note": "Visual companion with the human-scale analogy."}
+  ]
+}

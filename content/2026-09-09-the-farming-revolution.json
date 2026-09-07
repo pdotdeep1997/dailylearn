@@ -1,0 +1,77 @@
+{
+  "slug": "the-farming-revolution",
+  "date": "2026-09-09",
+  "day_number": 3,
+  "track": "History & Civilization",
+  "track_lesson": 1,
+  "read_minutes": 7,
+  "title": "The Farming Revolution: The Deal That Built Civilization",
+  "subtitle": "Around 12,000 years ago humans started planting seeds. It made us richer, sicker, more numerous, and more unequal — all at once. Everything after starts here.",
+  "hook": "For about 200,000 years, humans were foragers: small bands walking the land, taking what nature offered. Then, around 12,000 years ago, in a few places at once, people did something new — they planted seeds and waited. It sounds mundane. It was the most consequential decision our species ever made. Farming didn't just feed people; it created **surplus**, and surplus created cities, kings, writing, taxes, and inequality. This is lesson one of the History track because almost every institution we'll study was born from this single shift.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "From taking to producing",
+      "body": "Foragers ate what they found. Farmers *produced* food — and crucially, produced **more than they immediately needed**. That extra is the hinge of history: **surplus**.\n\nSurplus meant not everyone had to hunt for dinner. For the first time, some people could do *something else* full-time: make pots, forge tools, fight, pray, rule, record. Specialization was born. And specialization is the engine behind every complex society that followed."
+    },
+    {
+      "type": "diagram",
+      "caption": "The chain reaction: farming creates surplus, surplus frees people from food production, and that cascades into everything we call civilization.",
+      "mermaid": "flowchart TD\n    Farm[\"Farming\\n(produce, don't just gather)\"] --> Surplus[\"Food surplus\"]\n    Surplus --> Spec[\"Specialists\\n(potters, soldiers, priests, rulers)\"]\n    Surplus --> Pop[\"Population grows\\n(settle, more children)\"]\n    Spec --> Cities[\"Villages -> cities\"]\n    Pop --> Cities\n    Cities --> Inst[\"States, taxes,\\nwriting, hierarchy\"]\n    style Surplus fill:#ffe9cc,stroke:#c47f17,color:#111\n    style Inst fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "It happened more than once",
+      "body": "Farming was invented **independently** in at least seven regions — the Fertile Crescent, China, Mesoamerica, the Andes, and more — over thousands of years, with no contact between them. When many separate peoples stumble onto the same idea, it's a sign the conditions (a stable, warming climate after the last Ice Age) were ripe. History often rhymes because circumstances, not just individuals, drive it."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The bargain had a dark side",
+      "body": "Early farmers were often **worse off** as individuals than foragers: they worked longer hours, ate a less varied diet, were shorter, and caught new diseases from crowding and livestock. Stored surplus could also be seized — enabling taxes, warfare, and the first real inequality. Farming won not because it made people happier, but because it made *more* people and more power. Some historians call it 'history's biggest fraud'.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "Yocja_N5s1I",
+      "caption": "Crash Course World History's classic opener on the Agricultural Revolution and the trade-offs it forced."
+    },
+    {
+      "type": "prose",
+      "heading": "Why it's the root of this track",
+      "body": "Every institution we'll examine — money, writing, law, states, empires — traces back to the problem of managing surplus and the people it fed. Writing began largely as **accounting** for stored grain and traded goods (that's lesson two). States arose to **control and defend** surplus. Money became a way to move it around. Keep the chain in mind — surplus → specialization → complexity → institutions — and the rest of history reads as variations on this theme."
+    }
+  ],
+  "takeaways": [
+    "~12,000 years ago humans shifted from **foraging to farming** — producing food, not just finding it.",
+    "Farming's real product was **surplus**: more food than immediately needed.",
+    "Surplus freed people to **specialize**, and specialization built villages, cities, and states.",
+    "It arose **independently in several regions**, pointing to shared conditions (post-Ice-Age climate).",
+    "The bargain was harsh — worse individual health, disease, and new inequality — but it produced more people and power, so it spread."
+  ],
+  "quiz": [
+    {
+      "q": "What was the pivotal *economic* consequence of farming that set off everything else?",
+      "options": ["Better-tasting food", "A food surplus", "Larger animals", "Warmer weather"],
+      "answer": 1,
+      "explain": "Producing more food than you immediately need — surplus — is what freed some people from food-gathering and enabled specialization."
+    },
+    {
+      "q": "What does it tell us that farming was invented independently in several parts of the world?",
+      "options": ["One civilization taught all the others", "It was pure luck each time", "Broad conditions (like the post-Ice-Age climate), not single individuals, drove the change", "It only happened in the Fertile Crescent"],
+      "answer": 2,
+      "explain": "Independent invention in many places suggests the underlying conditions were ripe everywhere — history is often driven by circumstance."
+    },
+    {
+      "q": "Why do some historians call the Agricultural Revolution a mixed blessing?",
+      "options": ["It made everyone instantly wealthy", "Early farmers often worked harder, ate worse, and faced new disease and inequality", "It reduced the human population", "It had no effect on society"],
+      "answer": 1,
+      "explain": "For individuals, early farming often meant longer hours, poorer diets, more disease, and the first real inequality — even as it produced more people and power overall."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Sapiens (Harari) — 'History's Biggest Fraud'", "url": "https://en.wikipedia.org/wiki/Neolithic_Revolution", "note": "The provocative case that farming domesticated us as much as we domesticated wheat."},
+    {"label": "Guns, Germs, and Steel — geography's role", "url": "https://en.wikipedia.org/wiki/Guns,_Germs,_and_Steel", "note": "Why farming (and power) spread unevenly across the world."}
+  ]
+}

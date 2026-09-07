@@ -1,0 +1,74 @@
+{
+  "slug": "writing-first-information-technology",
+  "date": "2026-09-13",
+  "day_number": 7,
+  "track": "History & Civilization",
+  "track_lesson": 2,
+  "read_minutes": 6,
+  "title": "Writing: The First Information Technology",
+  "subtitle": "The earliest writing wasn't poetry or history — it was receipts. And that unglamorous origin tells you exactly why writing changed the world.",
+  "hook": "We imagine writing began with someone recording a great story or a law. It didn't. The world's earliest writing is mostly **accounting** — lists of grain, sheep, and taxes owed. That's a letdown until you realize *why*: once farming produced surplus (our last History lesson), someone had to track who stored what, who owed whom, and what the temple collected. Writing was invented to **manage information that had outgrown human memory.** It was civilization's first information technology — and every later leap, up to the internet, rhymes with it.",
+  "builds_on": [
+    {"slug": "the-farming-revolution", "label": "The farming revolution"}
+  ],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "From tokens to tablets",
+      "body": "In ancient Mesopotamia, traders first tracked goods with small clay **tokens** — one shape per commodity. As trade grew, they pressed the tokens' marks into clay tablets instead, then simplified those marks into symbols. By around **3400–3000 BCE** this became **cuneiform**: wedge-shaped signs pressed into clay. Egypt developed hieroglyphs, China its own script, Mesoamerica another — again, **independent invention**, echoing the pattern we saw with farming.\n\nCrucially, early writing recorded *quantities and things*, not speech. Only later did symbols come to stand for **sounds**, at which point writing could capture anything language could — names, laws, stories, ideas."
+    },
+    {
+      "type": "diagram",
+      "caption": "Writing's origin is the same chain we started last lesson: surplus created records to keep, and the technology to keep them evolved from tokens to a full script.",
+      "mermaid": "flowchart LR\n    Surplus[\"Farming surplus\\n(previous lesson)\"] --> Need[\"Need to track\\ngoods, debts, taxes\"]\n    Need --> Tok[\"Clay tokens\"]\n    Tok --> Marks[\"Marks on tablets\"]\n    Marks --> Cune[\"Cuneiform script\\n~3200 BCE\"]\n    Cune --> Sound[\"Symbols for sounds\\n= write anything\"]\n    style Cune fill:#ffe9cc,stroke:#c47f17,color:#111\n    style Sound fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why it was revolutionary",
+      "body": "Writing let information escape the limits of a single human mind. It could be **stored** longer than memory, **copied** and moved across distance, and **accumulated** across generations. Knowledge stopped dying with the knower. That's the deep function of every information technology since — the printing press, the telegraph, the computer, the internet — all doing the same three things (store, transmit, accumulate) at ever-greater scale."
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "It also created power",
+      "body": "Whoever could write could **administer**: levy taxes, enforce contracts, issue laws, and run a bureaucracy larger than any chief could hold in his head. Writing and the **state** grew up together — which is why literacy was long guarded by a small scribe class. Control of information has meant power from the very first tablet, a thread we'll follow through the printing press and beyond."
+    },
+    {
+      "type": "video",
+      "youtube_id": "LEsFxHH3oqk",
+      "caption": "The origins of writing and the birth of cuneiform — how record-keeping became a full script."
+    }
+  ],
+  "takeaways": [
+    "The earliest writing was **accounting** — records of grain, livestock, and taxes, not literature.",
+    "It arose to **manage surplus-driven information** that had outgrown human memory (builds on the farming lesson).",
+    "It evolved tokens → marks → **cuneiform**, and was **independently invented** in several civilizations.",
+    "Only later did symbols represent **sounds**, letting writing capture anything language could.",
+    "Writing lets knowledge be **stored, copied, and accumulated** — the same job every later info technology does — and it concentrated **power** in those who controlled it."
+  ],
+  "quiz": [
+    {
+      "q": "What was most of the world's earliest writing actually used for?",
+      "options": ["Poetry and myths", "Accounting — tracking goods, debts, and taxes", "Personal letters", "Religious scripture"],
+      "answer": 1,
+      "explain": "The oldest tablets are overwhelmingly economic records. Writing was born to manage the information that farming's surplus created."
+    },
+    {
+      "q": "What was the key later step that let writing capture anything language could?",
+      "options": ["Using clay instead of stone", "Symbols coming to represent sounds, not just objects/quantities", "Inventing the alphabet in China", "Writing left-to-right"],
+      "answer": 1,
+      "explain": "Once signs stood for sounds (not just things and numbers), writing could record names, laws, and stories — anything speakable."
+    },
+    {
+      "q": "According to the lesson, what three things does every information technology (writing, print, the internet) fundamentally do?",
+      "options": ["Encrypt, sell, delete", "Store, transmit, and accumulate information", "Tax, govern, punish", "Read, write, execute"],
+      "answer": 1,
+      "explain": "Writing let knowledge be stored beyond memory, copied across distance, and accumulated over generations — the same core functions later technologies scaled up."
+    }
+  ],
+  "go_deeper": [
+    {"label": "How writing evolved from clay tokens (Schmandt-Besserat)", "url": "https://sites.utexas.edu/dsb/tokens/the-evolution-of-writing/", "note": "The token-to-script theory this lesson follows."},
+    {"label": "World History Encyclopedia — Cuneiform", "url": "https://www.worldhistory.org/cuneiform/", "note": "Deep dive on the first full writing system."}
+  ]
+}

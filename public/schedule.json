@@ -1,44 +1,44 @@
 {
   "2026-09-07": {
-    "slug": "consistent-hashing",
-    "title": "Consistent Hashing: How Big Systems Add Servers Without Chaos",
-    "category": "Systems Design",
-    "subtitle": "The quietly brilliant idea that lets Discord, DynamoDB, and every CDN grow one machine at a time."
+    "slug": "what-a-computer-really-does",
+    "title": "What a Computer Really Does",
+    "category": "",
+    "subtitle": "Strip away the apps, the windows, the AI \u2014 underneath, a computer is doing one stupefyingly simple thing, billions of times a second."
   },
   "2026-09-08": {
-    "slug": "yield-curve-inversion",
-    "title": "The Inverted Yield Curve: Wall Street's Favorite Recession Alarm",
-    "category": "Finance Theory",
-    "subtitle": "Why a bond market quirk \u2014 getting paid less to lend for longer \u2014 has flagged almost every U.S. recession for 50 years."
+    "slug": "what-money-actually-is",
+    "title": "What Money Actually Is",
+    "category": "",
+    "subtitle": "It isn't gold, and it isn't paper. Money is a technology for solving one specific problem \u2014 and once you see the problem, everything about finance gets clearer."
   },
   "2026-09-09": {
-    "slug": "how-git-stores-history",
-    "title": "How Git Actually Stores Your History (Hint: Not Diffs)",
-    "category": "Programming",
-    "subtitle": "Most people think Git saves the changes between versions. It doesn't \u2014 it saves whole snapshots, and a single idea makes that cheap."
+    "slug": "the-farming-revolution",
+    "title": "The Farming Revolution: The Deal That Built Civilization",
+    "category": "",
+    "subtitle": "Around 12,000 years ago humans started planting seeds. It made us richer, sicker, more numerous, and more unequal \u2014 all at once. Everything after starts here."
   },
   "2026-09-10": {
-    "slug": "leap-seconds",
-    "title": "Leap Seconds: The One-Second Hack That Breaks the Internet",
-    "category": "General Knowledge",
-    "subtitle": "The Earth is a sloppy clock. Fixing that with an occasional extra second has crashed servers worldwide \u2014 and we're finally abolishing it."
+    "slug": "thinking-in-probabilities",
+    "title": "Thinking in Probabilities",
+    "category": "",
+    "subtitle": "Almost nothing in life is certain, yet our minds crave yes-or-no answers. Learning to think in odds instead of certainties is the first upgrade to how you reason."
   },
   "2026-09-11": {
-    "slug": "ranked-choice-voting",
-    "title": "Ranked-Choice Voting: The Math That Kills the Spoiler Effect",
-    "category": "Politics",
-    "subtitle": "How letting voters rank candidates instead of picking one changes who wins \u2014 and the trade-offs no voting system can escape."
+    "slug": "numbers-every-programmer-should-know",
+    "title": "The Numbers Every Programmer Should Know",
+    "category": "",
+    "subtitle": "Your CPU is blindingly fast \u2014 so why is software ever slow? Because not all memory is equal, and the gaps between them are staggering."
   },
   "2026-09-12": {
-    "slug": "how-mrna-vaccines-work",
-    "title": "mRNA Vaccines: Sending Instructions Instead of the Virus",
-    "category": "Science",
-    "subtitle": "A decades-old idea that finally worked at scale \u2014 teaching your own cells to build a training dummy for your immune system."
+    "slug": "time-value-of-money",
+    "title": "Why a Dollar Today Beats a Dollar Tomorrow",
+    "category": "",
+    "subtitle": "The single most important idea in all of finance is almost childishly simple \u2014 and once it clicks, you can value nearly anything."
   },
   "2026-09-13": {
-    "slug": "why-ai-inference-is-expensive",
-    "title": "Why Running AI Costs More Than Building It",
-    "category": "News",
-    "subtitle": "Training a large model is a one-time megaproject. Inference \u2014 actually answering your prompts \u2014 is the bill that never stops, and it's bottlenecked somewhere surprising."
+    "slug": "writing-first-information-technology",
+    "title": "Writing: The First Information Technology",
+    "category": "",
+    "subtitle": "The earliest writing wasn't poetry or history \u2014 it was receipts. And that unglamorous origin tells you exactly why writing changed the world."
   }
 }

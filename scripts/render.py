@@ -73,13 +73,49 @@ def slug(t):
 # ---------- page shell ----------
 
 CATEGORY_HUES = {
+    # Curriculum tracks
+    "Software & Systems": 205, "Money & Markets": 150,
+    "History & Civilization": 28, "Ideas & Minds": 265,
+    # Legacy / misc categories
     "Systems Design": 205, "Programming": 265, "Finance Theory": 150,
     "General Knowledge": 25, "News": 0, "Politics": 340, "Science": 180,
     "Topic of Interest": 45,
 }
 
+def r_quiz(quiz):
+    """Interactive end-of-lesson quiz. Pure inline JS, no storage."""
+    if not quiz:
+        return ""
+    qs = ""
+    for i, q in enumerate(quiz):
+        opts = "".join(
+            f'<button class="opt" data-correct="{"1" if j==q.get("answer") else "0"}" '
+            f'onclick="answer(this,{i})">{html.escape(o)}</button>'
+            for j, o in enumerate(q.get("options", [])))
+        qs += (f'<div class="q" data-i="{i}">'
+               f'<p class="q-text"><span class="q-n">Q{i+1}</span>{mdconv(q.get("q",""))}</p>'
+               f'<div class="opts">{opts}</div>'
+               f'<div class="explain" hidden>{mdconv(q.get("explain",""))}</div>'
+               f'</div>')
+    n = len(quiz)
+    return (f'<section class="quiz"><h2>Check yourself</h2>'
+            f'<p class="quiz-sub">No pressure — tap an answer to see if you\'ve got it.</p>'
+            f'{qs}<div class="score" id="score" hidden></div>'
+            f'<script>(function(){{var total={n},done=0,right=0;'
+            f'window.answer=function(btn,qi){{var q=btn.closest(".q");'
+            f'if(q.dataset.done)return;q.dataset.done="1";done++;'
+            f'var ok=btn.dataset.correct==="1";if(ok)right++;'
+            f'q.querySelectorAll(".opt").forEach(function(b){{b.classList.add("locked");'
+            f'if(b.dataset.correct==="1")b.classList.add("correct");}});'
+            f'if(!ok)btn.classList.add("wrong");'
+            f'var ex=q.querySelector(".explain");if(ex)ex.hidden=false;'
+            f'if(done===total){{var s=document.getElementById("score");'
+            f's.hidden=false;s.textContent="You got "+right+" / "+total+"."+'
+            f'(right===total?" \\u{{1F3AF}} Nailed it.":right>=total/2?" \\u{{1F44D}} Solid.":" \\u{{1F4DA}} Worth a re-read.");}}'
+            f'}};}})();</script></section>')
+
 def render_page(spec: dict) -> str:
-    hue = CATEGORY_HUES.get(spec.get("category", ""), 210)
+    hue = CATEGORY_HUES.get(spec.get("track") or spec.get("category", ""), 210)
     body = "".join(RENDERERS[s["type"]](s) for s in spec.get("sections", []))
 
     takeaways = ""
@@ -95,6 +131,23 @@ def render_page(spec: dict) -> str:
             f'{("<p>"+html.escape(l["note"])+"</p>") if l.get("note") else ""}</li>'
             for l in spec["go_deeper"])
         deeper = f'<section class="deeper"><h2>Go deeper</h2><ul>{lis}</ul></section>'
+
+    quiz_html = r_quiz(spec.get("quiz"))
+
+    # "Builds on" chips linking prior lessons in the same track
+    builds = ""
+    if spec.get("builds_on"):
+        chips = "".join(
+            f'<a class="prereq" href="./{html.escape(b["slug"])}">&#8617; {html.escape(b["label"])}</a>'
+            for b in spec["builds_on"])
+        builds = f'<div class="builds"><span class="builds-label">Builds on</span>{chips}</div>'
+
+    # Track / lesson context line
+    track = spec.get("track", spec.get("category", ""))
+    track_line = ""
+    if spec.get("track"):
+        ln = f' &middot; Lesson {spec["track_lesson"]}' if spec.get("track_lesson") else ""
+        track_line = f'<span class="tracktag">{html.escape(track)}{ln}</span>'
 
     has_mermaid = any(s["type"] == "diagram" for s in spec.get("sections", []))
     mermaid_js = ("""
@@ -205,6 +258,34 @@ footer.foot{{border-top:1px solid var(--hair);margin-top:48px;padding:26px 0 60p
   font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}}
 footer.foot a{{color:var(--accent);text-decoration:none}}
 .reading-time::before{{content:"\\23F1  "}}
+.tracktag{{color:var(--accent);font-weight:600}}
+.builds{{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}}
+.builds-label{{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}}
+.prereq{{font-size:13.5px;text-decoration:none;color:var(--accent);background:var(--accent-soft);
+  padding:4px 11px;border-radius:999px;border:1px solid transparent;transition:border-color .15s}}
+.prereq:hover{{border-color:var(--accent)}}
+.quiz{{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 26px 26px;margin:40px 0 10px}}
+.quiz-sub{{color:var(--muted);font-size:15px;margin:-2px 0 18px}}
+.q{{margin:20px 0;padding-top:18px;border-top:1px solid var(--hair)}}
+.q:first-of-type{{border-top:0}}
+.q-text{{font-weight:500;margin:0 0 12px;display:flex;gap:10px;align-items:baseline}}
+.q-text p{{margin:0;display:inline}}
+.q-n{{flex:none;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:6px}}
+.opts{{display:flex;flex-direction:column;gap:8px}}
+.opt{{text-align:left;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:11px 15px;cursor:pointer;transition:all .12s}}
+.opt:hover:not(.locked){{border-color:var(--accent);transform:translateX(2px)}}
+.opt.locked{{cursor:default}}
+.opt.correct{{border-color:#1e9e5a;background:hsl(145 60% 45% / .13);font-weight:600}}
+.opt.correct::after{{content:"  \\2713";color:#1e9e5a;font-weight:700}}
+.opt.wrong{{border-color:#d0463b;background:hsl(6 70% 50% / .12)}}
+.opt.wrong::after{{content:"  \\2717";color:#d0463b;font-weight:700}}
+.explain{{margin-top:10px;font-size:15px;color:var(--muted);background:var(--accent-soft);
+  border-radius:10px;padding:11px 15px;line-height:1.55}}
+.explain p{{margin:0}}
+.score{{margin-top:22px;padding-top:16px;border-top:2px solid var(--accent);
+  font-family:var(--serif);font-size:20px;font-weight:600}}
 </style>
 </head>
 <body>
@@ -212,19 +293,21 @@ footer.foot a{{color:var(--accent);text-decoration:none}}
 <div class="wrap">
   <header class="top">
     <div class="kicker">
-      <span class="pill">{html.escape(spec.get("category","Learn"))}</span>
-      <span>{html.escape(daynum)}</span><span>&middot;</span>
+      <span class="pill">{html.escape(track)}</span>
+      {track_line}
       <span>{html.escape(pretty_date)}</span><span>&middot;</span>
       <span class="reading-time">{spec.get("read_minutes","6")} min read</span>
     </div>
     <h1>{html.escape(spec.get("title",""))}</h1>
     <p class="subtitle">{html.escape(spec.get("subtitle",""))}</p>
+    {builds}
   </header>
   <div class="hook">{mdconv(spec.get("hook",""))}</div>
   <hr class="rule">
   <main>
     {body}
     {takeaways}
+    {quiz_html}
     {deeper}
   </main>
   <footer class="foot">
@@ -246,9 +329,10 @@ addEventListener('scroll',()=>{{const h=document.documentElement;
 def render_index(specs):
     cards = ""
     for s in sorted(specs, key=lambda x: x.get("date",""), reverse=True):
-        hue = CATEGORY_HUES.get(s.get("category",""),210)
+        cat = s.get("track") or s.get("category","Learn")
+        hue = CATEGORY_HUES.get(cat,210)
         cards += (f'<a class="card" href="./{s["slug"]}.html" style="--hue:{hue}">'
-                  f'<span class="c-pill">{html.escape(s.get("category","Learn"))}</span>'
+                  f'<span class="c-pill">{html.escape(cat)}</span>'
                   f'<h3>{html.escape(s.get("title",""))}</h3>'
                   f'<p>{html.escape(s.get("subtitle",""))}</p>'
                   f'<span class="c-date">{html.escape(s.get("date",""))} &middot; {s.get("read_minutes","6")} min</span>'

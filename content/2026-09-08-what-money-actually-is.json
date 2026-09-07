@@ -1,0 +1,76 @@
+{
+  "slug": "what-money-actually-is",
+  "date": "2026-09-08",
+  "day_number": 2,
+  "track": "Money & Markets",
+  "track_lesson": 1,
+  "read_minutes": 7,
+  "title": "What Money Actually Is",
+  "subtitle": "It isn't gold, and it isn't paper. Money is a technology for solving one specific problem — and once you see the problem, everything about finance gets clearer.",
+  "hook": "Here's a strange fact: the paper in your wallet is worth nothing in itself, and the numbers in your bank account aren't even paper. Yet people trade real work, real goods, real years of their lives for them. Why? Because money isn't a *thing* — it's a **technology**, invented to solve a problem so annoying it held back human trade for millennia. This is lesson one of the Money & Markets track, and everything later — interest, valuation, inflation, markets — is built on top of it.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The problem money solves",
+      "body": "Imagine a world with no money, only barter. You have shoes; you want bread. You must find a baker who *both* wants shoes *and* has spare bread, right now. Economists call this the **double coincidence of wants** — and it's brutal. Most trades simply never happen because the match is too rare.\n\nMoney is the fix. If everyone accepts one thing in exchange, you sell shoes to *anyone* for that thing, then buy bread from *anyone* with it. Money breaks one hard trade into two easy ones. That's the entire invention."
+    },
+    {
+      "type": "diagram",
+      "caption": "Barter needs a perfect mutual match (rare). Money splits the trade in two, so each side only needs to find someone who wants what they have.",
+      "mermaid": "flowchart TD\n    subgraph Barter[\"Barter: needs a double coincidence\"]\n      S1[\"You: have shoes,\\nwant bread\"] <-->|must want shoes\\nAND have bread| B1[\"Baker\"]\n    end\n    subgraph Money[\"With money: two easy trades\"]\n      S2[\"You: shoes\"] -->|sell for money| M[(\"money\")]\n      M -->|buy with money| Br[\"bread from anyone\"]\n    end\n    style M fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "prose",
+      "heading": "The three jobs money does",
+      "body": "Once you see money as a tool, its definition falls out of the jobs it performs:\n\n- **Medium of exchange** — the thing everyone accepts, solving the barter problem.\n- **Unit of account** — a common ruler for value, so you can compare a car to a coffee.\n- **Store of value** — it holds worth over time, so you can sell today and buy next year.\n\nAnything that does these three jobs *is* money — cattle, salt, shells, gold, paper, or a number in a database have all served. Good money is just whatever does these jobs reliably: durable, divisible, portable, hard to fake, and widely trusted."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The real foundation: trust",
+      "body": "Modern money isn't backed by gold. A banknote is backed by **collective belief** that others will accept it tomorrow — ultimately underwritten by a government and its ability to tax and enforce. Money is a shared story we all agree to keep telling. That sounds fragile, but it's exactly why it works: its value comes from the network of people who accept it, not from the material it's made of."
+    },
+    {
+      "type": "video",
+      "youtube_id": "k-3zBE8eLsE",
+      "caption": "A tour of money's evolution — from barter and shells to coins, paper, and digital balances."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Where this is heading",
+      "body": "Because money is a store of value *across time*, the obvious next question is: is a dollar today worth the same as a dollar next year? It isn't — and that single crack opens up interest, lending, and the value of every investment. That's tomorrow's lesson."
+    }
+  ],
+  "takeaways": [
+    "Money is a **technology**, not a substance — it solves the 'double coincidence of wants' that cripples barter.",
+    "It splits one hard trade into two easy ones: sell to anyone, buy from anyone.",
+    "It does three jobs: **medium of exchange**, **unit of account**, **store of value**.",
+    "Anything doing those jobs can be money; good money is durable, divisible, portable, hard to fake, trusted.",
+    "Modern money is backed by **trust and law**, not gold — its value lives in the network that accepts it."
+  ],
+  "quiz": [
+    {
+      "q": "What core problem was money invented to solve?",
+      "options": ["Governments needing tax revenue", "The 'double coincidence of wants' in barter", "Storing gold safely", "Counting large numbers"],
+      "answer": 1,
+      "explain": "In barter you must find someone who has what you want AND wants what you have. Money removes that near-impossible matching requirement."
+    },
+    {
+      "q": "Which of these is NOT one of the three classic functions of money?",
+      "options": ["Medium of exchange", "Unit of account", "Store of value", "Source of interest"],
+      "answer": 3,
+      "explain": "The three functions are medium of exchange, unit of account, and store of value. Interest comes later — from money's role as a store of value across time."
+    },
+    {
+      "q": "What ultimately gives a modern banknote its value?",
+      "options": ["Gold held in a vault", "The paper and ink it's made of", "Collective trust that others will accept it, backed by government", "A fixed exchange rate with the dollar"],
+      "answer": 2,
+      "explain": "Modern money isn't gold-backed. Its worth comes from the shared belief — underwritten by law — that others will accept it tomorrow."
+    }
+  ],
+  "go_deeper": [
+    {"label": "Investopedia — the functions of money", "url": "https://www.investopedia.com/insights/what-is-money/", "note": "Clear reference on what money is and does."},
+    {"label": "Yuval Noah Harari on money as 'trust'", "url": "https://en.wikipedia.org/wiki/History_of_money", "note": "The idea that money is a shared fiction that coordinates strangers."}
+  ]
+}

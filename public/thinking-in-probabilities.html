@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thinking in Probabilities</title>
+<meta name="description" content="Almost nothing in life is certain, yet our minds crave yes-or-no answers. Learning to think in odds instead of certainties is the first upgrade to how you reason.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hue:265;
+  --accent:hsl(var(--hue) 72% 45%);
+  --accent-soft:hsl(var(--hue) 72% 45% / .10);
+  --bg:#fbfaf8; --card:#ffffff; --ink:#1c1b1a; --muted:#6b6a67;
+  --line:hsl(var(--hue) 20% 88%); --hair:#eceae6;
+  --serif:'Fraunces', Georgia, serif; --sans:'Inter', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141414; --card:#1c1c1d; --ink:#eceae6; --muted:#9d9c98;
+    --accent:hsl(var(--hue) 70% 66%); --accent-soft:hsl(var(--hue) 70% 66% / .13);
+    --line:hsl(var(--hue) 15% 26%); --hair:#2a2a2b; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:50;transition:width .1s linear}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.top{padding:34px 0 10px}
+.kicker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--sans);
+  font-size:13px;letter-spacing:.02em;color:var(--muted)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--accent-soft);
+  color:var(--accent);font-weight:600;letter-spacing:.03em;text-transform:uppercase;font-size:12px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.5vw,44px);line-height:1.12;
+  margin:.5em 0 .2em;letter-spacing:-.01em}
+.subtitle{font-family:var(--serif);font-size:clamp(18px,2.6vw,22px);color:var(--muted);
+  font-weight:400;line-height:1.4;margin:0 0 18px}
+.hook{font-size:20px;line-height:1.6;border-left:3px solid var(--accent);padding:2px 0 2px 20px;
+  margin:26px 0 8px;color:var(--ink)}
+.hook p{margin:.4em 0}
+hr.rule{border:0;border-top:1px solid var(--hair);margin:34px 0}
+section.prose h2, .takeaways h2, .deeper h2, .steps + *, h2{font-family:var(--serif);font-weight:600;
+  font-size:26px;letter-spacing:-.01em;margin:1.8em 0 .5em}
+.prose p, .callout__body p{margin:.9em 0}
+.prose a, .deeper a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+.prose a:hover{border-bottom-color:var(--accent)}
+.prose code, code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--accent-soft);padding:2px 6px;border-radius:6px}
+.prose pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  overflow:auto;font-size:15px;line-height:1.5}
+.prose pre code{background:none;padding:0}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li{margin:.35em 0}
+.prose strong{font-weight:600}
+figure{margin:30px 0}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:10px;text-align:center;line-height:1.5}
+.video-frame{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.10);background:#000}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.diagram{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 18px}
+.diagram .mermaid{display:flex;justify-content:center}
+.callout{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:12px;padding:18px 20px;margin:26px 0}
+.callout__icon{font-size:22px;line-height:1.4;flex:none}
+.callout__label{display:block;font-family:var(--sans);font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:3px}
+.callout__body p{margin:.35em 0}
+.pullquote{font-family:var(--serif);font-size:24px;line-height:1.4;color:var(--ink);
+  border:0;margin:32px 0;padding:0 0 0 4px}
+.pullquote cite{display:block;font-family:var(--sans);font-size:15px;color:var(--muted);
+  font-style:normal;margin-top:10px}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:24px 0}
+ol.steps li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--hair)}
+ol.steps li:first-child{border-top:0}
+.step-n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);
+  color:var(--accent);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:15px}
+.takeaways{background:var(--accent-soft);border-radius:16px;padding:6px 26px 22px;margin:40px 0 10px}
+.takeaways ul{list-style:none;padding:0;margin:0}
+.takeaways li{padding:10px 0 10px 30px;position:relative;border-top:1px solid var(--line)}
+.takeaways li:first-child{border-top:0}
+.takeaways li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
+.deeper ul{list-style:none;padding:0;margin:0}
+.deeper li{padding:14px 0;border-top:1px solid var(--hair)}
+.deeper a{font-weight:600;font-size:17px;display:inline-flex;align-items:center;gap:6px;border:0}
+.deeper .arr{color:var(--muted);font-size:14px}
+.deeper p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+footer.foot{border-top:1px solid var(--hair);margin-top:48px;padding:26px 0 60px;
+  font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer.foot a{color:var(--accent);text-decoration:none}
+.reading-time::before{content:"\23F1  "}
+.tracktag{color:var(--accent);font-weight:600}
+.builds{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.builds-label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.prereq{font-size:13.5px;text-decoration:none;color:var(--accent);background:var(--accent-soft);
+  padding:4px 11px;border-radius:999px;border:1px solid transparent;transition:border-color .15s}
+.prereq:hover{border-color:var(--accent)}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 26px 26px;margin:40px 0 10px}
+.quiz-sub{color:var(--muted);font-size:15px;margin:-2px 0 18px}
+.q{margin:20px 0;padding-top:18px;border-top:1px solid var(--hair)}
+.q:first-of-type{border-top:0}
+.q-text{font-weight:500;margin:0 0 12px;display:flex;gap:10px;align-items:baseline}
+.q-text p{margin:0;display:inline}
+.q-n{flex:none;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:6px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:11px 15px;cursor:pointer;transition:all .12s}
+.opt:hover:not(.locked){border-color:var(--accent);transform:translateX(2px)}
+.opt.locked{cursor:default}
+.opt.correct{border-color:#1e9e5a;background:hsl(145 60% 45% / .13);font-weight:600}
+.opt.correct::after{content:"  \2713";color:#1e9e5a;font-weight:700}
+.opt.wrong{border-color:#d0463b;background:hsl(6 70% 50% / .12)}
+.opt.wrong::after{content:"  \2717";color:#d0463b;font-weight:700}
+.explain{margin-top:10px;font-size:15px;color:var(--muted);background:var(--accent-soft);
+  border-radius:10px;padding:11px 15px;line-height:1.55}
+.explain p{margin:0}
+.score{margin-top:22px;padding-top:16px;border-top:2px solid var(--accent);
+  font-family:var(--serif);font-size:20px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">
+      <span class="pill">Ideas &amp; Minds</span>
+      <span class="tracktag">Ideas &amp; Minds &middot; Lesson 1</span>
+      <span>Thursday, September 10, 2026</span><span>&middot;</span>
+      <span class="reading-time">6 min read</span>
+    </div>
+    <h1>Thinking in Probabilities</h1>
+    <p class="subtitle">Almost nothing in life is certain, yet our minds crave yes-or-no answers. Learning to think in odds instead of certainties is the first upgrade to how you reason.</p>
+    
+  </header>
+  <div class="hook"><p>Ask most people &ldquo;will it rain tomorrow?&rdquo; and they want a yes or no. But the honest answer is a <em>number</em> — a 30% chance, say. The world runs on uncertainty, and the single most useful mental upgrade you can make is to stop demanding certainty and start thinking in <strong>probabilities</strong>. This is lesson one of the Ideas &amp; Minds track, and it&rsquo;s the foundation for everything that follows: updating beliefs with evidence, weighing decisions, and spotting where your gut lies to you.</p></div>
+  <hr class="rule">
+  <main>
+    <section class="prose"><h2 id="probability-is-just-a-proportion">Probability is just a proportion</h2><p>A probability is a number from <strong>0 (impossible)</strong> to <strong>1 (certain)</strong> — often written as a percentage — measuring how likely something is. The cleanest way to picture it: out of all the ways things could turn out, what <em>fraction</em> are the outcome you care about?</p>
+<p>Roll a fair die. There are 6 equally likely outcomes. Rolling a 4 is <strong>1 out of 6 ≈ 0.17 (17%)</strong>. Rolling an even number is <strong>3 out of 6 = 0.5 (50%)</strong>. That&rsquo;s the whole core idea: favorable outcomes ÷ total possible outcomes, when each is equally likely.</p></section><figure class="diagram"><div class="mermaid">flowchart LR
+    SS[&quot;Sample space:&lt;br/&gt;all 6 die faces&lt;br/&gt;1 2 3 4 5 6&quot;] --&gt; Ev[&quot;Event: &#x27;even&#x27;&lt;br/&gt;= 2, 4, 6&quot;]
+    Ev --&gt; P[&quot;P = favorable / total&lt;br/&gt;= 3 / 6 = 0.5&quot;]
+    style P fill:#e6dcff,stroke:#6b46c1,color:#111</div><figcaption><p>Probability as a slice of all possible outcomes. The &lsquo;sample space&rsquo; is everything that could happen; the event is the part you care about.</p></figcaption></figure><aside class="callout callout--insight"><div class="callout__icon">&#128161;</div><div class="callout__body"><span class="callout__label">Two ways to read a probability</span><p>There are two honest interpretations, and good thinkers switch between them. <strong>Frequency:</strong> over many repeats, how often does it happen? (A coin lands heads ~50% of <em>many</em> flips.) <strong>Degree of belief:</strong> how confident am I in this one-off claim? (&lsquo;70% chance this startup ships on time.&rsquo;) Some events can&rsquo;t be &lsquo;repeated&rsquo; — but you can still assign a probability to your confidence. This second view is what powers Bayes&rsquo; theorem, coming next lesson.</p></div></aside><h2 id="how-to-reason-with-simple-probabilities">How to reason with simple probabilities</h2><ol class="steps"><li><span class="step-n">1</span><div><p>Count the <strong>total</strong> equally-likely outcomes (the sample space).</p></div></li><li><span class="step-n">2</span><div><p>Count the outcomes that <strong>count as your event</strong>.</p></div></li><li><span class="step-n">3</span><div><p>Divide: event ÷ total. That&rsquo;s your probability.</p></div></li><li><span class="step-n">4</span><div><p>For &lsquo;A <strong>and</strong> B&rsquo; of independent events, <strong>multiply</strong> (two coins both heads = ½ × ½ = ¼).</p></div></li><li><span class="step-n">5</span><div><p>For &lsquo;A <strong>or</strong> B&rsquo; of mutually exclusive events, <strong>add</strong> (rolling a 1 or a 2 = ⅙ + ⅙ = ⅓).</p></div></li></ol><aside class="callout callout--warning"><div class="callout__icon">&#9888;&#65039;</div><div class="callout__body"><span class="callout__label">Where intuition fails</span><p>Human brains are terrible at this. We treat a 90% chance as basically certain and then feel &lsquo;cheated&rsquo; by the 10%. We ignore how rare an event is to begin with (the base rate). And we see patterns in pure randomness. Simply <em>forcing yourself to name a number</em> — &lsquo;I&rsquo;m about 60% sure&rsquo; — instantly makes your thinking sharper and more honest than a vague &lsquo;probably&rsquo;.</p></div></aside><figure class="video"><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/CBnGs9t6RxY" title="Video" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption><p>A clear primer on the basic concepts — sample spaces, events, and computing simple probabilities.</p></figcaption></figure>
+    <section class="takeaways"><h2>The gist</h2><ul><li><p>A probability is a number from <strong>0 to 1</strong>: favorable outcomes ÷ total equally-likely outcomes.</p></li><li><p>Two valid readings: long-run <strong>frequency</strong>, and <strong>degree of belief</strong> in a one-off claim.</p></li><li><p>Combine independent events with <strong>multiply</strong> (and) and mutually-exclusive ones with <strong>add</strong> (or).</p></li><li><p>Human intuition is bad at odds — we over-trust high probabilities and ignore base rates.</p></li><li><p>Naming an actual number (&lsquo;~60% sure&rsquo;) beats vague words and sets up Bayesian updating next.</p></li></ul></section>
+    <section class="quiz"><h2>Check yourself</h2><p class="quiz-sub">No pressure — tap an answer to see if you've got it.</p><div class="q" data-i="0"><p class="q-text"><span class="q-n">Q1</span><p>You roll one fair six-sided die. What&rsquo;s the probability of rolling a number greater than 4?</p></p><div class="opts"><button class="opt" data-correct="0" onclick="answer(this,0)">1/6</button><button class="opt" data-correct="1" onclick="answer(this,0)">2/6 (i.e. 1/3)</button><button class="opt" data-correct="0" onclick="answer(this,0)">3/6 (i.e. 1/2)</button><button class="opt" data-correct="0" onclick="answer(this,0)">4/6 (i.e. 2/3)</button></div><div class="explain" hidden><p>&lsquo;Greater than 4&rsquo; means 5 or 6 — that&rsquo;s 2 favorable outcomes out of 6, so 2/6 = 1/3 ≈ 0.33.</p></div></div><div class="q" data-i="1"><p class="q-text"><span class="q-n">Q2</span><p>You flip a fair coin twice. What&rsquo;s the probability of getting heads BOTH times?</p></p><div class="opts"><button class="opt" data-correct="0" onclick="answer(this,1)">1/2</button><button class="opt" data-correct="1" onclick="answer(this,1)">1/4</button><button class="opt" data-correct="0" onclick="answer(this,1)">1/3</button><button class="opt" data-correct="0" onclick="answer(this,1)">3/4</button></div><div class="explain" hidden><p>Independent events combine by multiplying: ½ × ½ = ¼. Two heads in a row happens a quarter of the time.</p></div></div><div class="q" data-i="2"><p class="q-text"><span class="q-n">Q3</span><p>What does it mean to read a probability as a &lsquo;degree of belief&rsquo;?</p></p><div class="opts"><button class="opt" data-correct="0" onclick="answer(this,2)">It&#x27;s always wrong for real events</button><button class="opt" data-correct="1" onclick="answer(this,2)">A measure of your confidence in a claim, even a one-off that can&#x27;t be repeated</button><button class="opt" data-correct="0" onclick="answer(this,2)">The number of times you&#x27;ve seen it happen</button><button class="opt" data-correct="0" onclick="answer(this,2)">A guaranteed prediction</button></div><div class="explain" hidden><p>Some events can&rsquo;t be repeated, but you can still express how confident you are (&lsquo;70% sure&rsquo;) — the view that underlies Bayesian reasoning.</p></div></div><div class="score" id="score" hidden></div><script>(function(){var total=3,done=0,right=0;window.answer=function(btn,qi){var q=btn.closest(".q");if(q.dataset.done)return;q.dataset.done="1";done++;var ok=btn.dataset.correct==="1";if(ok)right++;q.querySelectorAll(".opt").forEach(function(b){b.classList.add("locked");if(b.dataset.correct==="1")b.classList.add("correct");});if(!ok)btn.classList.add("wrong");var ex=q.querySelector(".explain");if(ex)ex.hidden=false;if(done===total){var s=document.getElementById("score");s.hidden=false;s.textContent="You got "+right+" / "+total+"."+(right===total?" \u{1F3AF} Nailed it.":right>=total/2?" \u{1F44D} Solid.":" \u{1F4DA} Worth a re-read.");}};})();</script></section>
+    <section class="deeper"><h2>Go deeper</h2><ul><li><a href="https://www.khanacademy.org/math/statistics-probability/probability-library" target="_blank" rel="noopener">Khan Academy — Probability basics<span class="arr">&#8599;</span></a><p>Interactive practice with sample spaces and simple events.</p></li><li><a href="https://en.wikipedia.org/wiki/Base_rate_fallacy" target="_blank" rel="noopener">Why we&#x27;re bad at probability (base rates)<span class="arr">&#8599;</span></a><p>The classic way intuition betrays us — sets up next week&#x27;s biases lesson.</p></li></ul></section>
+  </main>
+  <footer class="foot">
+    <span>Learn something new &middot; every day</span>
+    <a href="./index.html">&#8592; All topics</a>
+  </footer>
+</div>
+<script>
+const p=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  const s=h.scrollTop/(h.scrollHeight-h.clientHeight);p.style.width=(s*100)+'%';},{passive:true});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({startOnLoad:true, theme: dark ? 'dark':'neutral',
+    themeVariables:{fontFamily:'ui-sans-serif, system-ui, sans-serif', fontSize:'15px'},
+    flowchart:{curve:'basis', padding:14}});
+</script>
+</body>
+</html>
