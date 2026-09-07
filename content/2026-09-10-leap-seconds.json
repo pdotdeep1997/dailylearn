@@ -1,0 +1,56 @@
+{
+  "slug": "leap-seconds",
+  "date": "2026-09-10",
+  "day_number": 4,
+  "category": "General Knowledge",
+  "read_minutes": 6,
+  "title": "Leap Seconds: The One-Second Hack That Breaks the Internet",
+  "subtitle": "The Earth is a sloppy clock. Fixing that with an occasional extra second has crashed servers worldwide — and we're finally abolishing it.",
+  "hook": "There are not always 86,400 seconds in a day. Every few years, timekeepers insert a single extra second — a **leap second** — to keep our clocks aligned with the Earth's slightly irregular spin. It sounds harmless. Yet that one weird second has taken down Reddit, Qantas check-ins, and Linux servers around the globe, because most software has no idea a minute can contain 61 seconds. After decades of chaos, the world's timekeepers voted to scrap it.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Two clocks that disagree",
+      "body": "We actually run on two different definitions of time. **Atomic time (TAI)** is counted by cesium atomic clocks — breathtakingly steady, the true SI second. **Astronomical time (UT1)** is defined by the Earth's rotation: one full spin = one day.\n\nThe problem is the Earth is a lousy clock. Tides, its molten core, earthquakes, even shifting ice all nudge its rotation, and over the long run it's *slowing down*. So atomic time and rotation-based time slowly drift apart. **UTC** — the civil time your phone shows — is based on atomic seconds but is not allowed to drift more than 0.9 seconds from the Earth's actual position."
+    },
+    {
+      "type": "diagram",
+      "caption": "Atomic time ticks perfectly; the Earth's rotation lags. When the gap nears 0.9s, a leap second is inserted into UTC to snap them back together.",
+      "mermaid": "flowchart TD\n    TAI[\"Atomic time (TAI)\\nperfectly steady\"] --> Gap{{\"Gap approaching\\n0.9 seconds?\"}}\n    UT1[\"Earth's rotation (UT1)\\nslowing, irregular\"] --> Gap\n    Gap -->|yes| Leap[\"Insert 1 leap second\\n23:59:60 UTC\"]\n    Gap -->|no| Wait[\"Do nothing\"]\n    Leap --> Sync[\"UTC realigned with Earth\"]\n    style Leap fill:#ffe9cc,stroke:#c47f17,color:#111\n    style Sync fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "A brief history",
+      "body": "Leap seconds began in **1972**. Since then, **27** have been added — always so far as an *extra* second, because the Earth had been running slow. They're announced months ahead by the IERS in Paris and inserted at the end of June 30 or December 31, when the last minute of the day ticks `23:59:58 → 23:59:59 → 23:59:60 → 00:00:00`."
+    },
+    {
+      "type": "prose",
+      "heading": "Why engineers dread them",
+      "body": "Almost no software expects a clock to read **:60**. When the 2012 leap second hit, a Linux kernel bug sent CPUs into a spin, and sites including Reddit, LinkedIn, and Qantas's booking system fell over. The fix many big companies now use is the **leap smear**: instead of one abrupt extra second, they spread it across many hours, slowing every clock by a hair so no minute ever shows 61 seconds. Google, Amazon, and Meta all smear — but they don't all smear *the same way*, which means their clocks disagree during the smear window."
+    },
+    {
+      "type": "callout",
+      "style": "number",
+      "label": "The end of leap seconds",
+      "body": "In 2022 the world's weights-and-measures body (the CGPM) voted to **abolish the leap second by 2035**. The plan: let UTC and the Earth drift apart for decades and deal with the gap much later, all at once. It's a rare case of humanity deciding that a technically 'correct' fix causes more harm than the imperfection it was solving."
+    },
+    {
+      "type": "video",
+      "youtube_id": "RuPQsqZaq8A",
+      "caption": "PBS Space Time on why the Earth's rotation forces the leap second, and the physics behind the drift."
+    }
+  ],
+  "takeaways": [
+    "A day isn't always 86,400 seconds — the Earth's rotation is irregular and slowly slowing.",
+    "**Atomic time** is steady; **UTC** adds leap seconds to stay within 0.9s of the Earth's actual spin.",
+    "27 leap seconds have been added since 1972; the clock literally reads 23:59:**60**.",
+    "Software rarely expects :60 — leap seconds have caused real outages (Reddit, Qantas, Linux).",
+    "Big tech now 'smears' the second over hours, and the leap second is being **abolished by 2035**."
+  ],
+  "go_deeper": [
+    {"label": "National Geographic — the leap second's end", "url": "https://www.nationalgeographic.com/premium/article/leap-second-year-utc-atomic-clock-nist", "note": "Why it's going away and what replaces it."},
+    {"label": "Google's 'leap smear' explained", "url": "https://developers.google.com/time/smear", "note": "The engineering workaround, from the company that popularized it."},
+    {"label": "Wikipedia — Leap second", "url": "https://en.wikipedia.org/wiki/Leap_second", "note": "Full history, the 2035 decision, and the list of every insertion."}
+  ]
+}

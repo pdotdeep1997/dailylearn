@@ -1,0 +1,71 @@
+{
+  "slug": "consistent-hashing",
+  "date": "2026-09-07",
+  "day_number": 1,
+  "category": "Systems Design",
+  "read_minutes": 7,
+  "title": "Consistent Hashing: How Big Systems Add Servers Without Chaos",
+  "subtitle": "The quietly brilliant idea that lets Discord, DynamoDB, and every CDN grow one machine at a time.",
+  "hook": "Suppose you run 4 cache servers and decide which server holds a key with `hash(key) % 4`. It works perfectly — until you add a fifth server. Now it's `% 5`, almost *every* key maps somewhere new, and your entire cache misses at once. That single stampede has taken down real systems. **Consistent hashing** is the trick that makes adding or losing a server move only a tiny slice of your data instead of all of it.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The problem with the obvious approach",
+      "body": "The natural way to spread keys across N servers is `server = hash(key) % N`. It's fast and evenly balanced. The catch is hidden in that `N`. The moment N changes — you add capacity, or a machine dies — the divisor changes, so the remainder changes for nearly every key.\n\nConcretely: with 4 servers, roughly **75% of keys** get a new home when you move to 5. For a cache that means a near-total miss and a thundering herd of requests hitting your database at once. For a sharded database it means moving three-quarters of your data across the network just to add one node. That's not growth — that's an outage with extra steps."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The core idea",
+      "body": "Instead of mapping keys to servers *directly*, map **both keys and servers onto the same circle** (the \"hash ring\"). A key belongs to the first server you meet walking clockwise from where the key lands. Now a server only owns the arc between it and its neighbor — so adding or removing one only disturbs that arc."
+    },
+    {
+      "type": "diagram",
+      "caption": "Keys and servers both hash onto a ring (0 → 2³²). Each key is owned by the next server clockwise. Add a server and only the keys in *its* new arc move — everyone else stays put.",
+      "mermaid": "flowchart LR\n    k1[\"key user:42 (h=35)\"] -->|clockwise| B\n    k2[\"key cart:88 (h=105)\"] -->|clockwise| C\n    k3[\"key img:7 (h=185)\"] -->|wraps to| A\n    A[\"Server A @20\"]\n    B[\"Server B @90\"]\n    C[\"Server C @170\"]\n    style A fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style B fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style C fill:#cfe3ff,stroke:#2b6cb0,color:#111"
+    },
+    {
+      "type": "prose",
+      "heading": "Why only a small slice moves",
+      "body": "When you add **Server D** onto the ring, it drops into one specific spot and steals only the keys sitting between it and the previous server clockwise. Every other key still resolves to exactly the same server it did before.\n\nThe math is clean: with N servers, adding one moves on average **1/(N+1)** of the keys, not 3/4 of them. Lose a server and its arc simply flows to the next node clockwise — again, only that node's neighborhood is affected. This is the property the name promises: the mapping stays *consistent* as membership changes."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The catch: uneven load",
+      "body": "Placing each server at a single random point tends to create lopsided arcs — one machine ends up owning a huge slice while another sits nearly idle. Real systems fix this with **virtual nodes**: each physical server is hashed onto the ring in many places (say 100–500 tokens). More points means smoother, more even coverage — and when a server dies, its load spreads across *many* neighbors instead of dumping entirely onto one."
+    },
+    {
+      "type": "video",
+      "youtube_id": "UF9Iqmg94tk",
+      "caption": "ByteByteGo walks through the ring, the rebalancing, and virtual nodes with clean animations (~4 min). A great visual companion to the mental model above."
+    },
+    {
+      "type": "steps",
+      "heading": "How a lookup actually works",
+      "items": [
+        "Hash the **key** to a point on the ring (e.g. a 32-bit or 128-bit hash of the key string).",
+        "Walk **clockwise** from that point to the first server token you hit. In practice this is a binary search over a sorted list of token positions — O(log V) where V is the total number of virtual nodes.",
+        "That token's **physical server** owns the key. Read or write there.",
+        "When membership changes, only recompute the handful of keys whose owning arc changed — everything else is untouched."
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "Where you've already used it",
+      "body": "Consistent hashing isn't academic — it's load-bearing infrastructure. **Amazon DynamoDB** and **Apache Cassandra** partition data across nodes with it. **Discord** uses it to route millions of users to the right chat servers. Every **CDN** (Akamai, Cloudflare) uses it to decide which edge cache holds which asset. **Memcached** client libraries like `ketama` popularized it for exactly the cache-stampede problem we opened with.\n\nIt's one of those ideas that looks small — \"put things on a circle\" — but quietly makes horizontal scaling *safe*."
+    }
+  ],
+  "takeaways": [
+    "`hash(key) % N` breaks catastrophically when N changes — nearly every key remaps at once.",
+    "Consistent hashing puts keys **and** servers on a ring; a key belongs to the next server clockwise.",
+    "Adding/removing a server moves only ~1/N of keys, not most of them.",
+    "**Virtual nodes** (many tokens per server) keep load even and spread failures across neighbors.",
+    "It's the backbone of Cassandra, DynamoDB, Discord routing, and every CDN."
+  ],
+  "go_deeper": [
+    {"label": "ByteByteGo — Consistent Hashing guide", "url": "https://bytebytego.com/guides/consistent-hashing/", "note": "The clearest written walkthrough, with diagrams for every step."},
+    {"label": "The original 1997 MIT paper (Karger et al.)", "url": "https://en.wikipedia.org/wiki/Consistent_hashing", "note": "Wikipedia summary links the foundational 'Consistent Hashing and Random Trees' paper."},
+    {"label": "Try it: build a 60-line ring in Python", "url": "https://www.toptal.com/big-data/consistent-hashing", "note": "A hands-on implementation tutorial with virtual nodes."}
+  ]
+}

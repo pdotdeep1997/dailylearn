@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mRNA Vaccines: Sending Instructions Instead of the Virus</title>
+<meta name="description" content="A decades-old idea that finally worked at scale — teaching your own cells to build a training dummy for your immune system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hue:180;
+  --accent:hsl(var(--hue) 72% 45%);
+  --accent-soft:hsl(var(--hue) 72% 45% / .10);
+  --bg:#fbfaf8; --card:#ffffff; --ink:#1c1b1a; --muted:#6b6a67;
+  --line:hsl(var(--hue) 20% 88%); --hair:#eceae6;
+  --serif:'Fraunces', Georgia, serif; --sans:'Inter', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141414; --card:#1c1c1d; --ink:#eceae6; --muted:#9d9c98;
+    --accent:hsl(var(--hue) 70% 66%); --accent-soft:hsl(var(--hue) 70% 66% / .13);
+    --line:hsl(var(--hue) 15% 26%); --hair:#2a2a2b; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:50;transition:width .1s linear}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.top{padding:34px 0 10px}
+.kicker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--sans);
+  font-size:13px;letter-spacing:.02em;color:var(--muted)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--accent-soft);
+  color:var(--accent);font-weight:600;letter-spacing:.03em;text-transform:uppercase;font-size:12px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.5vw,44px);line-height:1.12;
+  margin:.5em 0 .2em;letter-spacing:-.01em}
+.subtitle{font-family:var(--serif);font-size:clamp(18px,2.6vw,22px);color:var(--muted);
+  font-weight:400;line-height:1.4;margin:0 0 18px}
+.hook{font-size:20px;line-height:1.6;border-left:3px solid var(--accent);padding:2px 0 2px 20px;
+  margin:26px 0 8px;color:var(--ink)}
+.hook p{margin:.4em 0}
+hr.rule{border:0;border-top:1px solid var(--hair);margin:34px 0}
+section.prose h2, .takeaways h2, .deeper h2, .steps + *, h2{font-family:var(--serif);font-weight:600;
+  font-size:26px;letter-spacing:-.01em;margin:1.8em 0 .5em}
+.prose p, .callout__body p{margin:.9em 0}
+.prose a, .deeper a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+.prose a:hover{border-bottom-color:var(--accent)}
+.prose code, code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--accent-soft);padding:2px 6px;border-radius:6px}
+.prose pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  overflow:auto;font-size:15px;line-height:1.5}
+.prose pre code{background:none;padding:0}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li{margin:.35em 0}
+.prose strong{font-weight:600}
+figure{margin:30px 0}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:10px;text-align:center;line-height:1.5}
+.video-frame{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.10);background:#000}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.diagram{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 18px}
+.diagram .mermaid{display:flex;justify-content:center}
+.callout{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:12px;padding:18px 20px;margin:26px 0}
+.callout__icon{font-size:22px;line-height:1.4;flex:none}
+.callout__label{display:block;font-family:var(--sans);font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:3px}
+.callout__body p{margin:.35em 0}
+.pullquote{font-family:var(--serif);font-size:24px;line-height:1.4;color:var(--ink);
+  border:0;margin:32px 0;padding:0 0 0 4px}
+.pullquote cite{display:block;font-family:var(--sans);font-size:15px;color:var(--muted);
+  font-style:normal;margin-top:10px}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:24px 0}
+ol.steps li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--hair)}
+ol.steps li:first-child{border-top:0}
+.step-n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);
+  color:var(--accent);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:15px}
+.takeaways{background:var(--accent-soft);border-radius:16px;padding:6px 26px 22px;margin:40px 0 10px}
+.takeaways ul{list-style:none;padding:0;margin:0}
+.takeaways li{padding:10px 0 10px 30px;position:relative;border-top:1px solid var(--line)}
+.takeaways li:first-child{border-top:0}
+.takeaways li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
+.deeper ul{list-style:none;padding:0;margin:0}
+.deeper li{padding:14px 0;border-top:1px solid var(--hair)}
+.deeper a{font-weight:600;font-size:17px;display:inline-flex;align-items:center;gap:6px;border:0}
+.deeper .arr{color:var(--muted);font-size:14px}
+.deeper p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+footer.foot{border-top:1px solid var(--hair);margin-top:48px;padding:26px 0 60px;
+  font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer.foot a{color:var(--accent);text-decoration:none}
+.reading-time::before{content:"\23F1  "}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">
+      <span class="pill">Science</span>
+      <span>Day 6</span><span>&middot;</span>
+      <span>Saturday, September 12, 2026</span><span>&middot;</span>
+      <span class="reading-time">6 min read</span>
+    </div>
+    <h1>mRNA Vaccines: Sending Instructions Instead of the Virus</h1>
+    <p class="subtitle">A decades-old idea that finally worked at scale — teaching your own cells to build a training dummy for your immune system.</p>
+  </header>
+  <div class="hook"><p>Traditional vaccines show your immune system a piece of a real pathogen — a weakened virus or a purified protein grown in labs. mRNA vaccines do something stranger and more elegant: they don&rsquo;t deliver the thing to recognize at all. They deliver <strong>instructions</strong>, and let your own cells build it for a few days. It&rsquo;s the difference between shipping a finished product and shipping the blueprint. That shift is why these vaccines could be designed in <em>days</em> once the virus&rsquo;s genome was known.</p></div>
+  <hr class="rule">
+  <main>
+    <section class="prose"><h2 id="mrna-is-a-messenger-not-a-blueprint-edit">mRNA is a messenger, not a blueprint edit</h2><p>Your DNA is the master archive locked in the cell&rsquo;s nucleus. To actually build a protein, the cell copies the relevant instruction into <strong>messenger RNA (mRNA)</strong> and sends it out to the cell&rsquo;s protein factories, the <strong>ribosomes</strong>. mRNA is inherently temporary — a working note that&rsquo;s read a few times and then destroyed.</p>
+<p>An mRNA vaccine borrows this everyday machinery. It supplies a lab-made mRNA carrying the instructions for one harmless piece of the pathogen — for COVID, the coronavirus&rsquo;s <strong>spike protein</strong>. Your cells read it, build that spike, and display it.</p></section><h2 id="what-happens-after-the-shot">What happens after the shot</h2><ol class="steps"><li><span class="step-n">1</span><div><p>The mRNA is wrapped in a tiny <strong>lipid nanoparticle</strong> — a fat bubble that protects it and helps it slip inside your cells.</p></div></li><li><span class="step-n">2</span><div><p>Inside the cell, <strong>ribosomes</strong> read the mRNA and manufacture the spike protein — a harmless fragment, not the whole virus.</p></div></li><li><span class="step-n">3</span><div><p>Cells <strong>display the spike</strong> on their surface, and some is released for immune cells to find.</p></div></li><li><span class="step-n">4</span><div><p>Your <strong>immune system reacts</strong> — making antibodies and training memory cells to recognize that shape.</p></div></li><li><span class="step-n">5</span><div><p>The mRNA <strong>degrades within days</strong> and is gone; the immune memory remains.</p></div></li></ol><figure class="diagram"><div class="mermaid">flowchart LR
+    LNP[&quot;Lipid nanoparticle&lt;br/&gt;carries mRNA&quot;] --&gt; Cell[&quot;Enters a cell&quot;]
+    Cell --&gt; Ribo[&quot;Ribosome reads mRNA&lt;br/&gt;builds spike protein&quot;]
+    Ribo --&gt; Show[&quot;Spike displayed&lt;br/&gt;on cell surface&quot;]
+    Show --&gt; Immune[&quot;Immune system learns:&lt;br/&gt;antibodies + memory cells&quot;]
+    Ribo --&gt; Gone[&quot;mRNA degrades&lt;br/&gt;in days&quot;]
+    style Immune fill:#d7eef0,stroke:#1f7a8c,color:#111
+    style Gone fill:#eee,stroke:#888,color:#111</div><figcaption><p>Instructions in, training dummy out: the mRNA is read by ribosomes, the spike is built and displayed, the immune system learns, and the mRNA is cleared.</p></figcaption></figure><aside class="callout callout--insight"><div class="callout__icon">&#128161;</div><div class="callout__body"><span class="callout__label">The DNA myth</span><p>A common worry is that mRNA vaccines change your DNA. They can&rsquo;t. The mRNA never enters the nucleus where your DNA lives, and human cells have <strong>no machinery to write RNA back into DNA</strong> in this context. The mRNA is read in the cell&rsquo;s outer body and broken down within days — it&rsquo;s a self-erasing instruction, not a permanent edit.</p></div></aside><figure class="video"><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/oMXGGmBfkf8" title="Video" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption><p>A clear medical animation of the lipid nanoparticle, translation, and the immune response it triggers.</p></figcaption></figure><section class="prose"><h2 id="why-it-s-a-platform-not-just-a-vaccine">Why it&#x27;s a platform, not just a vaccine</h2><p>The reason COVID mRNA vaccines arrived so fast wasn&rsquo;t luck — it&rsquo;s that the <em>manufacturing</em> barely changes when the target changes. Swap the genetic sequence in the mRNA and the same factory, the same lipid packaging, and the same process make a vaccine for a different disease. That programmability is why researchers are now testing mRNA against flu, RSV, and even personalized <strong>cancer</strong> vaccines that encode the specific mutations in a patient&rsquo;s tumor. The COVID rollout was, in a sense, the first real-world proof of a general-purpose tool.</p></section>
+    <section class="takeaways"><h2>The gist</h2><ul><li><p>mRNA vaccines deliver <strong>instructions</strong>, not a pathogen — your cells briefly build a harmless piece of it.</p></li><li><p>A <strong>lipid nanoparticle</strong> ferries the mRNA in; <strong>ribosomes</strong> translate it into the spike protein.</p></li><li><p>The immune system learns the shape (antibodies + memory cells); the mRNA <strong>degrades in days</strong>.</p></li><li><p>It <strong>cannot alter your DNA</strong> — the mRNA never reaches the nucleus and isn&rsquo;t written into your genome.</p></li><li><p>It&rsquo;s a reprogrammable <strong>platform</strong>: change the sequence to target flu, RSV, or personalized cancer vaccines.</p></li></ul></section>
+    <section class="deeper"><h2>Go deeper</h2><ul><li><a href="https://www.cdc.gov/vaccines/covid-19/hcp/mrna-vaccine-basics.html" target="_blank" rel="noopener">CDC — Understanding how mRNA vaccines work<span class="arr">&#8599;</span></a><p>Primary-source explainer from public-health authorities.</p></li><li><a href="https://xvivo.com/examples/how-covid-19-mrna-vaccines-work/" target="_blank" rel="noopener">XVIVO — visual &#x27;inside the cell&#x27; animation<span class="arr">&#8599;</span></a><p>Beautiful scientific visualization of the process.</p></li><li><a href="https://en.wikipedia.org/wiki/RNA_vaccine" target="_blank" rel="noopener">mRNA cancer vaccines — where the platform is headed<span class="arr">&#8599;</span></a><p>How the same approach is being aimed at other diseases.</p></li></ul></section>
+  </main>
+  <footer class="foot">
+    <span>Learn something new &middot; every day</span>
+    <a href="./index.html">&#8592; All topics</a>
+  </footer>
+</div>
+<script>
+const p=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  const s=h.scrollTop/(h.scrollHeight-h.clientHeight);p.style.width=(s*100)+'%';},{passive:true});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({startOnLoad:true, theme: dark ? 'dark':'neutral',
+    themeVariables:{fontFamily:'ui-sans-serif, system-ui, sans-serif', fontSize:'15px'},
+    flowchart:{curve:'basis', padding:14}});
+</script>
+</body>
+</html>

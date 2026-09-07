@@ -1,0 +1,66 @@
+{
+  "slug": "how-git-stores-history",
+  "date": "2026-09-09",
+  "day_number": 3,
+  "category": "Programming",
+  "read_minutes": 8,
+  "title": "How Git Actually Stores Your History (Hint: Not Diffs)",
+  "subtitle": "Most people think Git saves the changes between versions. It doesn't — it saves whole snapshots, and a single idea makes that cheap.",
+  "hook": "Ask a room of developers how Git stores history and most will say \"it saves the diffs between commits.\" It's a reasonable guess. It's also wrong. Git stores **complete snapshots** of your project at every commit — and it gets away with that because of one elegant trick: it names every piece of content by a hash of the content itself. Understand that, and Git stops feeling like magic incantations and starts making sense.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Content-addressed storage",
+      "body": "At its core Git is a **key-value store** where the key is derived from the value. Take any file's contents, run it through a hash function (SHA-1, now moving to SHA-256), and you get a 40-character fingerprint like `d670460b...`. Git stores the file's contents under that fingerprint. This object is called a **blob**.\n\nThe consequence is quietly powerful: two identical files — or the same file across a hundred commits — hash to the *same* key, so Git stores the content **exactly once**. Nothing is duplicated. Change one byte and you get a completely different hash, hence a new object. That's why snapshots aren't wasteful."
+    },
+    {
+      "type": "prose",
+      "heading": "Three object types, one structure",
+      "body": "Everything in Git's database is one of three objects:\n\n- **blob** — the contents of a file (no name, no metadata, just bytes).\n- **tree** — a directory listing: filenames and permissions, each pointing to a blob or another tree.\n- **commit** — a snapshot pointer: it names one top-level tree, the parent commit(s), the author, and the message.\n\nString them together and a commit is just a node that points to a full tree of your project, which points to blobs. Each commit also points back to its parent — that backward chain *is* your history."
+    },
+    {
+      "type": "diagram",
+      "caption": "A commit points to a tree (your directory), the tree points to blobs (file contents), and each commit points to its parent. Everything is addressed by content hash.",
+      "mermaid": "flowchart RL\n    C2[\"commit b2\\n(parent: a1)\"] --> C1[\"commit a1\\n(root)\"]\n    C2 --> T[\"tree\\n/src /README\"]\n    T --> B1[\"blob\\nmain.py\"]\n    T --> B2[\"blob\\nREADME.md\"]\n    style C2 fill:#e6dcff,stroke:#6b46c1,color:#111\n    style C1 fill:#e6dcff,stroke:#6b46c1,color:#111\n    style T fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "steps",
+      "heading": "What `git commit` really does",
+      "items": [
+        "Hash the contents of each changed file and store it as a **blob** (unchanged files reuse their existing blob — same content, same hash).",
+        "Build **tree** objects capturing the directory structure and which blob each filename points to.",
+        "Create a **commit** object pointing to the top tree, your parent commit, and the message.",
+        "Move the current **branch pointer** forward to this new commit. That's it — history is now one link longer."
+      ]
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Branches are almost nothing",
+      "body": "A branch in Git is just a **41-byte file** containing the hash of one commit. `HEAD` is a pointer to the branch you're on. Creating a branch doesn't copy anything — it writes one small pointer. This is why branching in Git is instant, and why it changed how teams work compared to older systems that physically duplicated files."
+    },
+    {
+      "type": "video",
+      "youtube_id": "P6jD966jzlk",
+      "caption": "A hands-on tour of Git's object model — blobs, trees, commits, and the SHA that ties them together."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Why rebasing 'rewrites history'",
+      "body": "Because a commit's hash is computed from its contents *including its parent and message*, changing anything about a commit produces a brand-new hash — a different object. Commands like `rebase` and `amend` don't edit commits in place; they create new ones and move the branch pointer to them. The old commits linger unreferenced until garbage collection. That's also why force-pushing a rebased branch can clobber collaborators: their history now points at objects yours abandoned."
+    }
+  ],
+  "takeaways": [
+    "Git stores full **snapshots**, not diffs — and dedupes them by hashing content.",
+    "Everything is one of three objects: **blob** (file contents), **tree** (directory), **commit** (snapshot pointer).",
+    "Identical content hashes to the same key, so it's stored only once — snapshots stay cheap.",
+    "A **branch is just a pointer** (a hash in a tiny file); that's why branching is instant.",
+    "Rebase/amend create *new* commits with new hashes rather than editing in place — hence 'rewriting history'."
+  ],
+  "go_deeper": [
+    {"label": "Pro Git — Git Internals: Git Objects", "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects", "note": "The definitive chapter; try the `git hash-object` examples yourself."},
+    {"label": "Poke at it: `git cat-file -p HEAD`", "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-References", "note": "Walk from a commit → tree → blob by hand in any repo."},
+    {"label": "AlgoMaster — How Git Works Internally", "url": "https://blog.algomaster.io/p/how-git-works-internally", "note": "A visual, example-driven companion explainer."}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "slug": "why-ai-inference-is-expensive",
+  "date": "2026-09-13",
+  "day_number": 7,
+  "category": "News",
+  "read_minutes": 8,
+  "title": "Why Running AI Costs More Than Building It",
+  "subtitle": "Training a large model is a one-time megaproject. Inference — actually answering your prompts — is the bill that never stops, and it's bottlenecked somewhere surprising.",
+  "hook": "You'd think the expensive part of AI is *training* — the months of thousands of GPUs crunching the internet. That's a huge one-time cost. But for a model serving millions of users, the spending that dominates over its lifetime is **inference**: the compute burned every single time it generates a response. And the reason each answer is costly isn't what most people assume. It's rarely about raw math horsepower — it's about **memory bandwidth**.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Training once vs. answering forever",
+      "body": "Training is a fixed investment: run it, get a set of weights, done. **Inference** is what happens on every request, forever, for every user. A model like a large LLM might be trained once but then run *billions* of times. Multiply a few cents of GPU time by billions of calls and inference quietly becomes the larger line item — which is why AI companies obsess over shaving milliseconds off each token."
+    },
+    {
+      "type": "prose",
+      "heading": "How an LLM actually generates text",
+      "body": "An LLM writes **one token at a time** (a token ≈ a short chunk of a word). To produce each new token, it runs a full forward pass through the entire network, then feeds the result back in to produce the next one — an inherently **sequential** loop. You can't compute token #50 until you have token #49.\n\nThere are two phases. **Prefill** reads your whole prompt at once — highly parallel and efficient. **Decode** then generates the response token-by-token, and this is the slow, expensive part."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The real bottleneck: memory bandwidth",
+      "body": "To generate each token, the GPU must read the model's **billions of weights** out of memory and into the compute cores — then do so *again* for the very next token. For single-stream decoding, the chips can multiply numbers far faster than they can fetch the weights to multiply. So the GPU spends much of its time *waiting for memory*, not computing. Inference is **memory-bandwidth bound**, which is why it can leave expensive compute cores idle."
+    },
+    {
+      "type": "steps",
+      "heading": "What happens per token generated",
+      "items": [
+        "Load the relevant model weights from GPU memory into the compute cores.",
+        "Run one forward pass over the current context to produce a probability distribution.",
+        "Pick the next token and append it to the output.",
+        "Update the **KV cache** — stored intermediate results so earlier tokens don't have to be recomputed. This cache *grows* with every token and eats memory.",
+        "Repeat for the next token. Longer outputs = more sequential steps = more cost."
+      ]
+    },
+    {
+      "type": "diagram",
+      "caption": "Prefill digests the prompt in parallel; decode then loops one token at a time, re-reading weights and growing the KV cache each step.",
+      "mermaid": "flowchart TD\n    P[\"PREFILL:\\nread whole prompt\\n(parallel, fast)\"] --> D[\"DECODE loop\"]\n    D --> W[\"Read billions of weights\\nfrom memory\"]\n    W --> Tok[\"Produce 1 token\"]\n    Tok --> KV[\"Grow KV cache\"]\n    KV --> More{{\"Done or\\nstop token?\"}}\n    More -->|No| D\n    More -->|Yes| Out[\"Return response\"]\n    style W fill:#ffe0e0,stroke:#c0392b,color:#111\n    style Out fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "video",
+      "youtube_id": "cbEhkd4ZeKs",
+      "caption": "A deeper look at what the GPU is doing during inference and where the time and money actually go."
+    },
+    {
+      "type": "prose",
+      "heading": "How providers fight the cost",
+      "body": "Because the weights get read anyway, providers **batch** many users' requests together so each expensive memory read serves lots of people at once — the single biggest efficiency lever, though it trades off against latency. They also **quantize** models (store weights in 8- or 4-bit instead of 16-bit) to move less data, use smarter attention and KV-cache tricks, and route easy queries to smaller models. The economics are stark enough that a large slice of the AI industry's capital is now aimed not at training bigger models, but at making inference cheaper — because that's the cost that scales with success."
+    }
+  ],
+  "takeaways": [
+    "Training is a one-time cost; **inference** recurs on every request and dominates over a model's life.",
+    "LLMs generate **one token at a time** in a sequential loop — that's inherently hard to speed up.",
+    "The bottleneck is usually **memory bandwidth**, not compute: the GPU waits to fetch weights.",
+    "The **KV cache** avoids recomputation but grows with every token and consumes memory.",
+    "Providers cut costs via **batching**, **quantization**, and cache tricks — inference efficiency is where much of the industry's money now goes."
+  ],
+  "go_deeper": [
+    {"label": "Why inference is slow and expensive", "url": "https://theaiengineer.substack.com/p/why-is-inference-slow-and-expensive", "note": "Approachable deep-dive on the memory-bandwidth bottleneck."},
+    {"label": "The KV cache, explained", "url": "https://huggingface.co/docs/transformers/en/kv_cache", "note": "What it stores and why it grows — from Hugging Face's docs."},
+    {"label": "LLM inference economics at scale", "url": "https://inworld.ai/resources/llm-inference-cost-at-scale", "note": "How batching and hardware choices shape the real bill."}
+  ]
+}

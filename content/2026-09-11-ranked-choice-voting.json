@@ -1,0 +1,61 @@
+{
+  "slug": "ranked-choice-voting",
+  "date": "2026-09-11",
+  "day_number": 5,
+  "category": "Politics",
+  "read_minutes": 7,
+  "title": "Ranked-Choice Voting: The Math That Kills the Spoiler Effect",
+  "subtitle": "How letting voters rank candidates instead of picking one changes who wins — and the trade-offs no voting system can escape.",
+  "hook": "In a normal election you pick one candidate. Simple — but it has a famous flaw: a third candidate you love can 'split the vote' and hand victory to the one you like *least*. This is the **spoiler effect**, and it quietly shapes how people vote (and which candidates even run). **Ranked-choice voting** tries to fix it by asking a different question: not \"who's your favorite?\" but \"rank them in order.\" That small change has surprisingly deep consequences.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The problem with picking just one",
+      "body": "Under **first-past-the-post** (pick one, most votes wins), imagine 45% back candidate A, while 55% lean progressive but split 30/25 between B and C. The majority prefers *either* B or C over A — yet A wins with only 45%, because the 55% divided itself. Voters learn this and start voting *strategically*, abandoning their true favorite for the 'lesser evil' who can actually win. That pressure is exactly what ranked-choice is designed to relieve."
+    },
+    {
+      "type": "steps",
+      "heading": "How the count works (instant-runoff)",
+      "items": [
+        "Voters **rank** candidates: 1st choice, 2nd choice, 3rd, and so on.",
+        "Count everyone's **1st choices**. If a candidate has a **majority (>50%)**, they win — done.",
+        "If not, **eliminate the last-place candidate** and look at those ballots' *next* choice.",
+        "**Redistribute** those votes to the surviving candidates and re-count.",
+        "Repeat — eliminating and redistributing — until someone crosses 50%."
+      ]
+    },
+    {
+      "type": "diagram",
+      "caption": "Instant-runoff in one picture: no majority triggers elimination of the lowest candidate, whose ballots flow to their next choice, and the count repeats.",
+      "mermaid": "flowchart TD\n    Start[\"Count 1st choices\"] --> Q{{\"Anyone above 50%?\"}}\n    Q -->|Yes| Win[\"That candidate wins\"]\n    Q -->|No| Elim[\"Eliminate last-place candidate\"]\n    Elim --> Redist[\"Move their ballots to\\neach voter's next choice\"]\n    Redist --> Start\n    style Win fill:#d7f0e3,stroke:#2e7d5b,color:#111\n    style Q fill:#ffeef4,stroke:#b03a6e,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "What it changes",
+      "body": "Because a candidate needs broad support to reach 50%, they benefit from being lots of voters' *second* choice, not just firing up a narrow base. In theory this rewards coalition-building and lets you rank your true favorite first without 'wasting' your vote — the spoiler pressure eases. Cities like San Francisco and states like Maine and Alaska now use it for real elections."
+    },
+    {
+      "type": "video",
+      "youtube_id": "nbW8lvObaU8",
+      "caption": "A short animated walkthrough of ranking, elimination, and redistribution in an instant-runoff count."
+    },
+    {
+      "type": "prose",
+      "heading": "The honest trade-offs",
+      "body": "Ranked-choice is not a free lunch, and supporters and critics disagree sharply. Critics point to **non-monotonicity** — in rare cases, ranking a candidate *higher* can actually cause them to lose — and to real-world confusion, longer ballot-counting, and higher rates of spoiled ballots. Supporters counter that it elects more broadly-acceptable winners and reduces negative campaigning, and that the edge cases are rare in practice.\n\nUnderneath it all sits a deeper result: **Arrow's Impossibility Theorem** proved that no ranked voting system can satisfy every reasonable fairness criterion at once. So the real debate isn't 'which system is perfect' but 'which set of trade-offs do we prefer' — a genuinely open question that reasonable people land on differently."
+    }
+  ],
+  "takeaways": [
+    "First-past-the-post suffers the **spoiler effect**: splitting votes can elect the least-preferred candidate.",
+    "Ranked-choice (instant-runoff) has voters **rank** candidates instead of picking one.",
+    "Counting **eliminates the last-place candidate and redistributes** their ballots until someone passes 50%.",
+    "It can ease spoiler pressure and reward broad appeal; used in Maine, Alaska, and cities like SF.",
+    "Trade-offs are real (non-monotonicity, complexity) — and **Arrow's theorem** says no system is flawless."
+  ],
+  "go_deeper": [
+    {"label": "CGP Grey — The Alternative Vote Explained", "url": "https://www.cgpgrey.com/blog/the-alternative-vote-explained.html", "note": "The classic animated explainer of instant-runoff."},
+    {"label": "Arrow's Impossibility Theorem", "url": "https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem", "note": "Why no ranked system can be perfectly fair — the math behind the debate."},
+    {"label": "Ranked Choice Voting — overview & critiques", "url": "https://en.wikipedia.org/wiki/Instant-runoff_voting", "note": "Balanced summary of arguments for and against, with real examples."}
+  ]
+}

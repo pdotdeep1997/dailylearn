@@ -1,0 +1,61 @@
+{
+  "slug": "how-mrna-vaccines-work",
+  "date": "2026-09-12",
+  "day_number": 6,
+  "category": "Science",
+  "read_minutes": 6,
+  "title": "mRNA Vaccines: Sending Instructions Instead of the Virus",
+  "subtitle": "A decades-old idea that finally worked at scale — teaching your own cells to build a training dummy for your immune system.",
+  "hook": "Traditional vaccines show your immune system a piece of a real pathogen — a weakened virus or a purified protein grown in labs. mRNA vaccines do something stranger and more elegant: they don't deliver the thing to recognize at all. They deliver **instructions**, and let your own cells build it for a few days. It's the difference between shipping a finished product and shipping the blueprint. That shift is why these vaccines could be designed in *days* once the virus's genome was known.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "mRNA is a messenger, not a blueprint edit",
+      "body": "Your DNA is the master archive locked in the cell's nucleus. To actually build a protein, the cell copies the relevant instruction into **messenger RNA (mRNA)** and sends it out to the cell's protein factories, the **ribosomes**. mRNA is inherently temporary — a working note that's read a few times and then destroyed.\n\nAn mRNA vaccine borrows this everyday machinery. It supplies a lab-made mRNA carrying the instructions for one harmless piece of the pathogen — for COVID, the coronavirus's **spike protein**. Your cells read it, build that spike, and display it."
+    },
+    {
+      "type": "steps",
+      "heading": "What happens after the shot",
+      "items": [
+        "The mRNA is wrapped in a tiny **lipid nanoparticle** — a fat bubble that protects it and helps it slip inside your cells.",
+        "Inside the cell, **ribosomes** read the mRNA and manufacture the spike protein — a harmless fragment, not the whole virus.",
+        "Cells **display the spike** on their surface, and some is released for immune cells to find.",
+        "Your **immune system reacts** — making antibodies and training memory cells to recognize that shape.",
+        "The mRNA **degrades within days** and is gone; the immune memory remains."
+      ]
+    },
+    {
+      "type": "diagram",
+      "caption": "Instructions in, training dummy out: the mRNA is read by ribosomes, the spike is built and displayed, the immune system learns, and the mRNA is cleared.",
+      "mermaid": "flowchart LR\n    LNP[\"Lipid nanoparticle\\ncarries mRNA\"] --> Cell[\"Enters a cell\"]\n    Cell --> Ribo[\"Ribosome reads mRNA\\nbuilds spike protein\"]\n    Ribo --> Show[\"Spike displayed\\non cell surface\"]\n    Show --> Immune[\"Immune system learns:\\nantibodies + memory cells\"]\n    Ribo --> Gone[\"mRNA degrades\\nin days\"]\n    style Immune fill:#d7eef0,stroke:#1f7a8c,color:#111\n    style Gone fill:#eee,stroke:#888,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The DNA myth",
+      "body": "A common worry is that mRNA vaccines change your DNA. They can't. The mRNA never enters the nucleus where your DNA lives, and human cells have **no machinery to write RNA back into DNA** in this context. The mRNA is read in the cell's outer body and broken down within days — it's a self-erasing instruction, not a permanent edit."
+    },
+    {
+      "type": "video",
+      "youtube_id": "oMXGGmBfkf8",
+      "caption": "A clear medical animation of the lipid nanoparticle, translation, and the immune response it triggers."
+    },
+    {
+      "type": "prose",
+      "heading": "Why it's a platform, not just a vaccine",
+      "body": "The reason COVID mRNA vaccines arrived so fast wasn't luck — it's that the *manufacturing* barely changes when the target changes. Swap the genetic sequence in the mRNA and the same factory, the same lipid packaging, and the same process make a vaccine for a different disease. That programmability is why researchers are now testing mRNA against flu, RSV, and even personalized **cancer** vaccines that encode the specific mutations in a patient's tumor. The COVID rollout was, in a sense, the first real-world proof of a general-purpose tool."
+    }
+  ],
+  "takeaways": [
+    "mRNA vaccines deliver **instructions**, not a pathogen — your cells briefly build a harmless piece of it.",
+    "A **lipid nanoparticle** ferries the mRNA in; **ribosomes** translate it into the spike protein.",
+    "The immune system learns the shape (antibodies + memory cells); the mRNA **degrades in days**.",
+    "It **cannot alter your DNA** — the mRNA never reaches the nucleus and isn't written into your genome.",
+    "It's a reprogrammable **platform**: change the sequence to target flu, RSV, or personalized cancer vaccines."
+  ],
+  "go_deeper": [
+    {"label": "CDC — Understanding how mRNA vaccines work", "url": "https://www.cdc.gov/vaccines/covid-19/hcp/mrna-vaccine-basics.html", "note": "Primary-source explainer from public-health authorities."},
+    {"label": "XVIVO — visual 'inside the cell' animation", "url": "https://xvivo.com/examples/how-covid-19-mrna-vaccines-work/", "note": "Beautiful scientific visualization of the process."},
+    {"label": "mRNA cancer vaccines — where the platform is headed", "url": "https://en.wikipedia.org/wiki/RNA_vaccine", "note": "How the same approach is being aimed at other diseases."}
+  ]
+}

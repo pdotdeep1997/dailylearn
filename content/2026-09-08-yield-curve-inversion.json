@@ -1,0 +1,60 @@
+{
+  "slug": "yield-curve-inversion",
+  "date": "2026-09-08",
+  "day_number": 2,
+  "category": "Finance Theory",
+  "read_minutes": 7,
+  "title": "The Inverted Yield Curve: Wall Street's Favorite Recession Alarm",
+  "subtitle": "Why a bond market quirk — getting paid less to lend for longer — has flagged almost every U.S. recession for 50 years.",
+  "hook": "Common sense says lending money for 10 years should pay more than lending for 2 — you're taking on more risk and waiting longer. Usually it does. But every so often it flips: short-term government bonds pay *more* than long-term ones. That's an **inverted yield curve**, and it has preceded nearly every U.S. recession since the 1960s. When it inverts, economists stop what they're doing and pay attention.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "What the 'curve' actually is",
+      "body": "Plot the interest rate (yield) of government bonds against how long until they mature — 3 months, 2 years, 10 years, 30 years — and you get the **yield curve**. Normally it slopes *upward*: longer loans pay more, compensating you for tying up money and for the risk that inflation eats your returns. This upward slope is the healthy, default state.\n\nInversion is when the line tilts down at the front — a 2-year bond yielding more than a 10-year. The most-watched version is the **10-year minus 2-year spread** (the \"2s10s\"). When it goes negative, the curve is inverted."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why it signals trouble",
+      "body": "Long-term yields are roughly the market's average guess of where short-term rates will be over the coming years. If investors expect the central bank to **cut rates soon** — which it does when the economy weakens — they buy long bonds now to lock in today's yield, pushing long yields *down*. Meanwhile the Fed is often still holding short rates *high* to fight inflation. High short + low long = inversion. So an inverted curve is essentially the bond market betting a slowdown is coming."
+    },
+    {
+      "type": "diagram",
+      "caption": "The two forces that bend the curve into inversion: the Fed pins short rates high, while recession expectations pull long rates down.",
+      "mermaid": "flowchart TD\n    Fed[\"Central bank hikes\\nto fight inflation\"] --> S[\"Short-term yields HIGH\"]\n    Exp[\"Investors expect\\nslowdown + rate cuts\"] --> Buy[\"Buy long bonds now\"]\n    Buy --> L[\"Long-term yields LOW\"]\n    S --> Inv{{\"Short > Long =\\nINVERSION\"}}\n    L --> Inv\n    Inv --> R[\"Historically precedes\\na recession 6-18 mo later\"]\n    style Inv fill:#ffe0e0,stroke:#c0392b,color:#111\n    style R fill:#fff2cc,stroke:#b7950b,color:#111"
+    },
+    {
+      "type": "steps",
+      "heading": "How to read it yourself",
+      "items": [
+        "Pull two numbers: the **10-year Treasury yield** and the **2-year Treasury yield** (both free on FRED or any finance site).",
+        "Subtract: `10yr − 2yr`. Positive = normal upward slope. **Negative = inverted.**",
+        "Check how deep and how long. A brief, shallow dip is noise; a deep inversion lasting many months is the classic warning.",
+        "Watch for the **re-steepening**. Counterintuitively, recessions often begin *after* the curve un-inverts, as the Fed starts cutting for real."
+      ]
+    },
+    {
+      "type": "video",
+      "youtube_id": "8agblAWXvQM",
+      "caption": "A concise walkthrough of what inversion is and why markets treat it as a recession signal."
+    },
+    {
+      "type": "prose",
+      "heading": "Why it's a smoke alarm, not a crystal ball",
+      "body": "The track record is striking but not magic. The signal comes with **long and variable lags** — a recession can arrive anywhere from 6 months to 2 years later, which is nearly useless for timing trades. It has produced false alarms (the mid-1960s), and modern distortions — central-bank bond buying, global demand for safe U.S. debt — can push long yields down for reasons that have nothing to do with a domestic slowdown.\n\nEconomists also disagree on *why* it predicts so well: is it causal (inversion tightens bank lending, since banks borrow short and lend long) or merely correlated with expectations? The honest read: it's one of the best single indicators we have, and also one that has been declared \"broken\" after almost every inversion — sometimes wrongly, occasionally rightly."
+    }
+  ],
+  "takeaways": [
+    "The yield curve plots bond yields against maturity; it normally slopes up.",
+    "**Inversion** = short-term yields exceed long-term (watch the 10yr − 2yr spread).",
+    "It happens when the Fed holds short rates high while investors bid up long bonds expecting cuts.",
+    "It has preceded almost every U.S. recession since the '60s — but with lags of 6-24 months.",
+    "Not infallible: false alarms and distortions exist, and recessions often start *after* it re-steepens."
+  ],
+  "go_deeper": [
+    {"label": "FRED — 10-Year minus 2-Year spread (live chart)", "url": "https://fred.stlouisfed.org/series/T10Y2Y", "note": "The actual data, updated daily. Watch it cross zero yourself."},
+    {"label": "Investopedia — Inverted Yield Curve", "url": "https://www.investopedia.com/terms/i/invertedyieldcurve.asp", "note": "Plain-language reference with historical examples."},
+    {"label": "The 'this time is different' debate", "url": "https://en.wikipedia.org/wiki/Inverted_yield_curve", "note": "Overview of the mechanism and the recurring skepticism about it."}
+  ]
+}

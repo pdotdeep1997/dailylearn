@@ -1,0 +1,11 @@
+{
+  "name": "daily-learn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A daily 'learn something new' site on Vercel with a Telegram daily digest.",
+  "scripts": {
+    "render": "python3 scripts/render.py content/*.json --out public/",
+    "preview": "python3 -m http.server -d public 8000"
+  },
+  "engines": { "node": ">=18" }
+}

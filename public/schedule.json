@@ -1,0 +1,44 @@
+{
+  "2026-09-07": {
+    "slug": "consistent-hashing",
+    "title": "Consistent Hashing: How Big Systems Add Servers Without Chaos",
+    "category": "Systems Design",
+    "subtitle": "The quietly brilliant idea that lets Discord, DynamoDB, and every CDN grow one machine at a time."
+  },
+  "2026-09-08": {
+    "slug": "yield-curve-inversion",
+    "title": "The Inverted Yield Curve: Wall Street's Favorite Recession Alarm",
+    "category": "Finance Theory",
+    "subtitle": "Why a bond market quirk \u2014 getting paid less to lend for longer \u2014 has flagged almost every U.S. recession for 50 years."
+  },
+  "2026-09-09": {
+    "slug": "how-git-stores-history",
+    "title": "How Git Actually Stores Your History (Hint: Not Diffs)",
+    "category": "Programming",
+    "subtitle": "Most people think Git saves the changes between versions. It doesn't \u2014 it saves whole snapshots, and a single idea makes that cheap."
+  },
+  "2026-09-10": {
+    "slug": "leap-seconds",
+    "title": "Leap Seconds: The One-Second Hack That Breaks the Internet",
+    "category": "General Knowledge",
+    "subtitle": "The Earth is a sloppy clock. Fixing that with an occasional extra second has crashed servers worldwide \u2014 and we're finally abolishing it."
+  },
+  "2026-09-11": {
+    "slug": "ranked-choice-voting",
+    "title": "Ranked-Choice Voting: The Math That Kills the Spoiler Effect",
+    "category": "Politics",
+    "subtitle": "How letting voters rank candidates instead of picking one changes who wins \u2014 and the trade-offs no voting system can escape."
+  },
+  "2026-09-12": {
+    "slug": "how-mrna-vaccines-work",
+    "title": "mRNA Vaccines: Sending Instructions Instead of the Virus",
+    "category": "Science",
+    "subtitle": "A decades-old idea that finally worked at scale \u2014 teaching your own cells to build a training dummy for your immune system."
+  },
+  "2026-09-13": {
+    "slug": "why-ai-inference-is-expensive",
+    "title": "Why Running AI Costs More Than Building It",
+    "category": "News",
+    "subtitle": "Training a large model is a one-time megaproject. Inference \u2014 actually answering your prompts \u2014 is the bill that never stops, and it's bottlenecked somewhere surprising."
+  }
+}
