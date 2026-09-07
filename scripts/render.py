@@ -389,7 +389,7 @@ def main():
         (out / "index.html").write_text(render_index(loaded))
         # schedule.json: date -> slug/title, used by the Telegram sender
         sched = {s["date"]: {"slug": s["slug"], "title": s["title"],
-                             "category": s.get("category",""),
+                             "category": s.get("track") or s.get("category",""),
                              "subtitle": s.get("subtitle","")}
                  for s in loaded if s.get("date")}
         (out / "schedule.json").write_text(json.dumps(sched, indent=2))

@@ -39,12 +39,44 @@ build** — it just serves `public/` and runs the one function. `cleanUrls` make
    - `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
    - `SITE_URL` — your deployed URL, e.g. `https://learn-you.vercel.app`
    - `CRON_SECRET` — any long random string (Vercel Cron sends it as a Bearer token)
+   - `TELEGRAM_WEBHOOK_SECRET` — any long random string (protects the /week bot webhook)
 4. **Deploy.** The cron in `vercel.json` (`30 0 * * *` = 08:30 SGT) is registered
-   automatically. Test the send now:
-   ```
-   curl -H "Authorization: Bearer <CRON_SECRET>" "<SITE_URL>/api/send-daily?dry=1"
-   curl -H "Authorization: Bearer <CRON_SECRET>" "<SITE_URL>/api/send-daily"   # real send
-   ```
+   automatically.
+
+## Triggering a send manually
+
+Two endpoints handle sending. The easiest way (works in a browser — just paste the URL):
+
+```
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>              # send today's lesson
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&dry=1        # preview only, don't send
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&date=2026-09-09   # a specific day
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&all=1        # send ALL 7 of this week
+```
+
+(The daily Vercel Cron calls the same endpoint with a Bearer header — no key needed.)
+
+## Telegram commands (the `/week` bot)
+
+`api/telegram.js` is a bot webhook. Register it **once** after deploying (paste in a
+browser, filling in your token + the SITE_URL + the same webhook secret):
+
+```
+https://api.telegram.org/bot<TOKEN>/setWebhook?url=<SITE_URL>/api/telegram&secret_token=<TELEGRAM_WEBHOOK_SECRET>
+```
+
+Optional — make the commands show in Telegram's menu:
+
+```
+https://api.telegram.org/bot<TOKEN>/setMyCommands?commands=[{"command":"week","description":"All 7 topics this week"},{"command":"today","description":"Today's lesson"},{"command":"help","description":"What I can do"}]
+```
+
+Then in your chat with the bot:
+- **/week** (or /topics) → all 7 lessons of the current week, with links
+- **/today** → today's lesson
+- **/help** → the command list
+
+To confirm the webhook registered: `https://api.telegram.org/bot<TOKEN>/getWebhookInfo`.
 
 ### About the 8:30 time
 Vercel's **Hobby** plan runs cron jobs *within an hour* of the scheduled time,
