@@ -1,0 +1,83 @@
+{
+  "slug": "thinking-in-probabilities",
+  "date": "2026-09-08",
+  "slot": 2,
+  "track": "Ideas & Minds",
+  "track_lesson": 1,
+  "read_minutes": 5,
+  "title": "Stop Thinking in Yes/No. Start Thinking in Odds.",
+  "subtitle": "Almost nothing is certain, yet your brain demands a yes or a no. Learning to answer in numbers is the single biggest upgrade to how you think.",
+  "hook": "\"Will it rain tomorrow?\" Your brain wants a yes or a no. But the honest answer is a *number* — like 30%. The universe runs on uncertainty, and the people who navigate it best share one habit: they stopped demanding certainty and started thinking in **probabilities**. Master this and you get a superpower — Bayes' theorem, smart bets, and a nose for when your gut is lying to you. Lesson one of Ideas & Minds.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "A probability is just a slice",
+      "body": "A probability is a number from **0 (no way)** to **1 (dead certain)**, often shown as a %. The cleanest mental image: out of everything that *could* happen, what fraction is the thing you care about?\n\nRoll a fair die: 6 equally likely faces. Rolling a 4 is **1 of 6 ≈ 17%**. Rolling an even number is **3 of 6 = 50%**. That's the whole engine: favorable outcomes ÷ total outcomes, when each is equally likely. Not scary. Just counting."
+    },
+    {
+      "type": "diagram",
+      "caption": "Probability = your slice of all the ways things could go. The 'sample space' is everything possible; the event is the part you want.",
+      "mermaid": "flowchart LR\n    SS[\"All outcomes\\n1 2 3 4 5 6\"] --> Ev[\"Event: 'even'\\n= 2, 4, 6\"]\n    Ev --> P[\"P = want / total\\n= 3/6 = 0.5\"]\n    style P fill:#e6dcff,stroke:#6b46c1,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The pro move: say a number",
+      "body": "Two honest ways to read a probability. **Frequency:** over many tries, how often? (A coin is heads ~50% of many flips.) **Belief:** how sure am I about this one-off? ('70% this launch ships on time.') You can't 'repeat' a launch — but you can still commit to a number. Forcing yourself to say '~60% sure' instead of 'probably' instantly makes you sharper. That belief-view is the seed of Bayes' theorem, coming soon."
+    },
+    {
+      "type": "steps",
+      "heading": "The two rules that cover most of life",
+      "items": [
+        "**AND (independent):** multiply. Two coins both heads = ½ × ½ = **¼**.",
+        "**OR (mutually exclusive):** add. Rolling a 1 or a 2 = ⅙ + ⅙ = **⅓**.",
+        "Everything fancier is built on these two moves plus careful counting."
+      ]
+    },
+    {
+      "type": "video",
+      "youtube_id": "CBnGs9t6RxY",
+      "caption": "A clean primer on sample spaces, events, and computing simple odds."
+    }
+  ],
+  "takeaways": [
+    "A probability is **0 to 1**: favorable ÷ total equally-likely outcomes.",
+    "Two readings: long-run **frequency**, and **degree of belief** in a one-off.",
+    "**AND → multiply** (independent); **OR → add** (mutually exclusive).",
+    "Your gut over-trusts high odds and ignores base rates — numbers fix that.",
+    "Saying an actual number ('~60%') beats vague words and sets up Bayes next."
+  ],
+  "quiz": [
+    {
+      "q": "Roll one fair die. P(rolling greater than 4)?",
+      "options": ["1/6", "2/6 (1/3)", "3/6 (1/2)", "4/6"],
+      "answer": 1,
+      "explain": "'>4' means 5 or 6 → 2 of 6 = 1/3."
+    },
+    {
+      "q": "Flip a fair coin twice. P(heads BOTH times)?",
+      "options": ["1/2", "1/4", "1/3", "3/4"],
+      "answer": 1,
+      "explain": "Independent 'AND' → multiply: ½ × ½ = ¼."
+    },
+    {
+      "q": "BOSS: A test is '90% accurate' and you test positive for a super-rare disease. Why might you STILL probably be fine?",
+      "options": ["The test lied", "Because the disease is so rare, most positives are false alarms (base rate)", "90% means 90% of people are sick", "You can't be fine after a positive"],
+      "answer": 1,
+      "explain": "When something is rare, even an accurate test throws off lots of false positives. Ignoring the base rate is the classic probability trap — and exactly what Bayes fixes.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "Flip a fair coin twice — chance of heads both times?",
+    "options": ["1/2", "1/4", "1/3"],
+    "answer": 1,
+    "correct": "Nice — AND means multiply: ½ × ½ = ¼.",
+    "wrong": "Close — for 'both', multiply: ½ × ½ = ¼.",
+    "explain": "Independent events combine by multiplying."
+  },
+  "go_deeper": [
+    {"label": "Khan Academy — Probability basics", "url": "https://www.khanacademy.org/math/statistics-probability/probability-library", "note": "Interactive practice with sample spaces."},
+    {"label": "The base rate fallacy", "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy", "note": "The boss-question trap, explained — and next week's setup."}
+  ]
+}

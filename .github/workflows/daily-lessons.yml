@@ -1,0 +1,42 @@
+name: Daily lessons (3x/day)
+
+# Sends the 3 daily lessons at 9:00 AM, 5:00 PM, 8:00 PM Asia/Singapore.
+# GitHub Actions cron is in UTC (SGT = UTC+8):
+#   01:00 UTC = 09:00 SGT  → slot 0
+#   09:00 UTC = 17:00 SGT  → slot 1
+#   12:00 UTC = 20:00 SGT  → slot 2
+# (Free cron can drift a few minutes — fine for these times.)
+#
+# Repo → Settings → Secrets and variables → Actions, add:
+#   SITE_URL     e.g. https://dailylearn-sigma.vercel.app
+#   CRON_SECRET  same value you set in Vercel
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+    - cron: "0 9 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Slot to send (0=9am, 1=5pm, 2=8pm)"
+        required: false
+        default: "0"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pick slot from the schedule that fired
+        id: slot
+        run: |
+          case "${{ github.event.schedule }}" in
+            "0 1 * * *")  echo "slot=0" >> "$GITHUB_OUTPUT" ;;
+            "0 9 * * *")  echo "slot=1" >> "$GITHUB_OUTPUT" ;;
+            "0 12 * * *") echo "slot=2" >> "$GITHUB_OUTPUT" ;;
+            *)            echo "slot=${{ github.event.inputs.slot || '0' }}" >> "$GITHUB_OUTPUT" ;;
+          esac
+      - name: Send
+        run: |
+          curl -fsS "${{ secrets.SITE_URL }}/api/send-daily?slot=${{ steps.slot.outputs.slot }}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"

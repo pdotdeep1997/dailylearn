@@ -1,21 +1,19 @@
-// Sends learning links to Telegram.
-//  - Vercel Cron calls this daily (Bearer CRON_SECRET, auto-added by Vercel).
-//  - You can also trigger it manually in a browser:  /api/send-daily?key=<CRON_SECRET>
+// Sends a lesson (or the whole day) to Telegram, with a tap-to-answer quiz.
+//  - GitHub Action calls this 3x/day with ?slot=0|1|2 (9am / 5pm / 8pm SGT).
+//  - Manual/browser trigger:  /api/send-daily?key=<CRON_SECRET>&slot=0
 //
 // Query params:
-//   key=<CRON_SECRET>   auth for manual/browser triggering (alt to the Bearer header)
-//   date=YYYY-MM-DD      send a specific day (default: today, Asia/Singapore)
-//   all=1                send every lesson in the current week (Mon–Sun)
-//   dry=1                build the message(s) but don't send — returns a preview
-//
-// Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, SITE_URL, CRON_SECRET
+//   key=<CRON_SECRET>   auth for manual triggering (Bearer header also accepted)
+//   slot=0|1|2          which of the day's 3 lessons (default: inferred from time)
+//   date=YYYY-MM-DD      which day (default: today, Asia/Singapore)
+//   all=1                send all of the day's lessons
+//   dry=1                preview only, don't send
 const L = require("./_lib");
 
 module.exports = async (req, res) => {
   const url = new URL(req.url, "http://x");
   const q = url.searchParams;
 
-  // --- auth: Vercel cron (Bearer) OR ?key= for manual triggering ---
   const secret = process.env.CRON_SECRET;
   const bearer = (req.headers["authorization"] || "") === `Bearer ${secret}`;
   const keyOk = secret && q.get("key") === secret;
@@ -34,23 +32,28 @@ module.exports = async (req, res) => {
   try { schedule = await L.fetchSchedule(siteUrl); }
   catch (e) { return res.status(500).json({ ok: false, error: "cannot read schedule.json", detail: String(e) }); }
 
-  // which days to send
-  let days;
-  if (q.get("all") === "1") {
-    days = L.weekEntries(schedule, day).map(([d]) => d);
-  } else {
-    days = schedule[day] ? [day] : [];
+  const lessons = L.lessonsFor(schedule, day);
+  if (!lessons.length) return res.status(200).json({ ok: true, sent: false, reason: `no lessons for ${day}` });
+
+  // pick which lessons to send
+  let picks;
+  if (q.get("all") === "1") picks = lessons;
+  else {
+    const slot = q.get("slot") != null ? parseInt(q.get("slot"), 10) : L.slotNow();
+    const one = lessons.find((e) => (e.slot || 0) === slot) || lessons[slot] || lessons[0];
+    picks = one ? [one] : [];
   }
-  if (!days.length) return res.status(200).json({ ok: true, sent: false, reason: `no lesson for ${day}` });
 
   const results = [];
-  for (const d of days) {
-    const entry = schedule[d];
-    const text = L.dailyText(d, entry, siteUrl);
+  for (const entry of picks) {
+    const text = L.dailyText(day, entry, siteUrl) + L.quizPrompt(entry);
+    const kb = L.quizKeyboard(entry);
     const link = `${siteUrl}/${entry.slug}`;
-    if (dry || !token || !chat) { results.push({ day: d, link, sent: false, preview: text }); continue; }
-    const r = await L.tg(token, "sendMessage", { chat_id: chat, text, parse_mode: "HTML", disable_web_page_preview: false });
-    results.push({ day: d, link, sent: !!r.ok, telegram: r.ok ? undefined : r });
+    if (dry || !token || !chat) { results.push({ day, slot: entry.slot, link, sent: false, preview: text, buttons: kb ? kb.inline_keyboard.map((r) => r[0].text) : null }); continue; }
+    const payload = { chat_id: chat, text, parse_mode: "HTML", disable_web_page_preview: false };
+    if (kb) payload.reply_markup = kb;
+    const r = await L.tg(token, "sendMessage", payload);
+    results.push({ day, slot: entry.slot, link, sent: !!r.ok, telegram: r.ok ? undefined : r });
   }
   return res.status(200).json({ ok: true, dry, count: results.length, results });
 };

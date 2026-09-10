@@ -1,0 +1,79 @@
+{
+  "slug": "what-a-computer-really-does",
+  "date": "2026-09-08",
+  "slot": 0,
+  "track": "Software & Systems",
+  "track_lesson": 1,
+  "read_minutes": 5,
+  "title": "Your Computer Is Basically a Very Fast Idiot",
+  "subtitle": "It renders movies, runs games, and holds video calls — by doing one mind-numbingly simple thing a few billion times a second.",
+  "hook": "Here's a secret that'll change how you see every device you own: your computer is *stupid*. Gloriously, relentlessly stupid. It does not \"run apps\" or \"understand\" anything. It does exactly one tiny thing — grab an instruction, do it, grab the next — and it does it so blindingly fast that the result *looks* like intelligence. Once you see the trick, computers stop being magic and start being obvious. Welcome to lesson one.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The dumbest loop in the world",
+      "body": "At the heart of your machine is the **CPU**, and all it ever does is spin one loop:\n\n1. **Fetch** the next instruction.\n2. **Decode** it (add? compare? jump?).\n3. **Execute** it — usually nudging one or two numbers.\n\nThen back to step 1. Forever. A few *billion* times a second. Every game, browser, and AI you've used is just a monstrously long to-do list of these baby steps. The CPU never knows it's \"playing a video.\" It only ever sees: *next.*"
+    },
+    {
+      "type": "diagram",
+      "caption": "The entire machine, honestly. A pointer tracks where you are; each turn fetches one instruction, does it, and moves on.",
+      "mermaid": "flowchart LR\n    PC[\"Where am I?\\n(program counter)\"] --> F[\"FETCH\\ngrab instruction\"]\n    F --> D[\"DECODE\\nwhat is it?\"]\n    D --> E[\"EXECUTE\\ndo the tiny thing\"]\n    E --> U[\"move to next\"]\n    U --> PC\n    style F fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style E fill:#cfe3ff,stroke:#2b6cb0,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The whole trick",
+      "body": "Speed + simplicity, faked hard enough, *becomes* intelligence. The CPU isn't clever — it's just tireless and absurdly fast. Every \"smart\" thing computers do is millions of dumb steps stacked into a tower. Remember that and nothing in tech will ever intimidate you again."
+    },
+    {
+      "type": "prose",
+      "heading": "Why nobody writes billions of instructions by hand",
+      "body": "They don't — they build **layers**, each one a *convenient lie* that hides the mess below: raw machine code → languages like Python → the operating system → the app you tapped. When you type `print(\"hi\")`, you're standing on a skyscraper of these lies, and at the very bottom floor is that same dumb fetch-decode-execute loop, sweating away. The whole art of software is picking which floor to stand on."
+    },
+    {
+      "type": "video",
+      "youtube_id": "Z5JC9Ve1sfI",
+      "caption": "Four minutes watching the fetch-execute loop do its thing. It really is that simple down there."
+    }
+  ],
+  "takeaways": [
+    "A CPU only ever does one loop: **fetch → decode → execute**, then repeat.",
+    "Every program is a giant list of these tiny steps; the CPU sees no 'big picture'.",
+    "'Intelligence' is just simple steps run **stupidly fast** — not cleverness.",
+    "Software hides complexity in **layers**, each lying about the one below.",
+    "`print(\"hi\")` sits atop a tower that bottoms out in that same dumb loop."
+  ],
+  "quiz": [
+    {
+      "q": "What does a CPU actually do, all day, forever?",
+      "options": ["Understands your goals and plans ahead", "Repeats fetch → decode → execute", "Runs one app at a time from start to finish", "Stores your files"],
+      "answer": 1,
+      "explain": "That's the whole engine — one tiny loop, a few billion times a second."
+    },
+    {
+      "q": "Why call an abstraction layer a 'convenient lie'?",
+      "options": ["It slows the computer down on purpose", "It hides the messy layer below so you can think bigger", "It stores fake data", "It only works on Macs"],
+      "answer": 1,
+      "explain": "Each layer lets you ignore what's beneath it — right down to raw instructions."
+    },
+    {
+      "q": "BOSS: A friend says 'AI is smart because the chip understands language.' What's the honest correction?",
+      "options": ["Correct — chips understand words now", "The chip still just does dumb tiny steps, incredibly fast; 'understanding' is the tower built on top", "Only GPUs understand language", "It understands English but not other languages"],
+      "answer": 1,
+      "explain": "No single step is smart. The apparent intelligence is millions of simple operations stacked up — the exact theme of this lesson.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "What's the CPU's one job?",
+    "options": ["Understand what you want", "Fetch → decode → execute, on repeat", "Store your photos"],
+    "answer": 1,
+    "correct": "Yep — one dumb loop, billions of times a second.",
+    "wrong": "Nope — it just loops: fetch, decode, execute.",
+    "explain": "Everything 'smart' is that tiny loop stacked into a tower."
+  },
+  "go_deeper": [
+    {"label": "Crash Course CS — the CPU, from logic gates up", "url": "https://www.youtube.com/watch?v=FZGugFqdr60", "note": "Watch the dumb loop get built out of switches."},
+    {"label": "Wikipedia — Instruction cycle", "url": "https://en.wikipedia.org/wiki/Instruction_cycle", "note": "The precise mechanics, if you want the registers."}
+  ]
+}

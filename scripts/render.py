@@ -83,36 +83,56 @@ CATEGORY_HUES = {
 }
 
 def r_quiz(quiz):
-    """Interactive end-of-lesson quiz. Pure inline JS, no storage."""
+    """Game-ified end-of-lesson quiz: combo scoring, XP, a boss question, and
+    spaced-repetition 'callback' questions. Pure inline JS, no storage."""
     if not quiz:
         return ""
     qs = ""
     for i, q in enumerate(quiz):
+        boss = "1" if q.get("boss") else "0"
+        base = 25 if q.get("boss") else 10
+        badge = ""
+        if q.get("boss"):
+            badge = '<span class="q-badge boss">&#128293; Boss · 25 XP</span>'
+        elif q.get("callback"):
+            frm = f' · from {html.escape(q["from"])}' if q.get("from") else ""
+            badge = f'<span class="q-badge cb">&#128260; Callback{frm}</span>'
         opts = "".join(
             f'<button class="opt" data-correct="{"1" if j==q.get("answer") else "0"}" '
-            f'onclick="answer(this,{i})">{html.escape(o)}</button>'
+            f'onclick="answer(this,{i},{base})">{html.escape(o)}</button>'
             for j, o in enumerate(q.get("options", [])))
-        qs += (f'<div class="q" data-i="{i}">'
-               f'<p class="q-text"><span class="q-n">Q{i+1}</span>{mdconv(q.get("q",""))}</p>'
+        qs += (f'<div class="q" data-i="{i}" data-boss="{boss}">'
+               f'<p class="q-text"><span class="q-n">Q{i+1}</span>'
+               f'<span>{mdconv(q.get("q",""))}{badge}</span></p>'
                f'<div class="opts">{opts}</div>'
                f'<div class="explain" hidden>{mdconv(q.get("explain",""))}</div>'
                f'</div>')
     n = len(quiz)
-    return (f'<section class="quiz"><h2>Check yourself</h2>'
-            f'<p class="quiz-sub">No pressure — tap an answer to see if you\'ve got it.</p>'
-            f'{qs}<div class="score" id="score" hidden></div>'
-            f'<script>(function(){{var total={n},done=0,right=0;'
-            f'window.answer=function(btn,qi){{var q=btn.closest(".q");'
-            f'if(q.dataset.done)return;q.dataset.done="1";done++;'
-            f'var ok=btn.dataset.correct==="1";if(ok)right++;'
-            f'q.querySelectorAll(".opt").forEach(function(b){{b.classList.add("locked");'
-            f'if(b.dataset.correct==="1")b.classList.add("correct");}});'
-            f'if(!ok)btn.classList.add("wrong");'
-            f'var ex=q.querySelector(".explain");if(ex)ex.hidden=false;'
-            f'if(done===total){{var s=document.getElementById("score");'
-            f's.hidden=false;s.textContent="You got "+right+" / "+total+"."+'
-            f'(right===total?" \\u{{1F3AF}} Nailed it.":right>=total/2?" \\u{{1F44D}} Solid.":" \\u{{1F4DA}} Worth a re-read.");}}'
-            f'}};}})();</script></section>')
+    js = (
+        "(function(){var total=%d,done=0,right=0,score=0,combo=0,maxc=0;"
+        "var sb=document.getElementById('sb'),sc=document.getElementById('scoreline');"
+        "window.answer=function(btn,qi,base){var q=btn.closest('.q');if(q.dataset.done)return;"
+        "q.dataset.done='1';done++;var ok=btn.dataset.correct==='1';"
+        "if(ok){right++;combo++;if(combo>maxc)maxc=combo;"
+        "var pts=Math.round(base*(1+0.5*(combo-1)));score+=pts;"
+        "pop(btn,'+'+pts+(combo>1?'  x'+combo+' combo!':''),true);}"
+        "else{combo=0;pop(btn,'miss',false);}"
+        "q.querySelectorAll('.opt').forEach(function(b){b.classList.add('locked');"
+        "if(b.dataset.correct==='1')b.classList.add('correct');});"
+        "if(!ok)btn.classList.add('wrong');"
+        "var ex=q.querySelector('.explain');if(ex)ex.hidden=false;"
+        "sb.hidden=false;sb.innerHTML='&#11088; <b>'+score+' XP</b>'+(combo>1?'  &#128293; '+combo+' combo':'');"
+        "if(done===total){var msg=right===total?'Flawless. \\u{1F3AF}':right>=Math.ceil(total*0.6)?'Strong run. \\u{1F44D}':'Worth another read. \\u{1F4DA}';"
+        "sc.hidden=false;sc.innerHTML='<b>'+score+' XP</b> &middot; '+right+'/'+total+' correct &middot; best combo x'+maxc+'<br>'+msg;}};"
+        "function pop(btn,txt,good){var e=document.createElement('span');e.className='xp '+(good?'good':'bad');"
+        "e.textContent=txt;btn.appendChild(e);setTimeout(function(){e.classList.add('go');},20);"
+        "setTimeout(function(){e.remove();},1100);} })();"
+    ) % n
+    return (f'<section class="quiz"><div class="quiz-head"><h2>Boss check</h2>'
+            f'<span class="sb" id="sb" hidden></span></div>'
+            f'<p class="quiz-sub">Tap an answer. Keep a streak going for combo XP &#128293;</p>'
+            f'{qs}<div class="score" id="scoreline" hidden></div>'
+            f'<script>{js}</script></section>')
 
 def render_page(spec: dict) -> str:
     hue = CATEGORY_HUES.get(spec.get("track") or spec.get("category", ""), 210)
@@ -285,7 +305,22 @@ footer.foot a{{color:var(--accent);text-decoration:none}}
   border-radius:10px;padding:11px 15px;line-height:1.55}}
 .explain p{{margin:0}}
 .score{{margin-top:22px;padding-top:16px;border-top:2px solid var(--accent);
-  font-family:var(--serif);font-size:20px;font-weight:600}}
+  font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.4}}
+.quiz-head{{display:flex;align-items:center;justify-content:space-between;gap:12px}}
+.quiz-head h2{{margin:1.2em 0 .3em}}
+.sb{{font-size:15px;background:var(--accent-soft);color:var(--accent);padding:6px 12px;
+  border-radius:999px;font-weight:600;white-space:nowrap}}
+.q-badge{{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px;vertical-align:middle}}
+.q-badge.boss{{color:#c2410c;background:hsl(24 90% 50% / .15)}}
+.q-badge.cb{{color:var(--accent);background:var(--accent-soft)}}
+.q[data-boss="1"]{{background:hsl(24 90% 50% / .06);border-radius:12px;padding:14px 14px 2px;
+  border-top:1px solid hsl(24 90% 50% / .3)}}
+.opt{{position:relative;overflow:visible}}
+.xp{{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-weight:700;font-size:15px;
+  opacity:1;transition:all .9s ease-out;pointer-events:none}}
+.xp.good{{color:#1e9e5a}} .xp.bad{{color:#d0463b}}
+.xp.go{{transform:translateY(-32px);opacity:0}}
 </style>
 </head>
 <body>
@@ -388,10 +423,20 @@ def main():
                     loaded.append(s); seen.add(s["slug"])
         (out / "index.html").write_text(render_index(loaded))
         # schedule.json: date -> slug/title, used by the Telegram sender
-        sched = {s["date"]: {"slug": s["slug"], "title": s["title"],
-                             "category": s.get("track") or s.get("category",""),
-                             "subtitle": s.get("subtitle","")}
-                 for s in loaded if s.get("date")}
+        # date -> list of lessons ordered by slot (0=9am,1=5pm,2=8pm)
+        sched = {}
+        for s in loaded:
+            if not s.get("date"):
+                continue
+            sched.setdefault(s["date"], []).append({
+                "slug": s["slug"], "title": s["title"],
+                "category": s.get("track") or s.get("category", ""),
+                "subtitle": s.get("subtitle", ""),
+                "slot": s.get("slot", 0),
+                "tg_quiz": s.get("tg_quiz"),
+            })
+        for d in sched:
+            sched[d].sort(key=lambda x: x.get("slot", 0))
         (out / "schedule.json").write_text(json.dumps(sched, indent=2))
         print(f'  rebuilt index.html + schedule.json ({len(loaded)} topics)')
 

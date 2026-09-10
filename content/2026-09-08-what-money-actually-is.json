@@ -1,76 +1,85 @@
 {
   "slug": "what-money-actually-is",
   "date": "2026-09-08",
-  "day_number": 2,
+  "slot": 1,
   "track": "Money & Markets",
   "track_lesson": 1,
-  "read_minutes": 7,
-  "title": "What Money Actually Is",
-  "subtitle": "It isn't gold, and it isn't paper. Money is a technology for solving one specific problem — and once you see the problem, everything about finance gets clearer.",
-  "hook": "Here's a strange fact: the paper in your wallet is worth nothing in itself, and the numbers in your bank account aren't even paper. Yet people trade real work, real goods, real years of their lives for them. Why? Because money isn't a *thing* — it's a **technology**, invented to solve a problem so annoying it held back human trade for millennia. This is lesson one of the Money & Markets track, and everything later — interest, valuation, inflation, markets — is built on top of it.",
+  "read_minutes": 5,
+  "title": "Money Is a Story We All Agree to Believe",
+  "subtitle": "The cash in your pocket is worthless paper. The number in your bank isn't even paper. So why does the whole world chase it?",
+  "hook": "Pull out a banknote. It's a rectangle of cotton worth basically nothing. The balance in your bank isn't even *that* — it's a number in a database. Yet people trade years of their lives for these things. Weird, right? Here's the punchline: money was never a *thing*. It's a **technology** — invented to kill one specific, maddening problem. Once you see the problem, money makes total sense. Lesson one of Money & Markets.",
   "sections": [
     {
       "type": "prose",
-      "heading": "The problem money solves",
-      "body": "Imagine a world with no money, only barter. You have shoes; you want bread. You must find a baker who *both* wants shoes *and* has spare bread, right now. Economists call this the **double coincidence of wants** — and it's brutal. Most trades simply never happen because the match is too rare.\n\nMoney is the fix. If everyone accepts one thing in exchange, you sell shoes to *anyone* for that thing, then buy bread from *anyone* with it. Money breaks one hard trade into two easy ones. That's the entire invention."
+      "heading": "The problem that almost broke trade",
+      "body": "Picture a world with no money — just barter. You make shoes; you want bread. So you must find a baker who wants shoes *and* happens to have spare bread *right now*. Economists call this the **double coincidence of wants**, and it's a nightmare. Most trades simply never happen, because the perfect match is too rare.\n\nMoney is the hack. If everyone accepts *one thing*, you sell shoes to anyone, then buy bread from anyone. One impossible trade becomes two easy ones. That's the entire invention — everything else is detail."
     },
     {
       "type": "diagram",
-      "caption": "Barter needs a perfect mutual match (rare). Money splits the trade in two, so each side only needs to find someone who wants what they have.",
-      "mermaid": "flowchart TD\n    subgraph Barter[\"Barter: needs a double coincidence\"]\n      S1[\"You: have shoes,\\nwant bread\"] <-->|must want shoes\\nAND have bread| B1[\"Baker\"]\n    end\n    subgraph Money[\"With money: two easy trades\"]\n      S2[\"You: shoes\"] -->|sell for money| M[(\"money\")]\n      M -->|buy with money| Br[\"bread from anyone\"]\n    end\n    style M fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+      "caption": "Barter needs a perfect mutual match (rare!). Money splits the deal so each side only needs to find someone who wants what they've got.",
+      "mermaid": "flowchart TD\n    subgraph Barter[\"Barter: needs a perfect match\"]\n      S1[\"You: shoes,\\nwant bread\"] <-->|must want shoes\\nAND have bread| B1[\"Baker\"]\n    end\n    subgraph Money[\"With money: two easy trades\"]\n      S2[\"You: shoes\"] -->|sell for money| M[(\"money\")]\n      M -->|buy from anyone| Br[\"bread\"]\n    end\n    style M fill:#d7f0e3,stroke:#2e7d5b,color:#111"
     },
     {
       "type": "prose",
-      "heading": "The three jobs money does",
-      "body": "Once you see money as a tool, its definition falls out of the jobs it performs:\n\n- **Medium of exchange** — the thing everyone accepts, solving the barter problem.\n- **Unit of account** — a common ruler for value, so you can compare a car to a coffee.\n- **Store of value** — it holds worth over time, so you can sell today and buy next year.\n\nAnything that does these three jobs *is* money — cattle, salt, shells, gold, paper, or a number in a database have all served. Good money is just whatever does these jobs reliably: durable, divisible, portable, hard to fake, and widely trusted."
+      "heading": "Money's three day-jobs",
+      "body": "Stop asking *what* money is and ask what it *does*. Three jobs:\n\n- **Medium of exchange** — the thing everyone takes (kills the barter problem).\n- **Unit of account** — a shared ruler, so you can compare a car to a coffee.\n- **Store of value** — it (mostly) holds worth over time, so you can sell today and buy next year.\n\nDo those three jobs and you *are* money. Cattle, salt, shells, gold, paper, database numbers — all have taken a turn. Good money is just whatever does the jobs well: durable, splittable, portable, hard to fake, and — the big one — trusted."
     },
     {
       "type": "callout",
       "style": "insight",
-      "label": "The real foundation: trust",
-      "body": "Modern money isn't backed by gold. A banknote is backed by **collective belief** that others will accept it tomorrow — ultimately underwritten by a government and its ability to tax and enforce. Money is a shared story we all agree to keep telling. That sounds fragile, but it's exactly why it works: its value comes from the network of people who accept it, not from the material it's made of."
+      "label": "The plot twist: it's all trust",
+      "body": "Modern money isn't backed by gold. A banknote is backed by everyone's shared belief that *someone else will take it tomorrow*, propped up by a government that can tax and enforce. Money is a collective story. Sounds flimsy — but that's exactly its strength: its value lives in the network of people who believe, not in the stuff it's printed on."
     },
     {
       "type": "video",
       "youtube_id": "k-3zBE8eLsE",
-      "caption": "A tour of money's evolution — from barter and shells to coins, paper, and digital balances."
+      "caption": "From shells and coins to paper and pixels — a quick tour of money's glow-up."
     },
     {
       "type": "callout",
       "style": "warning",
-      "label": "Where this is heading",
-      "body": "Because money is a store of value *across time*, the obvious next question is: is a dollar today worth the same as a dollar next year? It isn't — and that single crack opens up interest, lending, and the value of every investment. That's tomorrow's lesson."
+      "label": "Tomorrow's cliffhanger",
+      "body": "If money is a store of value across *time*, here's the trillion-dollar question: is a dollar today worth the same as a dollar next year? (Spoiler: absolutely not — and that one crack cracks open interest, loans, and the price of literally every investment.)"
     }
   ],
   "takeaways": [
-    "Money is a **technology**, not a substance — it solves the 'double coincidence of wants' that cripples barter.",
-    "It splits one hard trade into two easy ones: sell to anyone, buy from anyone.",
-    "It does three jobs: **medium of exchange**, **unit of account**, **store of value**.",
+    "Money is a **technology**, not a substance — it kills the 'double coincidence of wants'.",
+    "It turns one impossible trade into two easy ones: sell to anyone, buy from anyone.",
+    "Its three jobs: **medium of exchange, unit of account, store of value**.",
     "Anything doing those jobs can be money; good money is durable, divisible, portable, hard to fake, trusted.",
-    "Modern money is backed by **trust and law**, not gold — its value lives in the network that accepts it."
+    "Modern money runs on **trust + law**, not gold — value lives in the network of believers."
   ],
   "quiz": [
     {
-      "q": "What core problem was money invented to solve?",
-      "options": ["Governments needing tax revenue", "The 'double coincidence of wants' in barter", "Storing gold safely", "Counting large numbers"],
+      "q": "What problem was money invented to solve?",
+      "options": ["Governments needing taxes", "The 'double coincidence of wants' in barter", "Storing gold safely", "Counting big numbers"],
       "answer": 1,
-      "explain": "In barter you must find someone who has what you want AND wants what you have. Money removes that near-impossible matching requirement."
+      "explain": "In barter you need someone who has what you want AND wants what you have. Money removes that near-impossible match."
     },
     {
-      "q": "Which of these is NOT one of the three classic functions of money?",
-      "options": ["Medium of exchange", "Unit of account", "Store of value", "Source of interest"],
+      "q": "Which is NOT one of money's three jobs?",
+      "options": ["Medium of exchange", "Unit of account", "Store of value", "Generator of interest"],
       "answer": 3,
-      "explain": "The three functions are medium of exchange, unit of account, and store of value. Interest comes later — from money's role as a store of value across time."
+      "explain": "The three are exchange, account, and store of value. Interest is a *consequence* — tomorrow's lesson."
     },
     {
-      "q": "What ultimately gives a modern banknote its value?",
-      "options": ["Gold held in a vault", "The paper and ink it's made of", "Collective trust that others will accept it, backed by government", "A fixed exchange rate with the dollar"],
-      "answer": 2,
-      "explain": "Modern money isn't gold-backed. Its worth comes from the shared belief — underwritten by law — that others will accept it tomorrow."
+      "q": "BOSS: If a country's people suddenly stopped believing their banknotes would be accepted tomorrow, what happens to the money's value?",
+      "options": ["Nothing — it's backed by gold", "It collapses, because its value was the shared belief itself", "It doubles", "Only coins keep value"],
+      "answer": 1,
+      "explain": "Modern money is a shared story. Break the belief and the value evaporates — exactly how hyperinflations spiral.",
+      "boss": true
     }
   ],
+  "tg_quiz": {
+    "q": "What actually backs a modern banknote?",
+    "options": ["Gold in a vault", "Shared trust that others will accept it", "The cost of the paper"],
+    "answer": 1,
+    "correct": "Exactly — money is a story we all agree to believe.",
+    "wrong": "Not gold — it's collective trust, backed by law.",
+    "explain": "Value lives in the network of people who accept it, not the paper."
+  },
   "go_deeper": [
-    {"label": "Investopedia — the functions of money", "url": "https://www.investopedia.com/insights/what-is-money/", "note": "Clear reference on what money is and does."},
-    {"label": "Yuval Noah Harari on money as 'trust'", "url": "https://en.wikipedia.org/wiki/History_of_money", "note": "The idea that money is a shared fiction that coordinates strangers."}
+    {"label": "Investopedia — the functions of money", "url": "https://www.investopedia.com/insights/what-is-money/", "note": "Clean reference on what money is and does."},
+    {"label": "History of money", "url": "https://en.wikipedia.org/wiki/History_of_money", "note": "How the 'story' got told across millennia."}
   ]
 }

@@ -1,10 +1,14 @@
 # Learn Something New — Vercel site + daily Telegram
 
-A "learn one new thing a day" project. Each day's topic is a self-contained,
-engaging page (embedded video, Mermaid diagram, callouts, takeaways) served at
-its **own URL path** on Vercel — e.g. `https://you.vercel.app/consistent-hashing`.
-Every morning at **8:30 AM (Asia/Singapore)** a Vercel Cron job pings a
-serverless function that posts that day's link to your Telegram bot.
+A "learn something new" project. **Three** self-contained, playful lessons a day
+(embedded video, Mermaid diagram, callouts, a game-ified quiz), each served at its
+**own URL path** on Vercel. A **GitHub Action** pings a serverless function at
+**9:00 AM, 5:00 PM, and 8:00 PM (Asia/Singapore)** — one lesson per send — and the
+Telegram message carries a **tap-to-answer quiz**. A `/week` bot command lists
+everything.
+
+Scheduling lives in GitHub Actions (not Vercel Cron) because Vercel's Hobby cron
+only fires once a day and imprecisely; the Action does three exact times for free.
 
 ```
 content/    one JSON spec per topic   (what you author each week)
@@ -17,11 +21,11 @@ vercel.json cleanUrls + the daily cron
 ## How it works
 
 ```
- weekly (in Claude)           on git push            daily 08:30 SGT
+ weekly (in Claude)           on git push          3x/day: 9am · 5pm · 8pm SGT
 ┌───────────────────┐   ┌───────────────────┐   ┌──────────────────────────┐
-│ author 7 JSON     │   │ Vercel serves     │   │ Vercel Cron → /api/send-  │
-│ specs → render →  │──▶│ public/ ; each    │──▶│ daily reads schedule.json │
-│ public/ ; commit  │   │ day = its own URL │   │ picks today, pings Telegram│
+│ author lessons →  │   │ Vercel serves     │   │ GitHub Action → send-daily│
+│ render → public/  │──▶│ public/ ; each    │──▶│ ?slot=N → that lesson +   │
+│ ; commit + push   │   │ lesson = its URL  │   │ tap-quiz → Telegram       │
 └───────────────────┘   └───────────────────┘   └──────────────────────────┘
 ```
 
@@ -38,23 +42,28 @@ build** — it just serves `public/` and runs the one function. `cleanUrls` make
    Variables (see `.env.example`):
    - `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
    - `SITE_URL` — your deployed URL, e.g. `https://learn-you.vercel.app`
-   - `CRON_SECRET` — any long random string (Vercel Cron sends it as a Bearer token)
-   - `TELEGRAM_WEBHOOK_SECRET` — any long random string (protects the /week bot webhook)
-4. **Deploy.** The cron in `vercel.json` (`30 0 * * *` = 08:30 SGT) is registered
-   automatically.
+   - `CRON_SECRET` — any long random string (the sender's Bearer token)
+   - `TELEGRAM_WEBHOOK_SECRET` — any long random string (protects the bot webhook)
+4. **Deploy.**
+5. **Set up the 3x/day scheduler (GitHub Actions).** In your repo → Settings →
+   Secrets and variables → Actions, add `SITE_URL` and `CRON_SECRET` (same values).
+   `.github/workflows/daily-lessons.yml` then fires at 01:00 / 09:00 / 12:00 UTC
+   (= 9 AM / 5 PM / 8 PM SGT), sending slot 0 / 1 / 2. You can also run it by hand
+   from the repo's **Actions** tab ("Run workflow"), choosing a slot.
 
 ## Triggering a send manually
 
-Two endpoints handle sending. The easiest way (works in a browser — just paste the URL):
+The send endpoint is browser-friendly — just paste a URL (fill in your secret):
 
 ```
-<SITE_URL>/api/send-daily?key=<CRON_SECRET>              # send today's lesson
-<SITE_URL>/api/send-daily?key=<CRON_SECRET>&dry=1        # preview only, don't send
-<SITE_URL>/api/send-daily?key=<CRON_SECRET>&date=2026-09-09   # a specific day
-<SITE_URL>/api/send-daily?key=<CRON_SECRET>&all=1        # send ALL 7 of this week
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&slot=0        # send a specific slot (0=9am,1=5pm,2=8pm)
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>               # slot inferred from current time
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&all=1         # send all 3 of today at once
+<SITE_URL>/api/send-daily?key=<CRON_SECRET>&date=2026-09-08&slot=1&dry=1   # preview a specific one
 ```
 
-(The daily Vercel Cron calls the same endpoint with a Bearer header — no key needed.)
+Each message includes a **tap-to-answer quiz** (inline buttons); the webhook scores
+the tap instantly. (The GitHub Action calls this same endpoint with a Bearer header.)
 
 ## Telegram commands (the `/week` bot)
 
@@ -68,34 +77,33 @@ https://api.telegram.org/bot<TOKEN>/setWebhook?url=<SITE_URL>/api/telegram&secre
 Optional — make the commands show in Telegram's menu:
 
 ```
-https://api.telegram.org/bot<TOKEN>/setMyCommands?commands=[{"command":"week","description":"All 7 topics this week"},{"command":"today","description":"Today's lesson"},{"command":"help","description":"What I can do"}]
+https://api.telegram.org/bot<TOKEN>/setMyCommands?commands=[{"command":"week","description":"This week's lessons"},{"command":"today","description":"Today's 3 lessons"},{"command":"help","description":"What I can do"}]
 ```
 
 Then in your chat with the bot:
-- **/week** (or /topics) → all 7 lessons of the current week, with links
-- **/today** → today's lesson
+- **/week** (or /topics) → the week's lessons (3/day), with links
+- **/today** → today's 3 lessons with their send times
 - **/help** → the command list
 
 To confirm the webhook registered: `https://api.telegram.org/bot<TOKEN>/getWebhookInfo`.
 
-### About the 8:30 time
-Vercel's **Hobby** plan runs cron jobs *within an hour* of the scheduled time,
-not to the minute — so on Hobby the ping may land 08:30–09:30. If you need it
-exactly at 08:30, upgrade the project to **Pro** (same `vercel.json`, no code
-change). That's the only knob — one cron, one path.
+### About the send times
+GitHub Actions cron is in UTC and can drift a few minutes under load — fine for
+9/5/8. To change the times, edit the three `cron:` lines in
+`.github/workflows/daily-lessons.yml` (and the slot mapping if you add/remove one).
 
 ## The weekly loop
 
-1. In a Claude session (the **LearnNewThingsEveryday** project — see its saved
-   authoring guide), ask Claude to author next week's 7 topics. It writes 7
-   files into `content/` per `content/_schema.md`, spanning your mix (general
-   knowledge, interests, news, politics, finance theory, systems design, programming).
+1. In a Claude session (the **LearnNewThingsEveryday** project — see the saved
+   `curriculum.md` + authoring guide), ask Claude to author the next batch of
+   lessons (3/day). Each JSON spec carries a `slot` (0/1/2), a `tg_quiz`, and an
+   on-page `quiz` (mark one question `"boss": true`).
 2. Render + rebuild index and schedule:
    ```
    python3 scripts/render.py content/*.json --out public/     # needs: pip install markdown
    ```
-3. Commit & push. Vercel redeploys; each new day is live at its own path and the
-   cron sends it on its date.
+3. Commit & push. Vercel redeploys; each lesson is live at its own path and the
+   Action sends the right slot at 9 AM / 5 PM / 8 PM.
 
 ## Local preview
 `python3 -m http.server -d public 8000` → <http://localhost:8000/>.
@@ -103,6 +111,6 @@ change). That's the only knob — one cron, one path.
 
 ## Customising
 - **Design / layout:** all CSS + HTML is in `scripts/render.py` (`render_page`).
-- **Message wording:** `api/send-daily.js` (`text = …`).
-- **Send time:** the `schedule` in `vercel.json` (UTC). Currently `30 0 * * *`
-  = 08:30 Asia/Singapore.
+- **Message wording:** `api/_lib.js` (`dailyText`, `weekText`).
+- **Quiz game feel:** `scripts/render.py` (`r_quiz`) — combo/XP/boss logic + CSS.
+- **Send times:** the `cron:` lines in `.github/workflows/daily-lessons.yml` (UTC).
