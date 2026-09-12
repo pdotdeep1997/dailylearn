@@ -1,0 +1,83 @@
+{
+  "slug": "your-brain-cant-do-exponents",
+  "date": "2026-09-15",
+  "slot": 2,
+  "track": "Ideas & Minds",
+  "track_lesson": 6,
+  "read_minutes": 5,
+  "title": "Why Your Brain Can't Feel Exponential Growth",
+  "subtitle": "Fold a paper 42 times and it reaches the Moon. Your gut says 'a few inches.' That gap explains pandemics, compound interest, and viral everything.",
+  "hook": "A sheet of paper is ~0.1mm thick. Fold it in half 42 times and it would reach the Moon. Your gut is screaming that's impossible — and that scream is the single most expensive blind spot in human reasoning. We think in straight lines; reality often moves in curves that explode. Pandemics, compound interest, viral growth, climate — all run on exponentials our intuition simply cannot feel. Today: how to override the blind spot.",
+  "builds_on": [{"slug": "spot-the-bad-argument", "label": "Spot the Bad Argument"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Linear brain, exponential world",
+      "body": "Our intuition is **linear**: add the same amount each step (1, 2, 3, 4…). Exponentials **multiply** each step (1, 2, 4, 8, 16…). For a while they look similar — which lulls you — then the exponential detonates. Thirty linear steps of +1 gets you to 30. Thirty exponential steps of ×2 gets you to over a *billion*. Same number of steps, unimaginably different destinations."
+    },
+    {
+      "type": "diagram",
+      "caption": "Linear and exponential start close, then diverge violently. The 'nothing's happening… wait, WHAT' feeling is the trap.",
+      "mermaid": "flowchart LR\n    Start[\"Both start small\"] --> Lin[\"Linear: +1 each step\\n…reaches 30\"]\n    Start --> Exp[\"Exponential: ×2 each step\\n…reaches 1,000,000,000+\"]\n    Exp --> Shock[\"Feels flat, then explodes\"]\n    style Exp fill:#e6dcff,stroke:#6b46c1,color:#111\n    style Shock fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The tricks to override it",
+      "body": "You can't feel exponentials, so use tools. <b>Doubling time</b>: ask 'how long to double?' and count doublings — each one matches everything that came before it *combined*. <b>Rule of 72</b>: 72 ÷ growth-rate ≈ years to double (from the compounding lesson!). <b>Watch the rate, not the level</b>: in exponential processes, today's small number plus a steady growth rate tells you tomorrow's scary one."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "It cuts both ways",
+      "body": "Exponential growth builds fortunes (compounding) and crises (runaway debt, unchecked spread). Exponential *decay* is just as sneaky — skills, machines, and advantages erode faster than they feel like they should. The lesson isn't 'exponentials are good' — it's 'when something compounds, your gut will be wrong, so reach for the math.'"
+    },
+    {
+      "type": "video",
+      "youtube_id": "2oeOu7pJtDg",
+      "caption": "3Blue1Brown on exponential growth and why our intuition fails (with a timely example)."
+    }
+  ],
+  "takeaways": [
+    "Intuition is **linear** (add); many real processes are **exponential** (multiply).",
+    "They look similar early, then the exponential **explodes** — that's the trap.",
+    "30 steps of +1 → 30; 30 steps of ×2 → over a billion.",
+    "Override with **doubling time**, the **Rule of 72**, and watching the **growth rate**.",
+    "It cuts both ways — growth *and* decay compound faster than they feel."
+  ],
+  "quiz": [
+    {
+      "q": "Why does exponential growth fool us?",
+      "options": ["It's rare", "Our intuition is linear, so we underestimate multiplying processes until they suddenly explode", "It only happens in math class", "It's slower than linear"],
+      "answer": 1,
+      "explain": "Linear brain, exponential world — they look similar early, then diverge violently."
+    },
+    {
+      "q": "Which quickly estimates doubling time?",
+      "options": ["Multiply by 10", "Rule of 72: 72 ÷ growth rate ≈ years to double", "Add 72", "Subtract the rate from 100"],
+      "answer": 1,
+      "explain": "72 ÷ rate ≈ doublings — a handy override for the missing intuition."
+    },
+    {
+      "q": "CALLBACK + BOSS: The Money track's compounding (Day 2) and today's lesson are the same math. What's the unifying insight?",
+      "options": ["They're unrelated", "Compound interest IS exponential growth — small rates over many periods produce shocking totals your gut can't predict", "Money grows linearly", "Only viruses grow exponentially"],
+      "answer": 1,
+      "explain": "The 'free money curve' and the paper-to-the-Moon fold are one phenomenon. Whenever something compounds — money, viruses, followers — trust the math over the gut.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 2 · compounding"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Fold 0.1mm paper 42 times — roughly how far?",
+    "options": ["A few inches", "To the Moon", "Around a room"],
+    "answer": 1,
+    "correct": "Yep — to the Moon. Exponentials break intuition.",
+    "wrong": "To the Moon! Doubling 42 times explodes far beyond gut feeling.",
+    "explain": "Linear brain, exponential world."
+  },
+  "go_deeper": [
+    {"label": "The Rule of 72", "url": "https://www.investopedia.com/terms/r/ruleof72.asp", "note": "Your exponential-intuition prosthetic."},
+    {"label": "Exponential growth", "url": "https://en.wikipedia.org/wiki/Exponential_growth", "note": "The math, and why it keeps surprising us."}
+  ]
+}

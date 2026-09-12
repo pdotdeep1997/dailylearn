@@ -1,0 +1,83 @@
+{
+  "slug": "the-hockey-stick",
+  "date": "2026-09-18",
+  "slot": 0,
+  "track": "History & Civilization",
+  "track_lesson": 8,
+  "read_minutes": 5,
+  "title": "The Hockey Stick: When Human Life Suddenly Got Better",
+  "subtitle": "For thousands of years, almost nothing changed. Then, around 1800, growth went vertical. Understanding that elbow is understanding the modern world.",
+  "hook": "Plot human wellbeing — income, lifespan, energy use — across history and you get one of the most startling shapes in all of data: a flat line for millennia, then a sudden near-vertical spike around 1800. A hockey stick. For almost all of history your great-grandchildren lived like you did. Then the **Industrial Revolution** hit and living standards began doubling within lifetimes. Today: what bent the line, and why it matters.",
+  "builds_on": [{"slug": "how-we-learned-to-learn", "label": "How We Learned to Learn"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Energy is the unlock",
+      "body": "The deep story is **energy**. For all of history, work meant muscles — human and animal — plus a little wind and water. Then coal + the steam engine let us convert stored energy into unlimited mechanical work, on demand, anywhere. Suddenly one machine did the work of hundreds of people. Output per person exploded, and for the first time growth outran population, so *average* living standards could actually rise instead of being eaten by more mouths."
+    },
+    {
+      "type": "diagram",
+      "caption": "Muscle power → fossil-fueled machines. Output per person breaks free of population, and the long-flat line goes vertical.",
+      "mermaid": "flowchart LR\n    Muscle[\"Muscle/wind/water\\nfor all of history\"] --> Coal[\"Coal + steam engine\"]\n    Coal --> Machine[\"One machine =\\nwork of hundreds\"]\n    Machine --> Growth[\"Output per person soars\"]\n    Growth --> Stick[\"Living standards\\ngo vertical (~1800)\"]\n    style Coal fill:#ffe9cc,stroke:#c47f17,color:#111\n    style Stick fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Science met the workshop",
+      "body": "This didn't come from nowhere — it's the Scientific Revolution (yesterday) cashing out. Systematic experiment produced reliable knowledge; inventors and entrepreneurs applied it to iron, steam, and textiles; and institutions that let people profit from invention (patents, markets) turned tinkering into a self-fueling engine of growth. Knowledge + energy + incentives = the hockey stick.",
+      "attribution": ""
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The bill came too",
+      "body": "The same engine brought brutal early factory conditions, child labour, rapid inequality, and — through fossil fuels — the carbon that drives today's climate challenge. The Industrial Revolution is the clearest case of a change being overwhelmingly transformative *and* carrying costs we're still paying. Progress and its price arrived together."
+    },
+    {
+      "type": "video",
+      "youtube_id": "zhL5DCizj5c",
+      "caption": "Coal, steam, and the Industrial Revolution — Crash Course World History."
+    }
+  ],
+  "takeaways": [
+    "Human living standards were ~flat for millennia, then went **vertical around 1800** — the hockey stick.",
+    "The unlock was **energy**: coal + steam turned stored energy into unlimited on-demand work.",
+    "Output per person outran population, so **average** living standards could finally rise.",
+    "It was the **Scientific Revolution applied** — knowledge + energy + incentives compounding.",
+    "It also brought harsh labour, inequality, and fossil-fuel carbon — progress and its price together."
+  ],
+  "quiz": [
+    {
+      "q": "What was the core 'unlock' of the Industrial Revolution?",
+      "options": ["Better farming only", "Harnessing fossil energy (coal + steam) for unlimited mechanical work", "New religions", "Bigger armies"],
+      "answer": 1,
+      "explain": "Energy on demand let one machine do the work of hundreds — output per person soared."
+    },
+    {
+      "q": "Why could average living standards finally rise?",
+      "options": ["Population shrank", "Output grew faster than population, so there was more per person", "Money was invented", "Kings allowed it"],
+      "answer": 1,
+      "explain": "For the first time growth outran more mouths to feed, lifting the average."
+    },
+    {
+      "q": "CALLBACK: How does this connect to the Scientific Revolution (Day 9)?",
+      "options": ["Unrelated", "Industrialization was science 'cashing out' — reliable knowledge + energy + incentives applied to real machines", "Science came after industry", "It replaced science"],
+      "answer": 1,
+      "explain": "The method of testing ideas produced knowledge; the Industrial Revolution applied it at scale. The tracks build in sequence.",
+      "callback": true,
+      "from": "Day 9 · Scientific Revolution"
+    }
+  ],
+  "tg_quiz": {
+    "q": "The Industrial Revolution's core unlock was…",
+    "options": ["Fossil energy (coal + steam) for mechanical work", "New crops", "Bigger cities"],
+    "answer": 0,
+    "correct": "Right — energy on demand: one machine, work of hundreds.",
+    "wrong": "It was energy — coal + steam turned stored energy into unlimited work.",
+    "explain": "Output per person soared past population → the hockey stick."
+  },
+  "go_deeper": [
+    {"label": "Industrial Revolution", "url": "https://en.wikipedia.org/wiki/Industrial_Revolution", "note": "Causes and consequences."},
+    {"label": "The 'hockey stick' of human prosperity", "url": "https://ourworldindata.org/economic-growth", "note": "The data behind the vertical line."}
+  ]
+}

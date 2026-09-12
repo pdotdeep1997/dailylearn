@@ -1,0 +1,84 @@
+{
+  "slug": "why-systems-surprise-you",
+  "date": "2026-09-18",
+  "slot": 1,
+  "track": "Ideas & Minds",
+  "track_lesson": 8,
+  "read_minutes": 5,
+  "title": "Feedback Loops: Why Systems Do the Opposite of What You Expect",
+  "subtitle": "Push on a complex system and it often pushes back — or spirals out of control. Learn to see the loops and the world stops being baffling.",
+  "hook": "Build a wider highway to cut traffic, and traffic gets *worse*. Crack down hard on a problem, and it sometimes explodes. Complex systems — economies, ecosystems, companies, your own habits — routinely do the opposite of what a straight-line guess predicts. The reason is almost always **feedback loops**: effects that circle back and become causes. See the loops and you gain a kind of X-ray vision for how the world actually behaves.",
+  "builds_on": [{"slug": "when-being-selfish-backfires", "label": "When Being Selfish Backfires"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Two kinds of loop",
+      "body": "**Reinforcing loops** amplify: more causes more. Money earning interest earning interest; a viral post getting shares that get more shares; a panic where selling causes more selling. They produce explosive growth or collapse.\n\n**Balancing loops** stabilize: they push back toward a target. A thermostat cutting the heat as the room warms; your body sweating to cool down; prices rising to choke off excess demand. They produce stability — or stubborn resistance to the change you're trying to force."
+    },
+    {
+      "type": "diagram",
+      "caption": "Reinforcing loops snowball (growth/collapse); balancing loops self-correct toward a target. Most systems are a tangle of both.",
+      "mermaid": "flowchart LR\n    R[\"Reinforcing loop\\nmore → more\"] --> Rex[\"Snowball:\\ngrowth or collapse\"]\n    B[\"Balancing loop\\npush toward a target\"] --> Bex[\"Self-correcting:\\nstability / resistance\"]\n    style Rex fill:#e6dcff,stroke:#6b46c1,color:#111\n    style Bex fill:#d7eef0,stroke:#1f7a8c,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why interventions backfire",
+      "body": "Push on a system and a **balancing loop** may quietly cancel you (wider roads → more people choose to drive → traffic returns: 'induced demand'). Or you trip a **reinforcing loop** and get a runaway you didn't intend. The fix isn't to push harder — it's to find the loop and change its structure. Leverage lives in the loops, not the effort.",
+      "attribution": ""
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Delays make it worse",
+      "body": "Loops often act with a **delay** — the effect shows up long after the cause, so we misread what's happening and overcorrect (think of adjusting a shower with slow-reacting taps: scald, freeze, scald). Delays turn sensible reactions into oscillations. When a system keeps overshooting, suspect a delayed feedback loop."
+    },
+    {
+      "type": "video",
+      "youtube_id": "n3ixl_LH8u4",
+      "caption": "Reinforcing vs. balancing feedback loops — the heart of systems thinking."
+    }
+  ],
+  "takeaways": [
+    "Complex systems surprise us because effects **loop back** to become causes.",
+    "**Reinforcing loops** amplify (snowballs: growth or collapse).",
+    "**Balancing loops** stabilize (thermostats: push back toward a target).",
+    "Interventions backfire when a balancing loop cancels them or a reinforcing loop runs away.",
+    "**Delays** in loops cause overshoot and oscillation — leverage is in the structure, not brute force."
+  ],
+  "quiz": [
+    {
+      "q": "Money earning interest that itself earns interest is which kind of loop?",
+      "options": ["Balancing", "Reinforcing", "Neither", "A delay"],
+      "answer": 1,
+      "explain": "Reinforcing: more leads to more — a snowball (this is compounding again!)."
+    },
+    {
+      "q": "A wider highway leads to MORE traffic. Best explanation?",
+      "options": ["Random", "A balancing loop / induced demand — easier driving pulls in more drivers until it re-clogs", "The road shrank", "People forgot how to drive"],
+      "answer": 1,
+      "explain": "The system pushes back toward its old equilibrium — pushing harder doesn't help; changing structure does."
+    },
+    {
+      "q": "CALLBACK + BOSS: Which earlier lesson is literally a reinforcing feedback loop in disguise?",
+      "options": ["The memory hierarchy", "Compounding / exponential growth (Days 2 & 8) — interest feeds back to earn more interest", "Bayes' theorem", "The CAP theorem"],
+      "answer": 1,
+      "explain": "Exponential growth IS a reinforcing loop: the output becomes the next round's input. Compounding, viral spread, and runaway systems are the same shape.",
+      "boss": true,
+      "callback": true,
+      "from": "Days 2 & 8 · compounding / exponentials"
+    }
+  ],
+  "tg_quiz": {
+    "q": "A thermostat cooling a warming room is which loop?",
+    "options": ["Reinforcing (snowball)", "Balancing (self-correcting)", "Neither"],
+    "answer": 1,
+    "correct": "Right — balancing: it pushes back toward a target.",
+    "wrong": "Balancing — it self-corrects toward a set point (unlike a snowball).",
+    "explain": "Reinforcing = amplify; balancing = stabilize."
+  },
+  "go_deeper": [
+    {"label": "Thinking in Systems (Meadows) — overview", "url": "https://en.wikipedia.org/wiki/Thinking_In_Systems:_A_Primer", "note": "The classic on loops, stocks, and leverage."},
+    {"label": "Induced demand", "url": "https://en.wikipedia.org/wiki/Induced_demand", "note": "Why wider roads don't fix traffic."}
+  ]
+}

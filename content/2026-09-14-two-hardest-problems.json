@@ -1,0 +1,81 @@
+{
+  "slug": "two-hardest-problems",
+  "date": "2026-09-14",
+  "slot": 2,
+  "track": "Software & Systems",
+  "track_lesson": 6,
+  "read_minutes": 5,
+  "title": "\"There Are Only Two Hard Problems in Computer Science\"",
+  "subtitle": "…cache invalidation, naming things, and off-by-one errors. The joke is famous because caching really is that treacherous — and that essential.",
+  "hook": "There's an old programmer joke: 'There are only two hard things in computer science: cache invalidation and naming things.' It's funny because it's true. **Caching** — keeping a copy of something close so you don't fetch it the slow way twice — is everywhere and speeds up the whole digital world. But keeping those copies *correct* is one of the genuinely hard problems in the field. Today: why caching is both a superpower and a curse.",
+  "builds_on": [{"slug": "what-happens-when-you-open-a-link", "label": "Opening a Link"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "What a cache is",
+      "body": "A **cache** is a small, fast store holding copies of things that are expensive to fetch, so the next request is instant. Your CPU caches memory; your browser caches images; a **CDN** caches web pages on servers near you (that's why a viral video doesn't melt one origin server). The payoff is huge: turn a slow trip down the latency ladder into a fast local hit."
+    },
+    {
+      "type": "prose",
+      "heading": "Why invalidation is hell",
+      "body": "Here's the rub: the original data can *change*. Now your fast copy is **stale** — confidently serving the old answer. So when do you throw the copy away and re-fetch? Too eager and you lose the speed benefit; too lazy and users see wrong, outdated data. There's no clean universal answer — it depends on how fresh the data must be, and getting it wrong causes some of the most confusing bugs there are ('but I updated it — why do I still see the old one?')."
+    },
+    {
+      "type": "diagram",
+      "caption": "A cache hit is instant. But when the source changes, the cached copy is stale — and deciding when to invalidate it is the hard part.",
+      "mermaid": "flowchart TD\n    Req[\"Request\"] --> C{{\"In cache?\"}}\n    C -->|hit| Fast[\"Return copy instantly ⚡\"]\n    C -->|miss| Slow[\"Fetch slow, store copy\"]\n    Src[\"Source data changes\"] --> Stale[\"Cached copy now STALE\"]\n    Stale --> When{{\"When to invalidate?\\n(the hard problem)\"}}\n    style Fast fill:#d7f0e3,stroke:#2e7d5b,color:#111\n    style When fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Common strategies",
+      "body": "Real systems tame it with rules: <b>TTL</b> (time-to-live — copy expires after N seconds), <b>write-through</b> (update the cache whenever you update the source), and <b>explicit invalidation</b> (tell the cache 'this changed'). Each trades freshness against speed and complexity. There's no free answer — only the right trade-off for how stale you can afford to be."
+    },
+    {
+      "type": "video",
+      "youtube_id": "MSpbQieTfmA",
+      "caption": "CDNs, caching, and cache invalidation — the whole picture in ~15 minutes."
+    }
+  ],
+  "takeaways": [
+    "A **cache** keeps a fast local copy of expensive-to-fetch data (CPU, browser, CDN).",
+    "It converts a slow trip down the latency ladder into an instant local **hit**.",
+    "The hard part is **invalidation**: when the source changes, the copy goes **stale**.",
+    "Too eager = lose the speedup; too lazy = serve wrong data.",
+    "Tame it with **TTL**, **write-through**, or **explicit invalidation** — each a freshness/speed trade."
+  ],
+  "quiz": [
+    {
+      "q": "What problem does a cache solve?",
+      "options": ["Data security", "Speed — avoid re-fetching expensive data by keeping a fast local copy", "Running code in parallel", "Naming variables"],
+      "answer": 1,
+      "explain": "It turns a slow fetch into an instant local hit."
+    },
+    {
+      "q": "Why is cache invalidation hard?",
+      "options": ["Caches are expensive", "When the source data changes, deciding when to drop the stale copy has no clean universal answer", "Caches can't store images", "It requires the internet"],
+      "answer": 1,
+      "explain": "Stale copies serve wrong data; over-invalidating kills the speed benefit."
+    },
+    {
+      "q": "CALLBACK: How does caching connect to Day 2's memory hierarchy?",
+      "options": ["Unrelated", "It's the same idea at every level — keep hot data close (CPU cache, RAM, CDN) to dodge the slow tiers", "Caching replaces RAM", "The hierarchy has no caches"],
+      "answer": 1,
+      "explain": "The memory hierarchy IS caching in hardware; CDNs are caching on the internet. 'Keep the data you need close' all the way up.",
+      "callback": true,
+      "from": "Day 2 · memory hierarchy"
+    }
+  ],
+  "tg_quiz": {
+    "q": "The famously 'hard' part of caching is…",
+    "options": ["Making it fast", "Invalidation (knowing when the copy is stale)", "Buying more disks"],
+    "answer": 1,
+    "correct": "Right — cache invalidation, the classic hard problem.",
+    "wrong": "It's invalidation — deciding when the cached copy has gone stale.",
+    "explain": "Too eager loses speed; too lazy serves wrong data."
+  },
+  "go_deeper": [
+    {"label": "Cache invalidation strategies", "url": "https://www.ioriver.io/terms/cache-invalidation", "note": "TTL, write-through, and friends."},
+    {"label": "How CDNs work", "url": "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/", "note": "Caching the web close to users."}
+  ]
+}

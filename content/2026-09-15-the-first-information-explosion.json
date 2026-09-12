@@ -1,0 +1,83 @@
+{
+  "slug": "the-first-information-explosion",
+  "date": "2026-09-15",
+  "slot": 1,
+  "track": "History & Civilization",
+  "track_lesson": 6,
+  "read_minutes": 5,
+  "title": "The Printing Press: History's First Viral Moment",
+  "subtitle": "One machine dropped the cost of copying an idea by orders of magnitude — and toppled churches, sparked science, and remade Europe.",
+  "hook": "Before ~1440, a book was copied by hand — months of a monk's labour for one copy. Then Gutenberg combined movable type with a wine press, and suddenly you could print hundreds of identical pages a day. The cost of copying an idea collapsed. What followed — the Reformation, the Scientific Revolution, mass literacy — is what happens when information suddenly gets cheap. Today: humanity's first taste of things going viral.",
+  "builds_on": [{"slug": "why-some-nations-are-rich", "label": "Why Some Nations Are Rich"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Cheap copies change everything",
+      "body": "The press didn't just make books faster — it changed *who* could have ideas and how fast they spread. When copying is expensive, knowledge stays locked with a tiny elite (remember the scribe class from the writing lesson). When copying is cheap, ideas escape. A pamphlet could reach thousands in weeks; a challenge to authority could outrun any attempt to suppress it."
+    },
+    {
+      "type": "diagram",
+      "caption": "The press collapsed the cost of copying — and cheap copies let ideas escape the elite and spread faster than authorities could contain them.",
+      "mermaid": "flowchart LR\n    Hand[\"Hand-copying\\nmonths per book\"] --> Press[\"Printing press ~1440\\nhundreds/day\"]\n    Press --> Cheap[\"Copying cost collapses\"]\n    Cheap --> Spread[\"Ideas spread fast & wide\"]\n    Spread --> Change[\"Reformation · Science ·\\nmass literacy\"]\n    style Cheap fill:#ffe9cc,stroke:#c47f17,color:#111\n    style Change fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "It broke a monopoly on truth",
+      "body": "Luther's 95 Theses went 'viral' in 1517 — printed, translated, and spread across Germany in weeks, something impossible a century earlier. The Catholic Church could not un-print them. For the first time, an institution's monopoly on which ideas circulated was broken by a machine. Every information technology since has re-run this fight between gatekeepers and cheap copying.",
+      "attribution": ""
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Cheap ideas aren't always true ideas",
+      "body": "The press spread science *and* witch-hunting manuals and propaganda. Lowering the cost of copying amplifies whatever spreads — good and bad alike. If that sounds like the internet and social media, it should: same mechanism, new century. Cheap distribution is power, not virtue."
+    },
+    {
+      "type": "video",
+      "youtube_id": "AY2c1tgopcM",
+      "caption": "How Gutenberg's press changed the world."
+    }
+  ],
+  "takeaways": [
+    "The press (~1440) collapsed the **cost of copying** an idea.",
+    "Cheap copies let knowledge **escape the elite** and spread fast.",
+    "It fueled the **Reformation, Scientific Revolution, and mass literacy**.",
+    "It **broke institutional monopolies** on which ideas could circulate (Luther went 'viral').",
+    "Cheap distribution amplifies **good and bad** alike — the same dynamic as today's internet."
+  ],
+  "quiz": [
+    {
+      "q": "What did the printing press fundamentally change?",
+      "options": ["The price of paper only", "The cost of copying/spreading ideas — collapsing it", "The alphabet", "How people farmed"],
+      "answer": 1,
+      "explain": "Cheap copying is the lever behind every downstream change."
+    },
+    {
+      "q": "Why did the press threaten established authorities?",
+      "options": ["It was expensive", "Ideas could now spread faster than they could be suppressed, breaking their monopoly on information", "It only printed in Latin", "It required literacy"],
+      "answer": 1,
+      "explain": "Luther's Theses spreading in weeks is the classic example — un-suppressable."
+    },
+    {
+      "q": "CALLBACK: How does this extend the writing lesson (Day 3)?",
+      "options": ["It doesn't", "Writing let knowledge be stored & copied; the press made copying so cheap that ideas escaped the elite entirely — the same info-technology arc, scaled up", "The press replaced writing", "Writing came after printing"],
+      "answer": 1,
+      "explain": "Store → transmit → accumulate, now at industrial scale. Each info technology re-runs the fight between gatekeepers and cheap copying.",
+      "callback": true,
+      "from": "Day 3 · writing"
+    }
+  ],
+  "tg_quiz": {
+    "q": "The printing press's core effect was to collapse the cost of…",
+    "options": ["Paper", "Copying and spreading ideas", "Ink"],
+    "answer": 1,
+    "correct": "Right — cheap copies let ideas escape the elite.",
+    "wrong": "It's the cost of copying ideas — that's what changed everything.",
+    "explain": "Cheap distribution → Reformation, science, mass literacy."
+  },
+  "go_deeper": [
+    {"label": "The printing press and its impact", "url": "https://en.wikipedia.org/wiki/Printing_press", "note": "How it reshaped Europe."},
+    {"label": "How the Reformation went 'viral'", "url": "https://www.economist.com/christmas-specials/2011/12/17/how-luther-went-viral", "note": "1517's social-media moment."}
+  ]
+}

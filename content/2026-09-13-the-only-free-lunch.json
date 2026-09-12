@@ -1,0 +1,82 @@
+{
+  "slug": "the-only-free-lunch",
+  "date": "2026-09-13",
+  "slot": 2,
+  "track": "Money & Markets",
+  "track_lesson": 5,
+  "read_minutes": 5,
+  "title": "The Only Free Lunch in Investing",
+  "subtitle": "Yesterday: no reward without risk. Today: the one trick that lets you cut risk without cutting expected return. Economists literally call it the only free lunch.",
+  "hook": "We just said there's no free lunch — higher return demands higher risk. There's exactly *one* loophole, and it's so good economists named it 'the only free lunch in finance': **diversification.** Spread your money across things that don't move in lockstep and you can shrink the bumps *without* giving up expected return. Here's why that's almost magic.",
+  "builds_on": [{"slug": "no-reward-without-risk", "label": "No Reward Without Risk"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Why one basket is dangerous",
+      "body": "Put everything in a single stock and your fate is welded to that one company. It could soar — or a scandal, a bad quarter, or a fire could wipe you out. That's **specific risk**: danger unique to one holding, and it's the kind you're *not* rewarded for taking, because you could have avoided it for free."
+    },
+    {
+      "type": "prose",
+      "heading": "How spreading out cancels the noise",
+      "body": "Hold 30 different companies across industries and something wonderful happens: their individual ups and downs partly **cancel out**. One firm's disaster is another's windfall; the random, company-specific noise averages toward zero, while the broad market's return stays. You keep the reward and shed the avoidable risk — as long as your holdings don't all rise and fall *together* (low **correlation** is the key)."
+    },
+    {
+      "type": "diagram",
+      "caption": "Add more uncorrelated holdings and the jagged, company-specific risk falls away — leaving the market risk you're actually paid to bear.",
+      "mermaid": "flowchart LR\n    One[\"1 stock\\nhuge specific risk\"] --> Few[\"10 stocks\\nnoise cancels somewhat\"]\n    Few --> Many[\"30+ uncorrelated\\nspecific risk ≈ gone\"]\n    Many --> Floor[\"Left with market risk\\n(the paid kind)\"]\n    style One fill:#ffe0e0,stroke:#c0392b,color:#111\n    style Floor fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The catch: correlation",
+      "body": "Diversification only works if your holdings don't move together. Ten tech stocks aren't diversified — they crash as one. True diversification mixes things that respond differently to the world (stocks vs. bonds, different regions/sectors). And in a real panic, correlations spike (everything falls together), which is diversification's great disappointment — it helps most of the time, least when you most want it.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "mstCtDxrWkw",
+      "caption": "Diversification in plain terms — why not to put all your eggs in one basket."
+    }
+  ],
+  "takeaways": [
+    "**Diversification** is 'the only free lunch': less risk *without* less expected return.",
+    "**Specific risk** (one company's fate) is avoidable — so you're not rewarded for it.",
+    "Holding many **uncorrelated** things lets company-specific noise cancel out.",
+    "You're left with **market risk** — the kind you actually get paid to bear.",
+    "It fails when correlations spike (panics) — everything can fall together."
+  ],
+  "quiz": [
+    {
+      "q": "Why is diversification called 'the only free lunch'?",
+      "options": ["It guarantees profit", "It reduces risk without reducing expected return", "It avoids all taxes", "It beats the market"],
+      "answer": 1,
+      "explain": "You shed avoidable specific risk for free, keeping the expected reward."
+    },
+    {
+      "q": "Which portfolio is actually diversified?",
+      "options": ["10 different tech stocks", "A mix of stocks, bonds, and different regions/sectors that don't move together", "One index fund of one company", "All crypto"],
+      "answer": 1,
+      "explain": "Diversification needs LOW correlation. Ten tech stocks crash together — not diversified."
+    },
+    {
+      "q": "CALLBACK: Yesterday said you're paid for risk. So why isn't specific (single-company) risk rewarded?",
+      "options": ["It is rewarded", "Because you could eliminate it for free by diversifying — markets don't pay you to take avoidable risk", "Because stocks never fall", "Because it's illegal"],
+      "answer": 1,
+      "explain": "You're only compensated for risk you can't diversify away (market risk). Avoidable risk earns no premium.",
+      "callback": true,
+      "from": "Day 5 · risk & return"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Which is genuinely diversified?",
+    "options": ["10 tech stocks", "Stocks + bonds across regions/sectors", "One company you love"],
+    "answer": 1,
+    "correct": "Right — diversification needs things that don't move together.",
+    "wrong": "It's the mixed one — 10 tech stocks all crash together.",
+    "explain": "Low correlation is what makes the noise cancel."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Diversification", "url": "https://www.investopedia.com/terms/d/diversification.asp", "note": "How and why it lowers risk."},
+    {"label": "Correlation and why it matters", "url": "https://en.wikipedia.org/wiki/Diversification_(finance)", "note": "The math behind the free lunch."}
+  ]
+}

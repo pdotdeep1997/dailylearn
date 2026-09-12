@@ -1,0 +1,81 @@
+{
+  "slug": "two-things-at-once",
+  "date": "2026-09-12",
+  "slot": 0,
+  "track": "Software & Systems",
+  "track_lesson": 4,
+  "read_minutes": 5,
+  "title": "Why Doing Two Things at Once Breaks Everything",
+  "subtitle": "Run two bits of code at the same time and they can trip over each other in ways that vanish the moment you look. Welcome to concurrency.",
+  "hook": "You'd think doing two things at once is just… faster. But let two programs touch the same data at the same moment and you get bugs that are maddening: they appear randomly, vanish when you add a print statement, and can't be reproduced on demand. This is **concurrency**, the part of software that humbles everyone. Today: why it's so hard, and the one idea that tames it.",
+  "builds_on": [{"slug": "why-choosing-the-right-box-matters", "label": "The Right Box (data structures)"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The race condition",
+      "body": "Say your bank balance is $100 and two withdrawals of $100 hit at the exact same instant. Each one reads the balance ($100 — enough!), each approves, each subtracts. You've now withdrawn $200 from $100. Nobody wrote a bug; the *interleaving* did it.\n\nThat's a **race condition**: the result depends on the unpredictable order in which concurrent operations run. Because timing shifts run to run, the bug is a ghost — which is what makes it so nasty."
+    },
+    {
+      "type": "diagram",
+      "caption": "Two withdrawals interleave: both read $100 before either writes. The lost update is nobody's 'mistake' — it's the ordering.",
+      "mermaid": "flowchart TD\n    A1[\"A reads $100\"] --> A2[\"A: 100-100 ok\"]\n    B1[\"B reads $100\"] --> B2[\"B: 100-100 ok\"]\n    A2 --> W[\"both write $0\"]\n    B2 --> W\n    W --> Bug[\"$200 withdrawn\\nfrom $100 😱\"]\n    style Bug fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The fix: make it atomic",
+      "body": "The cure is to protect the shared data so only one operation touches it at a time — a **lock** (or 'mutex'). Whoever grabs the lock finishes their read-decide-write as one indivisible (\"atomic\") step before anyone else gets in. But locks bring their own demons: hold too many and two threads can each wait forever for the other — a **deadlock**. Concurrency is the art of sharing safely without freezing up."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Why it matters everywhere",
+      "body": "Every database, web server, and multi-core app juggles concurrent work. It's why your money doesn't (usually) double-spend and why 'just add threads to go faster' often makes things slower and buggier. The hardest bugs in production are almost always concurrency bugs."
+    },
+    {
+      "type": "video",
+      "youtube_id": "MuOgbvKjUG8",
+      "caption": "Threads, locks, deadlocks, and race conditions — the whole concurrency zoo in one tour."
+    }
+  ],
+  "takeaways": [
+    "Running things at once introduces **race conditions** — results that depend on timing.",
+    "Classic example: two operations both read stale data before either writes (lost update).",
+    "**Locks/mutexes** make a read-modify-write **atomic** so only one goes at a time.",
+    "Locks risk **deadlock** — threads waiting on each other forever.",
+    "Concurrency bugs are the hardest in production: rare, random, and hard to reproduce."
+  ],
+  "quiz": [
+    {
+      "q": "What is a race condition?",
+      "options": ["Code that runs too fast", "A bug where the outcome depends on the unpredictable order of concurrent operations", "A loop that never ends", "A slow database query"],
+      "answer": 1,
+      "explain": "The 'race' is between operations; who finishes first changes the result."
+    },
+    {
+      "q": "What does a lock (mutex) achieve?",
+      "options": ["Makes code run in parallel", "Lets only one operation touch shared data at a time (atomicity)", "Speeds up the CPU", "Encrypts the data"],
+      "answer": 1,
+      "explain": "It serializes access so a read-modify-write can't be interrupted mid-way."
+    },
+    {
+      "q": "BOSS: You add locks everywhere to be safe, and now the app sometimes freezes completely. Likely cause?",
+      "options": ["The CPU overheated", "Deadlock — threads each holding a lock the other needs, waiting forever", "Too much RAM", "A syntax error"],
+      "answer": 1,
+      "explain": "Over-locking trades race conditions for deadlocks. Safe concurrency is about locking the *right* things, minimally.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "Two $100 withdrawals hit a $100 balance at once, both read before either writes. Result?",
+    "options": ["One is declined", "Both succeed — $200 out of $100", "The app crashes safely"],
+    "answer": 1,
+    "correct": "Exactly — that's a race condition (lost update).",
+    "wrong": "Both read $100 first, so both approve — $200 out. That's a race condition.",
+    "explain": "A lock makes the read-decide-write atomic so this can't happen."
+  },
+  "go_deeper": [
+    {"label": "Race conditions & critical sections", "url": "https://jenkov.com/tutorials/java-concurrency/race-conditions-and-critical-sections.html", "note": "Clear worked examples."},
+    {"label": "Deadlock (and the dining philosophers)", "url": "https://en.wikipedia.org/wiki/Deadlock", "note": "The classic way locks freeze up."}
+  ]
+}

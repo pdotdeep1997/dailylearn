@@ -1,0 +1,82 @@
+{
+  "slug": "who-decides-the-price",
+  "date": "2026-09-15",
+  "slot": 0,
+  "track": "Money & Markets",
+  "track_lesson": 6,
+  "read_minutes": 5,
+  "title": "Nobody Sets the Price. Everybody Does.",
+  "subtitle": "No committee decides what a coffee, a stock, or a house is worth. A price is a signal that emerges from millions of buyers and sellers haggling at once.",
+  "hook": "Who decided a cup of coffee costs $4? Nobody. Not the café, not the government — the price emerged from a tug-of-war between what buyers will pay and what sellers will accept. A price is one of the most information-dense things in the world: a single number quietly summarizing millions of people's wants, costs, and guesses. Today: how supply, demand, and price discovery actually work.",
+  "builds_on": [{"slug": "the-only-free-lunch", "label": "The Only Free Lunch"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The tug-of-war",
+      "body": "**Demand**: as price drops, more people want it. **Supply**: as price rises, sellers offer more. The price gravitates to where the two curves cross — the **equilibrium**, where the quantity people want to buy equals the quantity offered. Push the price above it and unsold goods pile up (pushing it back down); below it and shortages appear (pushing it up). Nobody steers this; it self-corrects."
+    },
+    {
+      "type": "diagram",
+      "caption": "Demand falls with price, supply rises with it. Where they cross is the price that clears the market — no one chooses it.",
+      "mermaid": "flowchart TD\n    D[\"Demand: lower price → more buyers\"] --> X{{\"They cross =\\nequilibrium price\"}}\n    S[\"Supply: higher price → more sellers\"] --> X\n    X --> Clear[\"Quantity wanted = quantity offered\"]\n    style X fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Prices are messages",
+      "body": "A rising price screams 'we need more of this!' and pulls in producers; a falling one says 'enough, make something else.' This is **price discovery** — markets aggregating scattered information (a drought here, a fad there) into one number, faster than any central planner could. It's why shortages of a hot product don't last: the high price summons supply. Prices coordinate strangers who never speak."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "When the signal misfires",
+      "body": "Prices aren't magic truth. They break when there's a monopoly (one seller sets terms), hidden costs the price ignores (pollution — an 'externality'), or panic and manias (everyone buying because everyone's buying). A price reflects willingness to pay, which isn't the same as real value or fairness — a lesson markets teach the hard way in every bubble.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "2bc4rwjdfNg",
+      "caption": "Supply, demand, and how prices are actually set."
+    }
+  ],
+  "takeaways": [
+    "A **price** emerges from buyers and sellers, not a central decision-maker.",
+    "It settles at **equilibrium** — where quantity demanded meets quantity supplied.",
+    "**Price discovery** aggregates scattered information into one coordinating number.",
+    "Rising prices summon supply; falling prices redirect it — self-correcting, usually.",
+    "Prices misfire under **monopoly, externalities, and manias** — willingness to pay ≠ true value."
+  ],
+  "quiz": [
+    {
+      "q": "What is the 'equilibrium price'?",
+      "options": ["The price the government sets", "Where quantity demanded equals quantity supplied", "The highest possible price", "The cost to make it"],
+      "answer": 1,
+      "explain": "It's where the demand and supply curves cross and the market clears."
+    },
+    {
+      "q": "A product suddenly gets popular and prices spike. What usually happens next?",
+      "options": ["Prices stay high forever", "The high price attracts more suppliers, easing the shortage over time", "The government must intervene", "Demand disappears"],
+      "answer": 1,
+      "explain": "High prices are a signal that summons supply — that's price discovery at work."
+    },
+    {
+      "q": "BOSS: When does the price signal FAIL to reflect real value?",
+      "options": ["Never — prices are always right", "Under monopoly, hidden externalities (like pollution), or manic bubbles", "Only for luxury goods", "Only online"],
+      "answer": 1,
+      "explain": "Prices track willingness to pay under competition and full information. Break those conditions and the signal lies.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "Who sets the 'right' price of a coffee?",
+    "options": ["The café owner alone", "No one — it emerges from supply & demand", "The government"],
+    "answer": 1,
+    "correct": "Right — it emerges where supply meets demand.",
+    "wrong": "No single person — it emerges from buyers and sellers together.",
+    "explain": "A price is a signal, not a decree."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Supply and demand", "url": "https://www.investopedia.com/terms/l/law-of-supply-demand.asp", "note": "The curves and equilibrium."},
+    {"label": "Price discovery", "url": "https://www.britannica.com/money/price-discovery", "note": "How markets find the number."}
+  ]
+}

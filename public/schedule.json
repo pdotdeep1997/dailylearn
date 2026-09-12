@@ -234,5 +234,418 @@
         "explain": "Bronze literally required a trade network to exist."
       }
     }
+  ],
+  "2026-09-12": [
+    {
+      "slug": "two-things-at-once",
+      "title": "Why Doing Two Things at Once Breaks Everything",
+      "category": "Software & Systems",
+      "subtitle": "Run two bits of code at the same time and they can trip over each other in ways that vanish the moment you look. Welcome to concurrency.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Two $100 withdrawals hit a $100 balance at once, both read before either writes. Result?",
+        "options": [
+          "One is declined",
+          "Both succeed \u2014 $200 out of $100",
+          "The app crashes safely"
+        ],
+        "answer": 1,
+        "correct": "Exactly \u2014 that's a race condition (lost update).",
+        "wrong": "Both read $100 first, so both approve \u2014 $200 out. That's a race condition.",
+        "explain": "A lock makes the read-decide-write atomic so this can't happen."
+      }
+    },
+    {
+      "slug": "no-reward-without-risk",
+      "title": "There's No Free Lunch: Risk and Return",
+      "category": "Money & Markets",
+      "subtitle": "Anyone promising high returns with no risk is lying or confused. Understand the trade-off and you'll never fall for it.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "\"Guaranteed 15% a year, zero risk\" \u2014 what is it?",
+        "options": [
+          "A great deal",
+          "A red flag for fraud",
+          "Normal for stocks"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 risk-free excess return doesn't last. Classic scam signal.",
+        "wrong": "It's a red flag \u2014 real returns come with real risk.",
+        "explain": "No free lunch: reward requires risk."
+      }
+    },
+    {
+      "slug": "how-we-invented-government",
+      "title": "How We Accidentally Invented Government",
+      "category": "History & Civilization",
+      "subtitle": "Nobody sat down and designed the state. It grew out of grain, walls, and the need to manage more people than anyone could know.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "The state essentially arose to\u2026",
+        "options": [
+          "Make life fun",
+          "Let strangers cooperate at scale (defense, disputes, infrastructure)",
+          "Replace farming"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 impersonal machinery for people who can't all know each other.",
+        "wrong": "It's about scaling cooperation among strangers \u2014 law, taxes, bureaucracy.",
+        "explain": "Personal trust doesn't scale to a city; institutions do."
+      }
+    }
+  ],
+  "2026-09-13": [
+    {
+      "slug": "your-brain-runs-on-shortcuts",
+      "title": "Your Brain Runs on Shortcuts (And They Betray You)",
+      "category": "Ideas & Minds",
+      "subtitle": "Evolution built you a fast, lazy autopilot that's brilliant most of the time and predictably, hilariously wrong the rest.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Bat + ball = $1.10; bat is $1 more than the ball. The ball costs\u2026",
+        "options": [
+          "10 cents",
+          "5 cents",
+          "$1"
+        ],
+        "answer": 1,
+        "correct": "Nice \u2014 you engaged System 2. It's 5 cents.",
+        "wrong": "System 1 says 10\u00a2, but it's 5\u00a2 (ball 5\u00a2 + bat $1.05 = $1.10).",
+        "explain": "The gut answer feels right and is wrong \u2014 that's the whole lesson."
+      }
+    },
+    {
+      "slug": "what-happens-when-you-open-a-link",
+      "title": "What Actually Happens When You Open a Link",
+      "category": "Software & Systems",
+      "subtitle": "You tap a link and a page appears. In between, your request crosses the planet and back through a dozen machines \u2014 in under a second.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "What's DNS?",
+        "options": [
+          "The internet's phone book (name \u2192 IP)",
+          "A type of packet",
+          "A web server"
+        ],
+        "answer": 0,
+        "correct": "Right \u2014 it turns names into the numbers routers use.",
+        "wrong": "It's the phone book: it maps a name to an IP address.",
+        "explain": "Names for humans, numbers for routing."
+      }
+    },
+    {
+      "slug": "the-only-free-lunch",
+      "title": "The Only Free Lunch in Investing",
+      "category": "Money & Markets",
+      "subtitle": "Yesterday: no reward without risk. Today: the one trick that lets you cut risk without cutting expected return. Economists literally call it the only free lunch.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "Which is genuinely diversified?",
+        "options": [
+          "10 tech stocks",
+          "Stocks + bonds across regions/sectors",
+          "One company you love"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 diversification needs things that don't move together.",
+        "wrong": "It's the mixed one \u2014 10 tech stocks all crash together.",
+        "explain": "Low correlation is what makes the noise cancel."
+      }
+    }
+  ],
+  "2026-09-14": [
+    {
+      "slug": "why-some-nations-are-rich",
+      "title": "Why Some Nations Are Rich and Others Aren't",
+      "category": "History & Civilization",
+      "subtitle": "Same geography, same resources, wildly different fortunes. The best answer isn't culture or climate \u2014 it's the rules of the game.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Two towns, same desert & ancestry, one much richer. Biggest reason?",
+        "options": [
+          "Climate",
+          "Different institutions (the rules)",
+          "Different crops"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 the rules of the game, not the resources.",
+        "wrong": "It's institutions \u2014 the rules people live under, not geography.",
+        "explain": "Inclusive rules invite investment; extractive ones smother it."
+      }
+    },
+    {
+      "slug": "spot-the-bad-argument",
+      "title": "How to Spot a Bad Argument in Two Seconds",
+      "category": "Ideas & Minds",
+      "subtitle": "Most persuasion that fools us isn't lying about facts \u2014 it's cheating on logic. Learn the common cheats and you can't be conned the same way twice.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "'Either we ban this completely or society collapses.' Which fallacy?",
+        "options": [
+          "False dilemma",
+          "Ad hominem",
+          "Straw man"
+        ],
+        "answer": 0,
+        "correct": "Yep \u2014 false dilemma: pretending only two options exist.",
+        "wrong": "It's a false dilemma \u2014 it fakes an either/or when more options exist.",
+        "explain": "Real choices rarely come in just two flavors."
+      }
+    },
+    {
+      "slug": "two-hardest-problems",
+      "title": "\"There Are Only Two Hard Problems in Computer Science\"",
+      "category": "Software & Systems",
+      "subtitle": "\u2026cache invalidation, naming things, and off-by-one errors. The joke is famous because caching really is that treacherous \u2014 and that essential.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "The famously 'hard' part of caching is\u2026",
+        "options": [
+          "Making it fast",
+          "Invalidation (knowing when the copy is stale)",
+          "Buying more disks"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 cache invalidation, the classic hard problem.",
+        "wrong": "It's invalidation \u2014 deciding when the cached copy has gone stale.",
+        "explain": "Too eager loses speed; too lazy serves wrong data."
+      }
+    }
+  ],
+  "2026-09-15": [
+    {
+      "slug": "who-decides-the-price",
+      "title": "Nobody Sets the Price. Everybody Does.",
+      "category": "Money & Markets",
+      "subtitle": "No committee decides what a coffee, a stock, or a house is worth. A price is a signal that emerges from millions of buyers and sellers haggling at once.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Who sets the 'right' price of a coffee?",
+        "options": [
+          "The caf\u00e9 owner alone",
+          "No one \u2014 it emerges from supply & demand",
+          "The government"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 it emerges where supply meets demand.",
+        "wrong": "No single person \u2014 it emerges from buyers and sellers together.",
+        "explain": "A price is a signal, not a decree."
+      }
+    },
+    {
+      "slug": "the-first-information-explosion",
+      "title": "The Printing Press: History's First Viral Moment",
+      "category": "History & Civilization",
+      "subtitle": "One machine dropped the cost of copying an idea by orders of magnitude \u2014 and toppled churches, sparked science, and remade Europe.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "The printing press's core effect was to collapse the cost of\u2026",
+        "options": [
+          "Paper",
+          "Copying and spreading ideas",
+          "Ink"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 cheap copies let ideas escape the elite.",
+        "wrong": "It's the cost of copying ideas \u2014 that's what changed everything.",
+        "explain": "Cheap distribution \u2192 Reformation, science, mass literacy."
+      }
+    },
+    {
+      "slug": "your-brain-cant-do-exponents",
+      "title": "Why Your Brain Can't Feel Exponential Growth",
+      "category": "Ideas & Minds",
+      "subtitle": "Fold a paper 42 times and it reaches the Moon. Your gut says 'a few inches.' That gap explains pandemics, compound interest, and viral everything.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "Fold 0.1mm paper 42 times \u2014 roughly how far?",
+        "options": [
+          "A few inches",
+          "To the Moon",
+          "Around a room"
+        ],
+        "answer": 1,
+        "correct": "Yep \u2014 to the Moon. Exponentials break intuition.",
+        "wrong": "To the Moon! Doubling 42 times explodes far beyond gut feeling.",
+        "explain": "Linear brain, exponential world."
+      }
+    }
+  ],
+  "2026-09-16": [
+    {
+      "slug": "where-your-data-lives",
+      "title": "How Databases Find a Needle in a Billion-Row Haystack",
+      "category": "Software & Systems",
+      "subtitle": "A database can find one record among a billion in milliseconds. The secret is the same idea behind a book's index \u2014 and a clever tree.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "A DB finds 1 row among a billion fast because of\u2026",
+        "options": [
+          "A faster CPU",
+          "An index (a sorted B-tree) \u2192 ~30 steps",
+          "Scanning quickly"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 an index turns O(n) into ~O(log n).",
+        "wrong": "It's the index \u2014 a B-tree gets there in ~30 steps, not a billion.",
+        "explain": "Like a book's index: look up, jump straight there."
+      }
+    },
+    {
+      "slug": "the-bond-market-alarm",
+      "title": "The Recession Alarm Hidden in the Bond Market",
+      "category": "Money & Markets",
+      "subtitle": "Bonds are just loans you can trade. Line up their interest rates and you get a curve that has predicted almost every US recession for 50 years.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "An 'inverted' yield curve means\u2026",
+        "options": [
+          "Long yields above short",
+          "Short yields above long (recession warning)",
+          "All yields are zero"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 short above long, the classic alarm.",
+        "wrong": "Inversion = short-term yields ABOVE long-term. A recession signal.",
+        "explain": "It's flagged almost every US recession since the '60s."
+      }
+    },
+    {
+      "slug": "how-we-learned-to-learn",
+      "title": "The Scientific Revolution: When We Learned How to Learn",
+      "category": "History & Civilization",
+      "subtitle": "For millennia, 'truth' meant what ancient authorities said. Then a new rule appeared: test it against reality. That rule changed everything.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "The Scientific Revolution's big move was\u2026",
+        "options": [
+          "Trust ancient authorities more",
+          "Test ideas against evidence (ask reality)",
+          "Ban experiments"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 reality, not authority, became the referee.",
+        "wrong": "It flipped to testing ideas against evidence \u2014 the scientific method.",
+        "explain": "Repeatable, self-correcting \u2014 so knowledge compounds."
+      }
+    }
+  ],
+  "2026-09-17": [
+    {
+      "slug": "when-being-selfish-backfires",
+      "title": "Game Theory: When Everyone Acting Smart Makes Everyone Worse Off",
+      "category": "Ideas & Minds",
+      "subtitle": "Two prisoners, each doing the rational thing, both end up worse than if they'd cooperated. This one puzzle explains arms races, price wars, and climate stalemates.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "In the one-shot prisoner's dilemma, the rational outcome is\u2026",
+        "options": [
+          "Both cooperate",
+          "Both betray (worse for both)",
+          "One always wins"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 both betray, both worse off. That's the tragedy.",
+        "wrong": "Both betray \u2014 individually rational, collectively worse. That's the dilemma.",
+        "explain": "Repetition + reputation is how real life escapes it."
+      }
+    },
+    {
+      "slug": "you-cant-have-it-all",
+      "title": "The CAP Theorem: Pick Two, You Can't Have Three",
+      "category": "Software & Systems",
+      "subtitle": "Spread data across many machines and physics forces a brutal choice: when the network splits, do you stay consistent or stay available? You can't do both.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "When a distributed system's network splits, CAP forces a choice between\u2026",
+        "options": [
+          "Consistency vs Availability",
+          "Speed vs cost",
+          "Reads vs writes"
+        ],
+        "answer": 0,
+        "correct": "Right \u2014 C vs A. You can't keep both during a partition.",
+        "wrong": "It's Consistency vs Availability \u2014 partitions force the pick.",
+        "explain": "Banks pick C; social feeds pick A."
+      }
+    },
+    {
+      "slug": "what-is-a-company-worth",
+      "title": "What Is a Company Actually Worth?",
+      "category": "Money & Markets",
+      "subtitle": "A stock isn't a lottery ticket \u2014 it's a sliver of a real business. So its value comes from the cash that business will throw off. Here's how pros pin a number on it.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "What most fundamentally determines a company's value?",
+        "options": [
+          "Recent price moves",
+          "Its future cash flows (discounted to today)",
+          "Its logo"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 a business is worth its future cash, brought to today.",
+        "wrong": "It's the future cash it'll generate, discounted to today.",
+        "explain": "Price is what you pay; value is what it's worth."
+      }
+    }
+  ],
+  "2026-09-18": [
+    {
+      "slug": "the-hockey-stick",
+      "title": "The Hockey Stick: When Human Life Suddenly Got Better",
+      "category": "History & Civilization",
+      "subtitle": "For thousands of years, almost nothing changed. Then, around 1800, growth went vertical. Understanding that elbow is understanding the modern world.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "The Industrial Revolution's core unlock was\u2026",
+        "options": [
+          "Fossil energy (coal + steam) for mechanical work",
+          "New crops",
+          "Bigger cities"
+        ],
+        "answer": 0,
+        "correct": "Right \u2014 energy on demand: one machine, work of hundreds.",
+        "wrong": "It was energy \u2014 coal + steam turned stored energy into unlimited work.",
+        "explain": "Output per person soared past population \u2192 the hockey stick."
+      }
+    },
+    {
+      "slug": "why-systems-surprise-you",
+      "title": "Feedback Loops: Why Systems Do the Opposite of What You Expect",
+      "category": "Ideas & Minds",
+      "subtitle": "Push on a complex system and it often pushes back \u2014 or spirals out of control. Learn to see the loops and the world stops being baffling.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "A thermostat cooling a warming room is which loop?",
+        "options": [
+          "Reinforcing (snowball)",
+          "Balancing (self-correcting)",
+          "Neither"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 balancing: it pushes back toward a target.",
+        "wrong": "Balancing \u2014 it self-corrects toward a set point (unlike a snowball).",
+        "explain": "Reinforcing = amplify; balancing = stabilize."
+      }
+    },
+    {
+      "slug": "how-computers-agree",
+      "title": "How a Group of Computers Agrees on Anything",
+      "category": "Software & Systems",
+      "subtitle": "Machines crash, messages get lost, networks split. So how do a dozen servers agree on a single answer \u2014 like who owns which seat? Meet consensus.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "In Raft, a change is 'committed' once\u2026",
+        "options": [
+          "The leader alone saves it",
+          "A majority of machines have stored it",
+          "All machines reply"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 a majority (quorum) makes it official and crash-tolerant.",
+        "wrong": "It's once a majority stores it \u2014 that's what tolerates failures safely.",
+        "explain": "Overlapping majorities prevent two conflicting leaders."
+      }
+    }
   ]
 }

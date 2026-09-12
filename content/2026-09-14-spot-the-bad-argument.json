@@ -1,0 +1,87 @@
+{
+  "slug": "spot-the-bad-argument",
+  "date": "2026-09-14",
+  "slot": 1,
+  "track": "Ideas & Minds",
+  "track_lesson": 5,
+  "read_minutes": 5,
+  "title": "How to Spot a Bad Argument in Two Seconds",
+  "subtitle": "Most persuasion that fools us isn't lying about facts — it's cheating on logic. Learn the common cheats and you can't be conned the same way twice.",
+  "hook": "A claim can be built from true facts and still be rubbish — because the *reasoning* is broken. These broken moves are **logical fallacies**, and the same handful show up in every heated argument, ad, and comment section. Learn to name them and something clicks: you start seeing the cheat in real time, mid-sentence. Today: your bad-argument detector.",
+  "builds_on": [{"slug": "your-brain-runs-on-shortcuts", "label": "Your Brain Runs on Shortcuts"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Valid vs. true",
+      "body": "Two different things. An argument is **valid** if the conclusion *follows* from the premises. It's **sound** only if it's valid *and* the premises are actually true. Fallacies are usually failures of validity dressed up to feel convincing — the words flow, the logic doesn't. Spotting them is about checking the *shape* of the argument, not just the facts."
+    },
+    {
+      "type": "steps",
+      "heading": "The greatest hits",
+      "items": [
+        "<b>Ad hominem</b> — attacking the person, not their argument ('you would say that, you're X').",
+        "<b>Straw man</b> — beating up a weaker, distorted version of what someone said.",
+        "<b>False dilemma</b> — 'you're either with us or against us' (pretending only two options exist).",
+        "<b>Appeal to authority</b> — 'an expert said so' as proof (experts can be wrong or off-topic).",
+        "<b>Slippery slope</b> — claiming one small step must inevitably lead to disaster, with no link shown."
+      ]
+    },
+    {
+      "type": "diagram",
+      "caption": "The check: do the premises actually support the conclusion (valid)? And are the premises true (sound)? Fallacies fail the first test.",
+      "mermaid": "flowchart TD\n    Arg[\"An argument\"] --> V{{\"Does the conclusion\\nfollow from premises?\"}}\n    V -->|No| Fal[\"Fallacy — invalid\"]\n    V -->|Yes| T{{\"Are the premises true?\"}}\n    T -->|No| Unsound[\"Valid but unsound\"]\n    T -->|Yes| Good[\"Sound argument\"]\n    style Fal fill:#ffe0e0,stroke:#c0392b,color:#111\n    style Good fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The meta-move",
+      "body": "When something *feels* persuasive but you can't say why, pause and ask: 'What's the actual claim, and does the evidence given actually support it?' Nine times out of ten the persuasion was riding on a fallacy or a bias (yesterday's lesson) rather than real support. Naming the move breaks the spell."
+    },
+    {
+      "type": "video",
+      "youtube_id": "cItfHGl1NnI",
+      "caption": "Ten common logical fallacies, explained with examples."
+    }
+  ],
+  "takeaways": [
+    "**Valid** = conclusion follows; **sound** = valid AND premises true. Fallacies fail validity.",
+    "Know the greats: **ad hominem, straw man, false dilemma, appeal to authority, slippery slope**.",
+    "A claim built from true facts can still be a bad argument if the logic is broken.",
+    "Check the *shape*: do the premises actually support the conclusion?",
+    "Persuasion that 'feels right' but you can't justify is usually a fallacy or a bias."
+  ],
+  "quiz": [
+    {
+      "q": "'You can't trust his economics argument — he's rich.' Which fallacy?",
+      "options": ["Straw man", "Ad hominem", "False dilemma", "Slippery slope"],
+      "answer": 1,
+      "explain": "Ad hominem: attacking the person instead of the argument."
+    },
+    {
+      "q": "What's the difference between valid and sound?",
+      "options": ["Nothing", "Valid = conclusion follows; sound = valid AND premises are true", "Sound is louder", "Valid means popular"],
+      "answer": 1,
+      "explain": "Validity is about structure; soundness adds that the premises are actually true."
+    },
+    {
+      "q": "CALLBACK: How do fallacies relate to yesterday's cognitive biases?",
+      "options": ["Unrelated", "Biases are how our brain slips; fallacies are the broken argument-shapes that exploit those slips", "Fallacies are always deliberate lies", "Biases only affect computers"],
+      "answer": 1,
+      "explain": "A straw man or false dilemma lands because System 1 doesn't check the logic. Biases (internal) and fallacies (in the argument) are two sides of the same weakness.",
+      "callback": true,
+      "from": "Day 6 · cognitive biases"
+    }
+  ],
+  "tg_quiz": {
+    "q": "'Either we ban this completely or society collapses.' Which fallacy?",
+    "options": ["False dilemma", "Ad hominem", "Straw man"],
+    "answer": 0,
+    "correct": "Yep — false dilemma: pretending only two options exist.",
+    "wrong": "It's a false dilemma — it fakes an either/or when more options exist.",
+    "explain": "Real choices rarely come in just two flavors."
+  },
+  "go_deeper": [
+    {"label": "Your Logical Fallacy Is (poster)", "url": "https://yourlogicalfallacyis.com/", "note": "A beautiful reference to every common cheat."},
+    {"label": "Validity and soundness", "url": "https://en.wikipedia.org/wiki/Validity_(logic)", "note": "The structure-vs-truth distinction."}
+  ]
+}

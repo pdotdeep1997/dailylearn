@@ -1,0 +1,81 @@
+{
+  "slug": "what-happens-when-you-open-a-link",
+  "date": "2026-09-13",
+  "slot": 1,
+  "track": "Software & Systems",
+  "track_lesson": 5,
+  "read_minutes": 6,
+  "title": "What Actually Happens When You Open a Link",
+  "subtitle": "You tap a link and a page appears. In between, your request crosses the planet and back through a dozen machines — in under a second.",
+  "hook": "Tap a link and a page appears so fast it feels instant. But in that fraction of a second, your device found a specific computer somewhere on Earth, negotiated a conversation with it, and streamed a page back — hopping through routers across oceans. It's the most-used piece of engineering in history, and almost nobody knows how it works. Today: the journey of a single click.",
+  "builds_on": [{"slug": "two-things-at-once", "label": "Doing Two Things at Once"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Step 1: find the address (DNS)",
+      "body": "You typed a *name* (example.com), but computers route by *numbers* (IP addresses). So first your device asks the **DNS** — the internet's phone book — 'what's the number for this name?' It answers something like 93.184.216.34. Names are for humans; numbers are for routing."
+    },
+    {
+      "type": "prose",
+      "heading": "Step 2: chop it into packets and route them",
+      "body": "Your request is broken into small **packets**, each stamped with the destination address. Routers pass each packet hop-by-hop toward its target — no single wire connects you to the server; the network figures out a path, packet by packet, and can reroute around failures. At the destination they're reassembled in order (that's **TCP**'s job: reliable, in-order delivery over an unreliable network). The server then sends the page back the same way."
+    },
+    {
+      "type": "diagram",
+      "caption": "Name → number (DNS), then your request travels as packets hopping router-to-router to the server and back.",
+      "mermaid": "flowchart LR\n    You[\"Your device\"] --> DNS[\"DNS: name → IP\"]\n    DNS --> Pkt[\"Split into packets\"]\n    Pkt --> R1[\"router\"] --> R2[\"router\"] --> Srv[\"Server\"]\n    Srv --> Back[\"Page streamed back\"]\n    Back --> You\n    style DNS fill:#cfe3ff,stroke:#2b6cb0,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why 'packets' is genius",
+      "body": "Splitting data into independently-routed packets is what makes the internet robust. Lose one? Resend just that one. A cable gets cut? Packets take another path. No central switchboard has to hold a dedicated line open for your whole session. This decentralized, packet-switched design is why the internet survives failures that would kill a phone-style network."
+    },
+    {
+      "type": "video",
+      "youtube_id": "LkNnjShMzs8",
+      "caption": "How data packets actually travel — routers, DNS, and the path across the internet."
+    }
+  ],
+  "takeaways": [
+    "**DNS** translates the human name into a machine IP address (the internet's phone book).",
+    "Your request is split into **packets**, each routed independently toward the destination.",
+    "**TCP** reassembles packets in order and resends any that are lost — reliable delivery over an unreliable net.",
+    "No dedicated wire connects you to the server; routers find a path hop-by-hop.",
+    "Packet-switching makes the internet **robust** — it reroutes around cuts and failures."
+  ],
+  "quiz": [
+    {
+      "q": "What does DNS do?",
+      "options": ["Encrypts your data", "Translates a human-readable name into an IP address", "Splits data into packets", "Stores web pages"],
+      "answer": 1,
+      "explain": "DNS is the phone book: name in, number (IP) out."
+    },
+    {
+      "q": "Why split a request into independently-routed packets?",
+      "options": ["To slow it down", "Robustness — lost packets resend, and packets reroute around failures", "To use less electricity", "To avoid DNS"],
+      "answer": 1,
+      "explain": "Packet-switching is why the internet survives cut cables and dropped data."
+    },
+    {
+      "q": "CALLBACK: Day 2's latency ladder scaled a network round-trip to 'years.' How does that shape web design?",
+      "options": ["It doesn't", "Because far-off round-trips are so slow, we cache content close to users and minimize trips — location dominates speed", "Networks are actually instant", "You should add more DNS lookups"],
+      "answer": 1,
+      "explain": "That giant network latency is why CDNs put copies near you and why fewer round-trips = faster pages. Same 'where does the data live' theme.",
+      "callback": true,
+      "from": "Day 2 · latency ladder"
+    }
+  ],
+  "tg_quiz": {
+    "q": "What's DNS?",
+    "options": ["The internet's phone book (name → IP)", "A type of packet", "A web server"],
+    "answer": 0,
+    "correct": "Right — it turns names into the numbers routers use.",
+    "wrong": "It's the phone book: it maps a name to an IP address.",
+    "explain": "Names for humans, numbers for routing."
+  },
+  "go_deeper": [
+    {"label": "Cloudflare — How does the internet work?", "url": "https://www.cloudflare.com/learning/network-layer/how-does-the-internet-work/", "note": "Clear primer on packets, IP, and routing."},
+    {"label": "How DNS works (comic)", "url": "https://howdns.works/", "note": "A friendly illustrated walkthrough."}
+  ]
+}

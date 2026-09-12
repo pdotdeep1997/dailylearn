@@ -1,0 +1,83 @@
+{
+  "slug": "the-bond-market-alarm",
+  "date": "2026-09-16",
+  "slot": 1,
+  "track": "Money & Markets",
+  "track_lesson": 7,
+  "read_minutes": 6,
+  "title": "The Recession Alarm Hidden in the Bond Market",
+  "subtitle": "Bonds are just loans you can trade. Line up their interest rates and you get a curve that has predicted almost every US recession for 50 years.",
+  "hook": "Stocks get the headlines, but the bond market is bigger and, arguably, smarter. A bond is nothing exotic — it's a loan you can buy and sell. Line up the interest rates on government bonds of different lengths and you get the **yield curve**, and when it does something weird — bends *downward* — economists brace for a recession. It's flagged nearly every US downturn since the 1960s. Today: how a boring loan chart became Wall Street's favorite alarm.",
+  "builds_on": [{"slug": "who-decides-the-price", "label": "Who Decides the Price"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "A bond is a tradable loan",
+      "body": "Buy a government bond and you've lent the government money; it pays you interest (the **yield**) and returns your principal at the end. Because bonds trade, their price moves — and price and yield seesaw: when a bond's price rises, its yield falls, and vice versa. (Why: the future payments are fixed, so paying more for them means earning a smaller return — pure discounting from our earlier lesson.)"
+    },
+    {
+      "type": "prose",
+      "heading": "The curve, and why it inverts",
+      "body": "Plot yield against how long until the bond matures — 3 months, 2 years, 10 years — and you get the **yield curve**. Normally it slopes **up**: lock your money away longer, get paid more. But sometimes short-term yields rise *above* long-term ones — the curve **inverts**. That happens when the central bank holds short rates high to fight inflation, while investors, expecting a slowdown (and future rate cuts), pile into long bonds, pushing long yields down. High short + low long = the market betting trouble is coming."
+    },
+    {
+      "type": "diagram",
+      "caption": "Normal curve slopes up (longer = more yield). Inversion — short above long — is the classic recession warning.",
+      "mermaid": "flowchart LR\n    Fed[\"Central bank holds\\nshort rates HIGH\"] --> Inv{{\"Short yield > Long yield\\n= INVERSION\"}}\n    Exp[\"Investors expect slowdown →\\nbuy long bonds → long yield LOW\"] --> Inv\n    Inv --> R[\"Historically precedes\\nrecession 6–18 mo later\"]\n    style Inv fill:#ffe0e0,stroke:#c0392b,color:#111\n    style R fill:#fff2cc,stroke:#b7950b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "A smoke alarm, not a crystal ball",
+      "body": "The track record is uncanny but not magic: the lag from inversion to recession runs 6–24 months (useless for timing), there've been false-ish alarms, and modern distortions (central-bank bond buying) can bend the curve for non-recession reasons. Treat it as one strong signal among many — impressive, not infallible.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "8agblAWXvQM",
+      "caption": "Yield curve inversion — what it is and why markets watch it before recessions."
+    }
+  ],
+  "takeaways": [
+    "A **bond** is a tradable loan; its **price and yield move in opposite directions**.",
+    "The **yield curve** plots yield vs. time-to-maturity; normally it slopes **up**.",
+    "**Inversion** (short yields above long) comes from high short rates + investors bracing for a slowdown.",
+    "It has preceded almost every US recession since the '60s — with a **6–24 month lag**.",
+    "It's a strong signal, not a crystal ball — false alarms and distortions exist."
+  ],
+  "quiz": [
+    {
+      "q": "A bond's price rises. What happens to its yield?",
+      "options": ["Rises too", "Falls — price and yield seesaw", "Stays fixed", "Doubles"],
+      "answer": 1,
+      "explain": "Fixed future payments + higher price paid = lower return. Price up, yield down."
+    },
+    {
+      "q": "What is an 'inverted' yield curve?",
+      "options": ["Long-term yields above short-term", "Short-term yields above long-term", "All yields at zero", "Yields that don't change"],
+      "answer": 1,
+      "explain": "Inversion = the front end (short) pays more than the long end — the recession warning."
+    },
+    {
+      "q": "CALLBACK + BOSS: Why does paying MORE for a bond mean earning LESS — and which earlier lesson is that?",
+      "options": ["It doesn't", "The bond's future payments are fixed, so a higher price = a smaller return — it's discounting (Day 4), run in reverse", "Because bonds are risky", "Because of inflation only"],
+      "answer": 1,
+      "explain": "A bond's price is just the discounted value of its fixed future cash. Pay more today, and the built-in return (yield) is lower. Present value strikes again.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 4 · discounting"
+    }
+  ],
+  "tg_quiz": {
+    "q": "An 'inverted' yield curve means…",
+    "options": ["Long yields above short", "Short yields above long (recession warning)", "All yields are zero"],
+    "answer": 1,
+    "correct": "Right — short above long, the classic alarm.",
+    "wrong": "Inversion = short-term yields ABOVE long-term. A recession signal.",
+    "explain": "It's flagged almost every US recession since the '60s."
+  },
+  "go_deeper": [
+    {"label": "FRED — 10yr minus 2yr spread (live)", "url": "https://fred.stlouisfed.org/series/T10Y2Y", "note": "Watch it cross zero yourself."},
+    {"label": "Investopedia — Inverted Yield Curve", "url": "https://www.investopedia.com/terms/i/invertedyieldcurve.asp", "note": "History and mechanics."}
+  ]
+}

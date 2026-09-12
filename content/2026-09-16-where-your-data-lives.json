@@ -1,0 +1,82 @@
+{
+  "slug": "where-your-data-lives",
+  "date": "2026-09-16",
+  "slot": 0,
+  "track": "Software & Systems",
+  "track_lesson": 7,
+  "read_minutes": 6,
+  "title": "How Databases Find a Needle in a Billion-Row Haystack",
+  "subtitle": "A database can find one record among a billion in milliseconds. The secret is the same idea behind a book's index — and a clever tree.",
+  "hook": "Type a name into an app and it finds your record instantly — even if the database holds a billion rows. How? Not by reading all billion (that'd be the slow O(n) scan we met earlier). Databases use a structure so clever it feels like cheating: the **index**. It's the difference between flipping through every page of a book and using the index at the back. Today: how databases stay fast at absurd scale.",
+  "builds_on": [{"slug": "two-hardest-problems", "label": "The Two Hard Problems"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The index: don't scan, look up",
+      "body": "Without help, finding a row means checking every row — fine for 100, hopeless for a billion. An **index** is a separate, sorted structure that maps a value (say, a username) to the exact location of its row. Look up the value in the sorted index and jump straight there. It's precisely the index at the back of a book: the book's content is unsorted for this purpose, but the index is sorted so you can find 'photosynthesis → page 214' fast."
+    },
+    {
+      "type": "prose",
+      "heading": "Why a B-tree, not a plain list",
+      "body": "Databases usually build indexes as a **B-tree** — a wide, shallow, always-balanced tree. Each step down the tree eliminates a huge chunk of possibilities, so finding anything takes O(log n) steps: for a billion rows, roughly **30 steps** instead of a billion. And because it stays balanced and its nodes map neatly onto disk blocks, it's fast even when the data lives on slow storage. That's the workhorse behind almost every database you've ever used."
+    },
+    {
+      "type": "diagram",
+      "caption": "A B-tree narrows the search at every level, so a billion rows are reachable in ~30 hops instead of a billion.",
+      "mermaid": "flowchart TD\n    Root[\"Root: split the whole range\"] --> B1[\"branch: a slice\"]\n    Root --> B2[\"branch: another slice\"]\n    B1 --> L1[\"leaf → row location\"]\n    B2 --> L2[\"leaf → row location\"]\n    L1 --> Fast[\"~log(n) hops\\n1B rows ≈ 30 steps\"]\n    L2 --> Fast\n    style Fast fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Indexes aren't free",
+      "body": "Every index speeds up reads but slows down writes — because each insert or update must also update the index — and it costs storage. So you index the columns you *search* on, not everything. 'Add an index' is the first fix for a slow query, and 'too many indexes' is a common cause of slow writes. Databases are one long exercise in this read/write trade-off.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "JWSObwhGGxY",
+      "caption": "B-trees and database indexing, explained for beginners."
+    }
+  ],
+  "takeaways": [
+    "Scanning every row is O(n) — hopeless at scale; an **index** lets you jump straight to a row.",
+    "An index is a **sorted** side-structure mapping a value → its row's location (like a book's index).",
+    "Databases use **B-trees**: wide, balanced, ~**O(log n)** — a billion rows in ~30 steps.",
+    "B-trees stay fast even on slow disk because they map onto storage blocks.",
+    "Indexes speed **reads** but slow **writes** and cost space — index what you search on."
+  ],
+  "quiz": [
+    {
+      "q": "What does a database index let you avoid?",
+      "options": ["Storing data", "Scanning every row (O(n)) to find a match", "Using a CPU", "Writing code"],
+      "answer": 1,
+      "explain": "The index jumps you straight to the row instead of checking all of them."
+    },
+    {
+      "q": "Why a B-tree for indexes?",
+      "options": ["It's random", "Balanced + wide → O(log n) lookups (a billion rows in ~30 steps) and disk-friendly", "It uses no memory", "It never needs updating"],
+      "answer": 1,
+      "explain": "Each level eliminates a huge fraction of possibilities, and it maps neatly to disk blocks."
+    },
+    {
+      "q": "CALLBACK: Day 3 taught O(1)/O(log n)/O(n). Where does an index sit, and what's the catch?",
+      "options": ["O(n²), no catch", "It turns an O(n) scan into ~O(log n) lookups — but adds write cost and storage", "O(1) always, free", "It has no relation to Big-O"],
+      "answer": 1,
+      "explain": "Indexes are Big-O in action: trade O(n) reads for O(log n), paid for with slower writes and more space.",
+      "callback": true,
+      "from": "Day 3 · Big-O"
+    }
+  ],
+  "tg_quiz": {
+    "q": "A DB finds 1 row among a billion fast because of…",
+    "options": ["A faster CPU", "An index (a sorted B-tree) → ~30 steps", "Scanning quickly"],
+    "answer": 1,
+    "correct": "Right — an index turns O(n) into ~O(log n).",
+    "wrong": "It's the index — a B-tree gets there in ~30 steps, not a billion.",
+    "explain": "Like a book's index: look up, jump straight there."
+  },
+  "go_deeper": [
+    {"label": "B-trees and database indexes (PlanetScale)", "url": "https://planetscale.com/blog/btrees-and-database-indexes", "note": "Excellent visual deep-dive."},
+    {"label": "How indexing works", "url": "https://builtin.com/data-science/b-tree-index", "note": "The read/write trade-off in practice."}
+  ]
+}

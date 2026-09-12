@@ -1,0 +1,83 @@
+{
+  "slug": "your-brain-runs-on-shortcuts",
+  "date": "2026-09-13",
+  "slot": 0,
+  "track": "Ideas & Minds",
+  "track_lesson": 4,
+  "read_minutes": 5,
+  "title": "Your Brain Runs on Shortcuts (And They Betray You)",
+  "subtitle": "Evolution built you a fast, lazy autopilot that's brilliant most of the time and predictably, hilariously wrong the rest.",
+  "hook": "Quick: a bat and ball cost $1.10 together, the bat costs $1 more than the ball — how much is the ball? If '10 cents' popped into your head, congrats: your brain just took a shortcut, and it's wrong (it's 5 cents). You have two thinking modes — a fast, effortless autopilot and a slow, deliberate analyst — and the autopilot runs the show. Today: the predictable ways it fools you, and how to catch it.",
+  "builds_on": [{"slug": "the-math-of-every-good-bet", "label": "The Math of Every Good Bet"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "System 1 and System 2",
+      "body": "Psychologist Daniel Kahneman split thinking into two modes. **System 1** is fast, automatic, emotional — it recognizes faces, dodges balls, and jumps to the '10 cents' answer. **System 2** is slow, effortful, logical — the one that actually does the subtraction. System 1 handles ~99% of life brilliantly. The trouble: it also fires confidently on problems that *need* System 2, and you don't notice the handoff never happened."
+    },
+    {
+      "type": "diagram",
+      "caption": "System 1 answers first — fast and confident. Only if you deliberately engage System 2 does the careful answer get a chance.",
+      "mermaid": "flowchart LR\n    Q[\"A question\"] --> S1[\"System 1\\nfast, automatic gut answer\"]\n    S1 --> Feel[\"Feels right → you act\"]\n    S1 -.->|only if you pause| S2[\"System 2\\nslow, effortful check\"]\n    S2 --> Better[\"Considered answer\"]\n    style S1 fill:#e6dcff,stroke:#6b46c1,color:#111\n    style Better fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "A few biases to know by name",
+      "body": "<b>Anchoring</b> — the first number you hear drags your estimate toward it. <b>Availability</b> — vivid, recent examples feel more common than they are (plane crashes vs. car crashes). <b>Confirmation bias</b> — you notice evidence that fits your belief and skip the rest. <b>Loss aversion</b> — losing $100 hurts about twice as much as gaining $100 feels good. Naming them is half the defense."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "You can't turn them off",
+      "body": "Knowing about biases doesn't disable them — System 1 still fires. What works is building *habits and systems*: sleep on big decisions, write down predictions, ask 'what would change my mind?', and get an outside view. You don't out-think biases; you design around them."
+    },
+    {
+      "type": "video",
+      "youtube_id": "fDYxHbXH8D0",
+      "caption": "An animated guide to Kahneman's two systems and how they shape every decision."
+    }
+  ],
+  "takeaways": [
+    "Thinking has two modes: **System 1** (fast, automatic) and **System 2** (slow, effortful).",
+    "System 1 runs most of life well — but fires confidently on problems that need System 2.",
+    "Know the big biases: **anchoring, availability, confirmation bias, loss aversion**.",
+    "Awareness alone doesn't disable a bias — the reflex still fires.",
+    "Beat them with **systems**: slow down, write predictions, seek outside views."
+  ],
+  "quiz": [
+    {
+      "q": "What's System 1?",
+      "options": ["Slow, logical, effortful thinking", "Fast, automatic, intuitive thinking", "A computer's OS", "Long-term memory"],
+      "answer": 1,
+      "explain": "System 1 is the gut-fast autopilot; System 2 is the slow analyst."
+    },
+    {
+      "q": "You judge plane travel as more dangerous than driving because crashes are vivid in the news. Which bias?",
+      "options": ["Anchoring", "Availability", "Loss aversion", "Sunk cost"],
+      "answer": 1,
+      "explain": "Availability: easily-recalled, vivid examples feel more frequent than they are."
+    },
+    {
+      "q": "CALLBACK + BOSS: Bayes (Day 3) told you to weigh the base rate. Which bias is basically 'ignoring the base rate because a story feels compelling'?",
+      "options": ["Loss aversion", "The representativeness/availability trap — vivid stories override dull base rates", "Anchoring", "None"],
+      "answer": 1,
+      "explain": "A gripping narrative makes System 1 forget how rare the thing actually is — the exact failure Bayes fixes. Biases and probability are two views of the same weakness.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 3 · Bayes & base rates"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Bat + ball = $1.10; bat is $1 more than the ball. The ball costs…",
+    "options": ["10 cents", "5 cents", "$1"],
+    "answer": 1,
+    "correct": "Nice — you engaged System 2. It's 5 cents.",
+    "wrong": "System 1 says 10¢, but it's 5¢ (ball 5¢ + bat $1.05 = $1.10).",
+    "explain": "The gut answer feels right and is wrong — that's the whole lesson."
+  },
+  "go_deeper": [
+    {"label": "Thinking, Fast and Slow (overview)", "url": "https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow", "note": "Kahneman's two-system framework."},
+    {"label": "List of cognitive biases", "url": "https://en.wikipedia.org/wiki/List_of_cognitive_biases", "note": "The whole rogues' gallery."}
+  ]
+}

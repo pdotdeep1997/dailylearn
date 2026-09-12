@@ -1,0 +1,83 @@
+{
+  "slug": "how-we-learned-to-learn",
+  "date": "2026-09-16",
+  "slot": 2,
+  "track": "History & Civilization",
+  "track_lesson": 7,
+  "read_minutes": 5,
+  "title": "The Scientific Revolution: When We Learned How to Learn",
+  "subtitle": "For millennia, 'truth' meant what ancient authorities said. Then a new rule appeared: test it against reality. That rule changed everything.",
+  "hook": "For most of history, the way to settle a question was to ask what Aristotle or scripture said. Then, over the 1500s–1600s, a radical idea took hold: don't trust authority — *test* it. Observe, measure, experiment, and let reality be the referee. That's the **scientific method**, and it wasn't a discovery so much as an upgrade to *how we discover*. Today: the invention that made every other modern invention possible.",
+  "builds_on": [{"slug": "the-first-information-explosion", "label": "The First Information Explosion"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "From authority to evidence",
+      "body": "The revolution's core move was demoting **authority** and promoting **evidence**. Copernicus and Galileo said: don't ask what the ancients decreed the heavens do — *look* through the telescope. Bacon and others formalized it: form a hypothesis, run an experiment, measure, and update. Crucially, results had to be **repeatable** by others — truth became something anyone could check, not something you had to be told."
+    },
+    {
+      "type": "diagram",
+      "caption": "The upgrade: stop asking authority, start asking reality — hypothesize, test, measure, and update, with others able to repeat it.",
+      "mermaid": "flowchart LR\n    Old[\"Old way:\\nwhat did the authority say?\"] --> New[\"New way:\\nask reality\"]\n    New --> H[\"Hypothesis\"] --> E[\"Experiment & measure\"]\n    E --> U[\"Update belief\"]\n    U --> H\n    E --> Rep[\"Others can repeat it\"]\n    style New fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why it compounds",
+      "body": "Science's superpower is that it's **cumulative and self-correcting**. Each verified result becomes a foundation others build on; each wrong idea eventually gets falsified and dropped. Unlike appeals to authority, it has a built-in error-correction mechanism — which is why knowledge started growing *exponentially* (yesterday's curve!) rather than drifting sideways for centuries."
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "The press lit the fuse",
+      "body": "This didn't happen in a vacuum: the printing press (our last History lesson) let results, data, and challenges to orthodoxy circulate fast enough for a community of investigators to check and build on each other's work. Cheap copying + 'test it yourself' = a knowledge engine. The two inventions together are why the modern world accelerated.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "vzo8vnxSARg",
+      "caption": "The Scientific Revolution — how the method of testing ideas took hold."
+    }
+  ],
+  "takeaways": [
+    "The revolution demoted **authority** and promoted **evidence** — ask reality, not the ancients.",
+    "The **scientific method**: hypothesize → experiment → measure → update.",
+    "Results had to be **repeatable** — truth anyone can check, not something decreed.",
+    "Science is **cumulative and self-correcting**, so knowledge began growing exponentially.",
+    "The **printing press** lit the fuse by letting a community verify and build on each other's work."
+  ],
+  "quiz": [
+    {
+      "q": "What was the core shift of the Scientific Revolution?",
+      "options": ["More books", "From trusting authority to testing ideas against evidence", "Faster ships", "New religions"],
+      "answer": 1,
+      "explain": "Reality, not authority, became the referee — the scientific method."
+    },
+    {
+      "q": "Why does science 'compound' where appeals to authority don't?",
+      "options": ["Scientists are smarter", "It's cumulative and self-correcting — verified results stack up, wrong ones get falsified", "It's government-funded", "It avoids math"],
+      "answer": 1,
+      "explain": "Built-in error correction lets knowledge grow instead of drifting."
+    },
+    {
+      "q": "CALLBACK: How did the printing press (Day 8) enable this?",
+      "options": ["It didn't", "Cheap copies let results and challenges circulate fast, so a community could verify and build on each other's work", "It slowed science down", "It replaced experiments"],
+      "answer": 1,
+      "explain": "Cheap copying + 'test it yourself' = a knowledge engine. The two inventions compound together.",
+      "callback": true,
+      "from": "Day 8 · printing press"
+    }
+  ],
+  "tg_quiz": {
+    "q": "The Scientific Revolution's big move was…",
+    "options": ["Trust ancient authorities more", "Test ideas against evidence (ask reality)", "Ban experiments"],
+    "answer": 1,
+    "correct": "Right — reality, not authority, became the referee.",
+    "wrong": "It flipped to testing ideas against evidence — the scientific method.",
+    "explain": "Repeatable, self-correcting — so knowledge compounds."
+  },
+  "go_deeper": [
+    {"label": "The Scientific Revolution", "url": "https://en.wikipedia.org/wiki/Scientific_Revolution", "note": "Copernicus to Newton, and the method."},
+    {"label": "The scientific method", "url": "https://en.wikipedia.org/wiki/Scientific_method", "note": "Hypothesis, test, repeat."}
+  ]
+}

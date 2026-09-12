@@ -1,0 +1,82 @@
+{
+  "slug": "how-computers-agree",
+  "date": "2026-09-18",
+  "slot": 2,
+  "track": "Software & Systems",
+  "track_lesson": 9,
+  "read_minutes": 6,
+  "title": "How a Group of Computers Agrees on Anything",
+  "subtitle": "Machines crash, messages get lost, networks split. So how do a dozen servers agree on a single answer — like who owns which seat? Meet consensus.",
+  "hook": "Yesterday's CAP theorem said that when the network splits, staying correct means the machines must *agree*. But agreement is shockingly hard when any machine can crash mid-sentence and messages can vanish. Yet your bank balance, that concert ticket you bought, and cloud databases all depend on many machines agreeing on one story. The trick is a **consensus algorithm** — and the most popular one, Raft, is built to be understandable. Today: how computers vote.",
+  "builds_on": [{"slug": "you-cant-have-it-all", "label": "The CAP Theorem"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Elect a leader, replicate the log",
+      "body": "Raft's core idea: don't let everyone decide — **elect one leader**. The machines hold an election; whoever gets a majority of votes becomes leader for a term. All changes go through the leader, which writes them to a **log** and copies that log to the followers. A change is only 'committed' once a **majority** have stored it. One boss, one ordered list of changes, replicated — that's how they stay in sync."
+    },
+    {
+      "type": "prose",
+      "heading": "Why 'majority' is the magic word",
+      "body": "Requiring a **majority** (a quorum) to agree is what makes it survive failures. With 5 machines, any decision needs 3. If 2 crash, the 3 survivors still form a majority and carry on. And because any two majorities must overlap in at least one machine, you can never accidentally elect two leaders with conflicting histories — the overlap machine won't vote for a candidate that's behind. Majorities are how the system tolerates crashes *without* ever contradicting itself."
+    },
+    {
+      "type": "diagram",
+      "caption": "Elect a leader by majority vote; the leader replicates an ordered log; a change commits once a majority has it. Survives a minority failing.",
+      "mermaid": "flowchart TD\n    Elect[\"Election: majority picks a leader\"] --> Leader[\"Leader\"]\n    Leader --> Log[\"Append change to log\"]\n    Log --> Rep[\"Replicate to followers\"]\n    Rep --> Q{{\"Majority stored it?\"}}\n    Q -->|yes| Commit[\"Committed ✅\"]\n    Q -->|no| Wait[\"Not yet\"]\n    style Commit fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "This is what powers 'the cloud'",
+      "body": "Consensus (Raft, and its famously-hard predecessor Paxos) is the quiet backbone of distributed databases, coordination services (etcd, ZooKeeper), and anything that must stay consistent across machines — including the systems that hold your money and your data. When people say a database is 'strongly consistent and fault-tolerant', a consensus algorithm is doing the heavy lifting underneath.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "EgKmNEM40R0",
+      "caption": "The Raft consensus algorithm — leader election and log replication, made simple."
+    }
+  ],
+  "takeaways": [
+    "**Consensus** = getting many unreliable machines to agree on one ordered story.",
+    "Raft **elects a leader**; all changes flow through it and replicate to followers as a **log**.",
+    "A change **commits** only once a **majority (quorum)** has stored it.",
+    "Majorities overlap, so you can't get two conflicting leaders — crash-tolerant *and* consistent.",
+    "Consensus is the backbone of strongly-consistent, fault-tolerant distributed systems (and the cloud)."
+  ],
+  "quiz": [
+    {
+      "q": "How does Raft avoid chaos among many machines?",
+      "options": ["Everyone decides independently", "It elects one leader that owns an ordered log and replicates it", "It uses the fastest machine only", "It never changes data"],
+      "answer": 1,
+      "explain": "One leader + one replicated log = a single agreed order of changes."
+    },
+    {
+      "q": "Why require a majority to commit a change?",
+      "options": ["It's faster", "It tolerates a minority failing while guaranteeing no two conflicting decisions (majorities overlap)", "It saves storage", "Tradition"],
+      "answer": 1,
+      "explain": "Any two majorities share a machine, so conflicting histories can't both win — and you survive a minority crashing."
+    },
+    {
+      "q": "CALLBACK: How does consensus relate to yesterday's CAP theorem?",
+      "options": ["Unrelated", "Consensus is how a 'CP' system stays consistent — it may refuse progress without a majority (sacrificing availability) rather than contradict itself", "It makes CAP false", "It only affects reads"],
+      "answer": 1,
+      "explain": "When the network splits, a consensus system without a majority stops committing — choosing consistency over availability. It's CAP's C-vs-A trade-off made concrete.",
+      "callback": true,
+      "from": "Day 10 · CAP theorem"
+    }
+  ],
+  "tg_quiz": {
+    "q": "In Raft, a change is 'committed' once…",
+    "options": ["The leader alone saves it", "A majority of machines have stored it", "All machines reply"],
+    "answer": 1,
+    "correct": "Right — a majority (quorum) makes it official and crash-tolerant.",
+    "wrong": "It's once a majority stores it — that's what tolerates failures safely.",
+    "explain": "Overlapping majorities prevent two conflicting leaders."
+  },
+  "go_deeper": [
+    {"label": "The Secret Lives of Data — Raft (visual)", "url": "https://thesecretlivesofdata.com/raft/", "note": "An animated, click-through Raft explainer."},
+    {"label": "Raft consensus", "url": "https://raft.github.io/", "note": "The paper, visualizations, and implementations."}
+  ]
+}

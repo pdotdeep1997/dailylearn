@@ -1,0 +1,83 @@
+{
+  "slug": "you-cant-have-it-all",
+  "date": "2026-09-17",
+  "slot": 1,
+  "track": "Software & Systems",
+  "track_lesson": 8,
+  "read_minutes": 6,
+  "title": "The CAP Theorem: Pick Two, You Can't Have Three",
+  "subtitle": "Spread data across many machines and physics forces a brutal choice: when the network splits, do you stay consistent or stay available? You can't do both.",
+  "hook": "Once your data lives on more than one machine, a hard truth kicks in — proven, not opinion. When the network between your machines hiccups (and it *will*), you must choose: keep answering requests but risk serving different answers, or refuse to answer to stay perfectly correct. You cannot have both. This is the **CAP theorem**, and it quietly shapes every large system on Earth. Today: the trade-off you can't escape.",
+  "builds_on": [{"slug": "where-your-data-lives", "label": "Where Your Data Lives"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The three letters",
+      "body": "CAP names three things a distributed data store might want:\n- **C — Consistency**: every read sees the latest write (all machines agree).\n- **A — Availability**: every request gets an answer, no errors.\n- **P — Partition tolerance**: it keeps working even when the network between machines breaks.\n\nThe theorem: when a **partition** happens (machines can't talk), you can guarantee **C or A, but not both.** And since network failures are inevitable at scale, P isn't optional — so the real, live choice is always **C vs. A**."
+    },
+    {
+      "type": "diagram",
+      "caption": "When the network splits, you're forced to choose: refuse answers to stay consistent (CP), or keep answering and risk staleness (AP).",
+      "mermaid": "flowchart TD\n    Split[\"Network partition:\\nmachines can't talk\"] --> Choice{{\"Choose\"}}\n    Choice --> CP[\"CP: refuse/blocks\\n→ stays correct, less available\"]\n    Choice --> AP[\"AP: keep answering\\n→ stays up, may be stale\"]\n    style CP fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style AP fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The choice depends on the job",
+      "body": "A bank ledger picks **consistency** — better to reject a transaction than double-spend (CP). A social feed picks **availability** — better to show a slightly stale like-count than an error page (AP). Neither is 'right'; the correct answer depends on what breaks worse for your users: a wrong answer, or no answer. Great system design is knowing which side of CAP each part of your product wants."
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The nuance nobody tells you",
+      "body": "CAP is a simplification — the choice isn't all-or-nothing. Modern systems tune it per-operation and add 'eventual consistency' (answer now, reconcile a moment later). But the core lesson holds: at scale, correctness and availability trade against each other whenever the network misbehaves, and pretending otherwise is how outages happen.",
+      "attribution": ""
+    },
+    {
+      "type": "video",
+      "youtube_id": "fAWO2DRLmXw",
+      "caption": "The CAP theorem — consistency vs. availability, explained."
+    }
+  ],
+  "takeaways": [
+    "**CAP**: Consistency, Availability, Partition-tolerance — a distributed store can't guarantee all three.",
+    "Network **partitions** are inevitable at scale, so P is a must — the live choice is **C vs. A**.",
+    "**CP** (banks): refuse rather than serve wrong data. **AP** (feeds): stay up, tolerate staleness.",
+    "Neither is universally right — it depends on whether a *wrong* answer or *no* answer hurts more.",
+    "Reality is tunable (per-operation, 'eventual consistency'), but the core trade-off is real."
+  ],
+  "quiz": [
+    {
+      "q": "During a network partition, CAP says you must choose between…",
+      "options": ["Speed and cost", "Consistency and Availability", "CPU and memory", "Reads and writes"],
+      "answer": 1,
+      "explain": "Partitions are unavoidable, so it's C vs. A — you can't keep both."
+    },
+    {
+      "q": "A bank ledger should lean which way?",
+      "options": ["AP — stay available, tolerate stale/wrong balances", "CP — stay consistent, refuse rather than risk double-spend", "Neither matters", "Always both"],
+      "answer": 1,
+      "explain": "For money, a wrong answer is worse than no answer — choose consistency."
+    },
+    {
+      "q": "CALLBACK: Why is 'partition tolerance' non-negotiable — and which earlier lesson explains why networks split?",
+      "options": ["It's optional", "Networks are packet-switched and can drop/reroute (Day 6) — links fail, so machines will sometimes be unable to talk", "Networks never fail", "Because of Big-O"],
+      "answer": 1,
+      "explain": "From the networking lesson: the internet is unreliable by design. Since partitions WILL happen, you must plan for them — leaving the real choice as C vs. A.",
+      "callback": true,
+      "from": "Day 6 · the network"
+    }
+  ],
+  "tg_quiz": {
+    "q": "When a distributed system's network splits, CAP forces a choice between…",
+    "options": ["Consistency vs Availability", "Speed vs cost", "Reads vs writes"],
+    "answer": 0,
+    "correct": "Right — C vs A. You can't keep both during a partition.",
+    "wrong": "It's Consistency vs Availability — partitions force the pick.",
+    "explain": "Banks pick C; social feeds pick A."
+  },
+  "go_deeper": [
+    {"label": "CAP theorem", "url": "https://en.wikipedia.org/wiki/CAP_theorem", "note": "The formal statement and its nuances."},
+    {"label": "Consistency models & eventual consistency", "url": "https://jepsen.io/consistency", "note": "How real systems tune the trade-off."}
+  ]
+}

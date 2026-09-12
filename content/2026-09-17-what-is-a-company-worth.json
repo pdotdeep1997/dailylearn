@@ -1,0 +1,89 @@
+{
+  "slug": "what-is-a-company-worth",
+  "date": "2026-09-17",
+  "slot": 2,
+  "track": "Money & Markets",
+  "track_lesson": 8,
+  "read_minutes": 6,
+  "title": "What Is a Company Actually Worth?",
+  "subtitle": "A stock isn't a lottery ticket — it's a sliver of a real business. So its value comes from the cash that business will throw off. Here's how pros pin a number on it.",
+  "hook": "People treat stocks like betting chips, but a share is literally a *slice of a company* — a claim on its future profits. So the real question isn't 'will the price go up?' but 'what is this business worth?' Answer that, compare it to the price, and you're investing instead of gambling. Today: the two ways professionals value a company — and why the number is always part art.",
+  "builds_on": [{"slug": "the-bond-market-alarm", "label": "The Bond Market Alarm"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Method 1: value the future cash (DCF)",
+      "body": "A business is worth the cash it will generate for its owners over time — brought back to today's dollars. Estimate future free cash flows, **discount** each back to the present (our Day 4 tool), and sum them. That's the **intrinsic value**. It's the 'first principles' way: a company is a machine for producing future cash, and it's worth the discounted pile of that cash."
+    },
+    {
+      "type": "prose",
+      "heading": "Method 2: compare to peers (multiples)",
+      "body": "The quick, market-based way: use a **multiple** like the **P/E ratio** (price ÷ earnings). If similar companies trade at 15× earnings and this one earns $10/share, a rough value is $150. Multiples are fast and reflect what the market is actually paying — but they inherit the market's moods (in a bubble, everything's 'cheap' relative to inflated peers). DCF asks 'what's it worth?'; multiples ask 'what are similar things selling for?'"
+    },
+    {
+      "type": "diagram",
+      "caption": "Two lenses on the same question: discount the company's future cash to today (DCF), or compare it to what peers fetch (multiples).",
+      "mermaid": "flowchart TD\n    Co[\"A company =\\nfuture cash for owners\"] --> DCF[\"DCF: discount future\\ncash to today (intrinsic)\"]\n    Co --> Mult[\"Multiples: P/E vs peers\\n(relative)\"]\n    DCF --> Val[\"Estimate of value\"]\n    Mult --> Val\n    Val --> Cmp[\"Compare to price →\\ncheap or dear?\"]\n    style Val fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Value is an opinion with a spreadsheet",
+      "body": "Both methods rest on guesses — future growth, the discount rate, which 'peers' count. Nudge an assumption and the 'value' swings wildly, which is exactly why two analysts value the same company at half and double. Valuation isn't finding a true number; it's building a defensible range and knowing which assumptions drive it. Precision here is a costume, not a fact.",
+      "attribution": ""
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Price vs. value",
+      "body": "The whole game: <b>price</b> is what the market charges today; <b>value</b> is what it's actually worth. They wander apart constantly (fear, hype, mania). Investing is buying when value comfortably exceeds price — with a 'margin of safety' for how wrong your estimate might be."
+    },
+    {
+      "type": "video",
+      "youtube_id": "kEP_FIyX72I",
+      "caption": "A worked example: four steps to estimate the value of any stock."
+    }
+  ],
+  "takeaways": [
+    "A share is a **slice of a business** — its value comes from future profits, not vibes.",
+    "**DCF**: discount the company's future cash to today = intrinsic value.",
+    "**Multiples** (like P/E): value it relative to what similar companies fetch — fast, but moody.",
+    "Both rely on assumptions; small changes swing the answer, so build a **range**, not a false point.",
+    "Invest when **value > price**, with a margin of safety for being wrong."
+  ],
+  "quiz": [
+    {
+      "q": "Fundamentally, a stock's value comes from…",
+      "options": ["How much it went up recently", "The future cash the business will generate for owners", "Its ticker symbol", "Random chance"],
+      "answer": 1,
+      "explain": "A share is a claim on a real company's future profits."
+    },
+    {
+      "q": "A company earns $10/share; peers trade at 15× earnings. Rough value via multiples?",
+      "options": ["$10", "$150", "$15", "$1,500"],
+      "answer": 1,
+      "explain": "P/E multiple: $10 × 15 = $150. Quick, relative, and only as good as the peer comparison."
+    },
+    {
+      "q": "CALLBACK + BOSS: DCF values a company the same way we valued a bond (Day 4/7). What's the shared engine?",
+      "options": ["Nothing", "Discount future cash flows back to today and sum them — a bond and a business are both streams of future cash", "Both use P/E", "Both are risk-free"],
+      "answer": 1,
+      "explain": "Bond or business, valuation = present value of future cash. The discount-and-sum move you learned for bonds is exactly DCF for a company.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 4 · discounting"
+    }
+  ],
+  "tg_quiz": {
+    "q": "What most fundamentally determines a company's value?",
+    "options": ["Recent price moves", "Its future cash flows (discounted to today)", "Its logo"],
+    "answer": 1,
+    "correct": "Right — a business is worth its future cash, brought to today.",
+    "wrong": "It's the future cash it'll generate, discounted to today.",
+    "explain": "Price is what you pay; value is what it's worth."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Intrinsic value & DCF", "url": "https://www.investopedia.com/terms/i/intrinsicvalue.asp", "note": "The first-principles method."},
+    {"label": "P/E ratio explained", "url": "https://www.investopedia.com/terms/p/price-earningsratio.asp", "note": "The quick relative method."}
+  ]
+}

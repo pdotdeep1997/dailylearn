@@ -1,0 +1,81 @@
+{
+  "slug": "no-reward-without-risk",
+  "date": "2026-09-12",
+  "slot": 1,
+  "track": "Money & Markets",
+  "track_lesson": 4,
+  "read_minutes": 5,
+  "title": "There's No Free Lunch: Risk and Return",
+  "subtitle": "Anyone promising high returns with no risk is lying or confused. Understand the trade-off and you'll never fall for it.",
+  "hook": "If an investment offered guaranteed 20% a year with zero risk, everyone would pour money in until the return got competed down to boring. That never-quite-happens is the deepest law of markets: **you only get higher expected returns by taking more risk.** No exceptions that last. Today: what 'risk' actually means, and why the promise of high-return-no-risk is always a red flag.",
+  "builds_on": [{"slug": "putting-a-price-on-the-future", "label": "Putting a Price on the Future"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Risk = how much it can swing",
+      "body": "In finance, 'risk' mostly means **volatility** — how much an investment's value bounces around. A savings account barely moves (low risk, low return). Stocks lurch up and down (higher risk) and, *on average over long periods*, pay more to compensate you for the stomach-churning ride.\n\nWhy the link? Because investors dislike uncertainty. To get people to hold a bumpy asset, it has to dangle a higher expected reward — the **risk premium**. Remove the premium and nobody holds the risky thing."
+    },
+    {
+      "type": "diagram",
+      "caption": "The risk–return line: safer assets sit low-left, riskier ones climb up-right. You move up the reward axis only by moving right on risk.",
+      "mermaid": "flowchart LR\n    Cash[\"Cash / savings\\nlow risk, low return\"] --> Bonds[\"Bonds\\nmedium\"]\n    Bonds --> Stocks[\"Stocks\\nhigher risk & return\"]\n    Stocks --> Spec[\"Speculative bets\\nhighest risk\"]\n    style Cash fill:#d7f0e3,stroke:#2e7d5b,color:#111\n    style Spec fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The scam detector",
+      "body": "\"High returns, guaranteed, no risk\" is the signature of a fraud (see: every Ponzi scheme). Real high returns come with real chances of loss. If someone has genuinely found risk-free excess return, they don't need your money — and the market would erase it fast anyway."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Risk ≠ ruin, though",
+      "body": "Volatility isn't the only risk. The one that actually matters is **permanent loss** — being forced to sell at the bottom, or an asset going to zero. A bumpy asset you can hold for 20 years may be *less* risky for you than a 'stable' one that quietly erodes to inflation. Match the risk to your time horizon and your ability to not panic."
+    },
+    {
+      "type": "video",
+      "youtube_id": "B7_bzCIZ1HY",
+      "caption": "Risk vs. return for beginners — why they're two sides of the same coin."
+    }
+  ],
+  "takeaways": [
+    "Higher **expected** return requires taking more **risk** — the risk premium.",
+    "'Risk' usually means **volatility** (how much value swings), but the real danger is **permanent loss**.",
+    "Cash < bonds < stocks < speculation, roughly, on the risk–return line.",
+    "'High return, no risk, guaranteed' = a red flag for fraud, every time.",
+    "The right risk level depends on your **time horizon** and your nerve."
+  ],
+  "quiz": [
+    {
+      "q": "Why do riskier assets tend to offer higher expected returns?",
+      "options": ["Governments require it", "They must dangle a 'risk premium' to get anyone to hold the uncertainty", "They're newer", "It's random"],
+      "answer": 1,
+      "explain": "Investors dislike uncertainty, so a bumpy asset must pay more to be held."
+    },
+    {
+      "q": "Someone offers 'guaranteed 15%/yr, zero risk.' Best response?",
+      "options": ["Invest everything", "Treat it as a red flag — risk-free excess return doesn't persist", "Ask for 20%", "Borrow to invest more"],
+      "answer": 1,
+      "explain": "That combination is the calling card of Ponzi schemes. Real reward comes with real risk."
+    },
+    {
+      "q": "BOSS: A retiree needs the money next year; a 25-year-old won't touch it for 30 years. Who can rationally hold more volatile stocks?",
+      "options": ["The retiree", "The 25-year-old — a long horizon lets short-term swings average out", "Neither should hold stocks", "Both equally"],
+      "answer": 1,
+      "explain": "Volatility hurts most when you're forced to sell soon. Time horizon changes what 'risky' means for you.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "\"Guaranteed 15% a year, zero risk\" — what is it?",
+    "options": ["A great deal", "A red flag for fraud", "Normal for stocks"],
+    "answer": 1,
+    "correct": "Right — risk-free excess return doesn't last. Classic scam signal.",
+    "wrong": "It's a red flag — real returns come with real risk.",
+    "explain": "No free lunch: reward requires risk."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Risk-Return Tradeoff", "url": "https://www.investopedia.com/terms/r/riskreturntradeoff.asp", "note": "The core relationship, with examples."},
+    {"label": "Volatility vs. risk", "url": "https://www.investopedia.com/ask/answers/what-is-the-difference-between-standard-deviation-and-variance/", "note": "Why swings aren't the whole story."}
+  ]
+}

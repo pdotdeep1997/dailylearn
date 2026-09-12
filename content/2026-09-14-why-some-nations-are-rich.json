@@ -1,0 +1,84 @@
+{
+  "slug": "why-some-nations-are-rich",
+  "date": "2026-09-14",
+  "slot": 0,
+  "track": "History & Civilization",
+  "track_lesson": 5,
+  "read_minutes": 6,
+  "title": "Why Some Nations Are Rich and Others Aren't",
+  "subtitle": "Same geography, same resources, wildly different fortunes. The best answer isn't culture or climate — it's the rules of the game.",
+  "hook": "Nogales, Arizona and Nogales, Mexico sit on the same desert, share ancestry, even a name — yet one is far richer than the other. The border is the only difference. Multiply that puzzle across the world and you get the biggest question in economic history: why are some nations rich and others poor? The most powerful answer is deceptively boring — **institutions**: the rules that decide who gets to build, own, and keep.",
+  "builds_on": [{"slug": "how-we-invented-government", "label": "How We Invented Government"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Inclusive vs. extractive",
+      "body": "Economists Acemoglu and Robinson split institutions into two kinds. **Inclusive** ones spread power and opportunity: secure property rights, fair courts, open markets — so ordinary people invest and innovate because they'll keep the rewards. **Extractive** ones concentrate power and squeeze the many to enrich a few — so why build anything if it'll be seized?\n\nSame people, same land: give them inclusive rules and they prosper; give them extractive ones and they stagnate. The rules, not the resources, do the heavy lifting."
+    },
+    {
+      "type": "diagram",
+      "caption": "The same population under different rules diverges: inclusive institutions invite investment; extractive ones smother it.",
+      "mermaid": "flowchart TD\n    People[\"Same people & resources\"] --> Inc[\"Inclusive rules\\n(rights, fair courts, open markets)\"]\n    People --> Ext[\"Extractive rules\\n(power & wealth for a few)\"]\n    Inc --> Grow[\"Invest, innovate → prosperity\"]\n    Ext --> Stag[\"Why build? → stagnation\"]\n    style Grow fill:#d7f0e3,stroke:#2e7d5b,color:#111\n    style Stag fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Property rights are the quiet engine",
+      "body": "The single most underrated ingredient: if you're confident you'll keep what you build, you'll build. Secure, enforceable property rights (and courts that mean it) turn effort into investment. Where a strongman or a corrupt official can seize your work, people rationally stop trying — and a whole economy can idle on that fear alone.",
+      "attribution": ""
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "It's contested, to be fair",
+      "body": "The 'institutions rule everything' thesis is influential but debated — geography (Jared Diamond) and culture also clearly matter, and institutions themselves have deep historical roots. Most historians land on 'institutions are a huge factor, interacting with geography and history,' not a single silver bullet. Hold it as a powerful lens, not gospel."
+    },
+    {
+      "type": "video",
+      "youtube_id": "7mg21Txh-xs",
+      "caption": "Inclusive vs. extractive institutions — the 'Why Nations Fail' thesis in brief."
+    }
+  ],
+  "takeaways": [
+    "Neighboring places with the same geography can diverge hugely — pointing at **rules**, not resources.",
+    "**Inclusive** institutions spread rights & opportunity → people invest and innovate.",
+    "**Extractive** institutions concentrate power → little reason to build, so stagnation.",
+    "**Secure property rights** may be the quiet engine: keep what you build, and you'll build.",
+    "It's a powerful lens, not the whole story — geography and culture matter too."
+  ],
+  "quiz": [
+    {
+      "q": "What best explains the Nogales (US vs Mexico) wealth gap?",
+      "options": ["Different climate", "Different institutions / rules on the two sides of the border", "Different natural resources", "Different languages"],
+      "answer": 1,
+      "explain": "Same geography and ancestry — the border (institutions) is the key difference."
+    },
+    {
+      "q": "What defines an 'extractive' institution?",
+      "options": ["It shares power and opportunity broadly", "It concentrates power and wealth in a few, discouraging others from building", "It has no government", "It only mines resources"],
+      "answer": 1,
+      "explain": "Extractive rules squeeze the many for the few, killing incentives to invest."
+    },
+    {
+      "q": "CALLBACK + BOSS: The state (Day 5) can build inclusive OR extractive institutions. What determines which way prosperity goes?",
+      "options": ["The size of the army", "Whether the rules let ordinary people keep the rewards of what they build (secure rights, fair courts)", "The national language", "Luck alone"],
+      "answer": 1,
+      "explain": "A state is just machinery; whether it invites or smothers investment depends on whether its rules are inclusive. Institutions are how the state's power turns into wealth — or doesn't.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 5 · the state"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Two towns, same desert & ancestry, one much richer. Biggest reason?",
+    "options": ["Climate", "Different institutions (the rules)", "Different crops"],
+    "answer": 1,
+    "correct": "Right — the rules of the game, not the resources.",
+    "wrong": "It's institutions — the rules people live under, not geography.",
+    "explain": "Inclusive rules invite investment; extractive ones smother it."
+  },
+  "go_deeper": [
+    {"label": "Why Nations Fail — the thesis", "url": "https://en.wikipedia.org/wiki/Why_Nations_Fail", "note": "Inclusive vs extractive institutions."},
+    {"label": "The counter-case: geography (Guns, Germs, and Steel)", "url": "https://en.wikipedia.org/wiki/Guns,_Germs,_and_Steel", "note": "Why it's a debate, not a settled answer."}
+  ]
+}

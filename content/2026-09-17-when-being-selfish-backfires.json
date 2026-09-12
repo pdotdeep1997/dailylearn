@@ -1,0 +1,83 @@
+{
+  "slug": "when-being-selfish-backfires",
+  "date": "2026-09-17",
+  "slot": 0,
+  "track": "Ideas & Minds",
+  "track_lesson": 7,
+  "read_minutes": 6,
+  "title": "Game Theory: When Everyone Acting Smart Makes Everyone Worse Off",
+  "subtitle": "Two prisoners, each doing the rational thing, both end up worse than if they'd cooperated. This one puzzle explains arms races, price wars, and climate stalemates.",
+  "hook": "Here's a puzzle that has haunted economists for 70 years. Two partners in crime are interrogated separately. If both stay silent, they get light sentences. If one betrays the other, the betrayer walks free and the silent one rots. If both betray, both get medium sentences. The gut-punch: no matter what the other does, betraying is the 'rational' choice — so both betray, and both end up *worse* than if they'd trusted each other. Welcome to **game theory**.",
+  "builds_on": [{"slug": "your-brain-cant-do-exponents", "label": "Exponential Intuition"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The prisoner's dilemma",
+      "body": "Work through it from one prisoner's view: 'If my partner stays silent, betraying sets me free (better than a light sentence). If my partner betrays, betraying gives me medium instead of the worst. Either way, betraying wins.' Both reason identically, both betray, both get the medium sentence — when mutual silence would have been better for both. Individually rational, collectively terrible. That gap is the whole field."
+    },
+    {
+      "type": "diagram",
+      "caption": "Each prisoner's best individual move is to betray — so both do, landing on the outcome that's worse for both than cooperating.",
+      "mermaid": "flowchart TD\n    Me{{\"My choice\"}} --> Bo[\"If partner stays silent:\\nbetray → I go free\"]\n    Me --> Bt[\"If partner betrays:\\nbetray → medium, not worst\"]\n    Bo --> Dom[\"Betray dominates either way\"]\n    Bt --> Dom\n    Dom --> Both[\"Both betray → both medium\\n(worse than both silent!)\"]\n    style Both fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "This is everywhere",
+      "body": "Arms races (both nations overspend on weapons), price wars (both stores slash prices into the ground), overfishing, doping in sports, climate inaction — all prisoner's dilemmas. Each player, acting sensibly for themselves, produces a result nobody wanted. Spotting the shape tells you *why* smart people get stuck in bad outcomes: the incentives are the trap, not the people."
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "The escape hatch: repetition",
+      "body": "One-shot, betrayal wins. But if you'll play *many rounds* with the same person, cooperation can emerge — the best-known strategy is <b>tit-for-tat</b>: start nice, then mirror what the other did last time. Reputation, contracts, laws, and ongoing relationships are all ways humans turn a one-shot dilemma into a repeated game where trust pays. Most of civilization is machinery for escaping the prisoner's dilemma."
+    },
+    {
+      "type": "video",
+      "youtube_id": "hBOoSKDv7BY",
+      "caption": "The prisoner's dilemma — game theory's most famous puzzle, explained."
+    }
+  ],
+  "takeaways": [
+    "**Game theory** studies decisions where your best move depends on others' moves.",
+    "In the **prisoner's dilemma**, betraying is individually rational — so both betray and both lose.",
+    "Individually rational + collectively terrible = the core tension.",
+    "Arms races, price wars, overfishing, climate inaction are all this shape.",
+    "**Repetition** (and reputation, contracts, law) lets cooperation emerge — e.g. **tit-for-tat**."
+  ],
+  "quiz": [
+    {
+      "q": "In a one-shot prisoner's dilemma, why do both betray?",
+      "options": ["They're evil", "Betraying is the better move whatever the other does — so both choose it", "They can't count", "They're forced to"],
+      "answer": 1,
+      "explain": "Betrayal 'dominates', yet mutual betrayal is worse for both than mutual silence."
+    },
+    {
+      "q": "What lets cooperation emerge in real life?",
+      "options": ["Nothing", "Repeated interaction + reputation/contracts (e.g., tit-for-tat)", "Bigger prizes", "Playing faster"],
+      "answer": 1,
+      "explain": "Repetition turns a one-shot trap into a game where trust can pay off over time."
+    },
+    {
+      "q": "CALLBACK + BOSS: Game theory weighs each move's payoff. Which earlier tool do you use to compare those payoffs under uncertainty?",
+      "options": ["Compounding", "Expected value (Day 4) — probability × payoff for each choice", "Big-O notation", "The memory hierarchy"],
+      "answer": 1,
+      "explain": "Choosing a move means comparing expected payoffs — game theory is EV applied when the payoffs depend on other players' choices too.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 4 · expected value"
+    }
+  ],
+  "tg_quiz": {
+    "q": "In the one-shot prisoner's dilemma, the rational outcome is…",
+    "options": ["Both cooperate", "Both betray (worse for both)", "One always wins"],
+    "answer": 1,
+    "correct": "Right — both betray, both worse off. That's the tragedy.",
+    "wrong": "Both betray — individually rational, collectively worse. That's the dilemma.",
+    "explain": "Repetition + reputation is how real life escapes it."
+  },
+  "go_deeper": [
+    {"label": "Prisoner's dilemma", "url": "https://en.wikipedia.org/wiki/Prisoner%27s_dilemma", "note": "The setup and its many real-world forms."},
+    {"label": "Axelrod's tit-for-tat tournaments", "url": "https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation", "note": "How cooperation wins when games repeat."}
+  ]
+}
