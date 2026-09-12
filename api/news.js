@@ -17,11 +17,12 @@ async function readJson(req) {
 module.exports = async (req, res) => {
   const url = new URL(req.url, "http://x");
   const q = url.searchParams;
-  const secret = process.env.CRON_SECRET;
+  // Auth: prefer a dedicated NEWS_KEY; fall back to CRON_SECRET if you'd rather reuse it.
+  const secret = process.env.NEWS_KEY || process.env.CRON_SECRET;
   const bearer = (req.headers["authorization"] || "") === `Bearer ${secret}`;
   const keyOk = secret && q.get("key") === secret;
   if (secret && !bearer && !keyOk) {
-    return res.status(401).json({ ok: false, error: "unauthorized (pass ?key=CRON_SECRET)" });
+    return res.status(401).json({ ok: false, error: "unauthorized (pass ?key=NEWS_KEY)" });
   }
 
   const token = process.env.TELEGRAM_BOT_TOKEN;
