@@ -1,0 +1,81 @@
+{
+  "slug": "free-money-hiding-in-a-curve",
+  "date": "2026-09-09",
+  "slot": 2,
+  "track": "Money & Markets",
+  "track_lesson": 2,
+  "read_minutes": 5,
+  "title": "The Most Important Curve in Finance (It Prints Money While You Sleep)",
+  "subtitle": "Would you take $100 now or $100 next year? Pin down *why* you said 'now' and you've unlocked how to value almost anything.",
+  "hook": "$100 today or $100 in a year? You said now — obviously. But *why*? Nail the reason and you've cracked the single most important idea in all of finance: the **time value of money**. It's the engine under loans, mortgages, investments, and that scary yield curve we'll meet later. Yesterday we said money is a store of value; today we discover the store quietly *leaks* — and that leak is measurable, exploitable, and kind of magical.",
+  "builds_on": [{"slug": "what-money-actually-is", "label": "Money Is a Story We All Believe"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Why later money is worth less",
+      "body": "A dollar today beats a dollar tomorrow for three stacked reasons:\n\n- **Opportunity** — invest today's dollar and it grows.\n- **Risk** — a promised future dollar might never show up.\n- **Inflation** — a future dollar probably buys less.\n\nSo future money has to be **discounted** to compare it with money now. The rate we discount at — the **interest rate** — is basically *the price of time.*"
+    },
+    {
+      "type": "prose",
+      "heading": "Compounding: interest on your interest",
+      "body": "Put money to work at some interest rate and it grows. The magic: next year you earn interest *on last year's interest too*. That's **compounding**, and it curves upward instead of climbing in a straight line.\n\n$100 at 10%/yr → $110, then $121 (not $120 — you earned interest on the extra $10), then $133… After 30 years: about **$1,745**. From a boring 10%. The formula is `Future = Present × (1 + r)ⁿ`, and all the drama lives in that little exponent `n`."
+    },
+    {
+      "type": "diagram",
+      "caption": "Compounding isn't a ladder, it's a ski jump. Each year multiplies the whole pile — so the gap widens dramatically over time.",
+      "mermaid": "flowchart LR\n    P[\"$100 today\"] --> Y1[\"Yr1 ×1.1\\n$110\"]\n    Y1 --> Y2[\"Yr2 ×1.1\\n$121\"]\n    Y2 --> Y3[\"Yr3 ×1.1\\n$133\"]\n    Y3 --> Yn[\"…\"]\n    Yn --> Big[\"Yr30\\n≈ $1,745\"]\n    style Big fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Run it backwards = value ANYTHING",
+      "body": "Here's the payoff. If money grows forward by ×(1+r), then to find what *future* money is worth **today**, you run it backwards — you **divide**: `Present = Future / (1 + r)ⁿ`. That's **discounting**. $110 next year at 10% is worth $100 now. This one move lets you price a bond, a stock, a rental, a whole company — translate any future cash into today's dollars and compare. Almost all of valuation is just this."
+    },
+    {
+      "type": "video",
+      "youtube_id": "XKnL2FI4mr0",
+      "caption": "Time value, compounding, and discounting with clean worked examples."
+    }
+  ],
+  "takeaways": [
+    "Money has a **time value**: now beats later (opportunity, risk, inflation).",
+    "The **interest rate** is the price of time.",
+    "**Compounding** earns interest on interest: `Future = Present × (1+r)ⁿ` — a curve, not a line.",
+    "**Discounting** reverses it (`Present = Future / (1+r)ⁿ`) — the key to valuing any future cash.",
+    "We underrate compounding because we think in straight lines — so fees and small rates matter hugely over time."
+  ],
+  "quiz": [
+    {
+      "q": "$100 at 10% compounded, after 2 years?",
+      "options": ["$120", "$121", "$110", "$200"],
+      "answer": 1,
+      "explain": "$110 after year 1, then 10% of $110 = $121. The extra $1 is interest on interest."
+    },
+    {
+      "q": "To find what a future payment is worth today, you…",
+      "options": ["Multiply by (1+r)ⁿ", "Divide by (1+r)ⁿ — discount it", "Add the rate", "Ignore time"],
+      "answer": 1,
+      "explain": "Discounting reverses compounding. It's the backbone of valuing bonds, stocks, and companies."
+    },
+    {
+      "q": "CALLBACK: Yesterday we said money is a 'store of value.' How does today complicate that?",
+      "options": ["It doesn't — money holds value perfectly", "The store leaks over time (opportunity + risk + inflation), so future money is worth less — that's why we discount", "Only coins leak value", "Value only changes in a crisis"],
+      "answer": 1,
+      "explain": "Money stores value across time — imperfectly. That leak is exactly what the interest rate measures.",
+      "callback": true,
+      "from": "Day 1 · money as a store of value"
+    }
+  ],
+  "tg_quiz": {
+    "q": "$100 at 10%, compounded — after 2 years?",
+    "options": ["$120", "$121", "$110"],
+    "answer": 1,
+    "correct": "Nice — $121. That extra $1 is interest on interest.",
+    "wrong": "It's $121 — you earn 10% on $110, not just the original $100.",
+    "explain": "Compounding: interest earns interest."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Time Value of Money", "url": "https://www.investopedia.com/terms/t/timevalueofmoney.asp", "note": "Formulas + more examples."},
+    {"label": "The Rule of 72", "url": "https://www.investopedia.com/terms/r/ruleof72.asp", "note": "72 ÷ rate ≈ years to double. Mental-math superpower."}
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "putting-a-price-on-the-future",
+  "date": "2026-09-11",
+  "slot": 0,
+  "track": "Money & Markets",
+  "track_lesson": 3,
+  "read_minutes": 6,
+  "title": "How to Put a Price on the Future",
+  "subtitle": "A company is worth the cash it'll throw off for years. A bond is a stream of future payments. So how do you price a river of money that hasn't arrived yet?",
+  "hook": "Almost everything valuable is really a *promise of future money*: a rental spits out rent, a bond pays coupons, a company earns profits for decades. So the trillion-dollar question is: what is a stream of *future* cash worth **today**? Yesterday you learned to run compounding backwards. Today we turn that one move into the master tool of finance — **discounted cash flow** — the thing every analyst, investor, and founder secretly runs in their head.",
+  "builds_on": [{"slug": "free-money-hiding-in-a-curve", "label": "The Most Important Curve in Finance"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "One future payment → today's value",
+      "body": "Recall discounting: `Present = Future / (1 + r)ⁿ`. At a 10% discount rate, $110 next year is worth $100 now; $121 in two years is *also* worth $100 now. The further away the cash, the more you shrink it — because waiting costs you (opportunity, risk, inflation).\n\nThe discount rate `r` is the dial. Crank it up (riskier, or higher interest rates) and future money is worth *less* today. That single dial is why rising interest rates hammer the price of everything from tech stocks to houses."
+    },
+    {
+      "type": "prose",
+      "heading": "Many payments → discounted cash flow (DCF)",
+      "body": "A real asset pays out over *many* years. So you **discount each future payment back to today and add them up**. That sum is the asset's fair value right now. That's the whole DCF method:\n\n`Value = CF₁/(1+r) + CF₂/(1+r)² + CF₃/(1+r)³ + …`\n\nEstimate the future cash flows, pick a discount rate for the risk, discount, sum. Every valuation you'll ever see — a stock, a startup, a rental, a bond — is a dressed-up version of this."
+    },
+    {
+      "type": "diagram",
+      "caption": "Each future year's cash gets shrunk back to 'today dollars' — more shrinkage the further out — then summed into one value.",
+      "mermaid": "flowchart LR\n    Y1[\"Yr1: $100\"] -->|÷1.1| PV1[\"$91\"]\n    Y2[\"Yr2: $100\"] -->|÷1.1²| PV2[\"$83\"]\n    Y3[\"Yr3: $100\"] -->|÷1.1³| PV3[\"$75\"]\n    PV1 --> Sum[\"Add up =\\nvalue today\"]\n    PV2 --> Sum\n    PV3 --> Sum\n    style Sum fill:#d7f0e3,stroke:#2e7d5b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "Garbage in, garbage out",
+      "body": "DCF feels precise, but it's only as good as two guesses: the **future cash flows** and the **discount rate**. Nudge the discount rate a little and the 'value' swings wildly — which is exactly how two smart analysts value the same company at half and double. Use DCF to understand *what drives* value, not to pretend you've found one true number."
+    },
+    {
+      "type": "video",
+      "youtube_id": "yRuMP3Z9hD4",
+      "caption": "A beginner-friendly walk through discounted cash flow with a worked example."
+    }
+  ],
+  "takeaways": [
+    "Most assets are a **stream of future cash** — the job is pricing it today.",
+    "Discount each future payment: `PV = Future / (1+r)ⁿ`; farther out = shrunk more.",
+    "**DCF** = discount every future cash flow and **sum** them into one value.",
+    "The **discount rate** is the master dial — higher rates crush the value of future money.",
+    "DCF is only as good as its inputs; use it to see *what drives* value, not for false precision."
+  ],
+  "quiz": [
+    {
+      "q": "At a 10% rate, is $121 received in 2 years worth more or less than $100 today?",
+      "options": ["More", "Exactly the same", "Less", "Can't tell"],
+      "answer": 1,
+      "explain": "$121 / 1.1² = $100. Discounting future cash back is the heart of DCF."
+    },
+    {
+      "q": "Interest rates rise sharply. What happens to the present value of far-off future cash?",
+      "options": ["It rises", "It falls — a higher discount rate shrinks future money more", "No change", "It becomes infinite"],
+      "answer": 1,
+      "explain": "Higher r means bigger denominators — future cash is worth less today. This is why rate hikes hit long-duration assets hardest."
+    },
+    {
+      "q": "CALLBACK: Yesterday's compounding vs. today's DCF — what's the relationship?",
+      "options": ["They're opposites but unrelated", "DCF is compounding run in reverse: instead of growing money forward, you shrink future money back to today", "DCF ignores compounding", "They only both use the letter r"],
+      "answer": 1,
+      "explain": "Compounding multiplies forward by (1+r); discounting divides backward by (1+r). DCF just does that for many payments and adds them.",
+      "callback": true,
+      "from": "Day 2 · compounding"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Rates jump. The present value of far-future cash…",
+    "options": ["Rises", "Falls", "Doesn't change"],
+    "answer": 1,
+    "correct": "Right — a higher discount rate shrinks future money.",
+    "wrong": "It falls — bigger r means future cash is worth less today.",
+    "explain": "Why rate hikes hit long-duration assets (like tech stocks) hardest."
+  },
+  "go_deeper": [
+    {"label": "Investopedia — Discounted Cash Flow", "url": "https://www.investopedia.com/terms/d/dcf.asp", "note": "The formula and a full example."},
+    {"label": "Khan Academy — present value & DCF", "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial", "note": "Step-by-step from the basics."}
+  ]
+}

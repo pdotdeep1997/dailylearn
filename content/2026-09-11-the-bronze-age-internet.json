@@ -1,0 +1,82 @@
+{
+  "slug": "the-bronze-age-internet",
+  "date": "2026-09-11",
+  "slot": 2,
+  "track": "History & Civilization",
+  "track_lesson": 3,
+  "read_minutes": 5,
+  "title": "The Bronze Age Internet",
+  "subtitle": "4,000 years ago, tin from Afghanistan met copper from Cyprus to make bronze — via a trade web so tangled its collapse ended an age.",
+  "hook": "Here's a fact that should feel impossible: to make bronze, you need tin and copper — and they're almost never found in the same place. So Bronze Age civilizations built a trade network stretching thousands of miles, moving tin from Afghanistan, copper from Cyprus, and luxuries everywhere between. It was so interconnected that when it broke, whole civilizations fell with it. Surplus (Day 2) and writing to track it (Day 3) made trade possible — and trade is where money, cities, and cross-cultural power really ignite.",
+  "builds_on": [{"slug": "the-killer-app-was-a-spreadsheet", "label": "Humanity's First Killer App"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Why trade had to go long-distance",
+      "body": "No region has everything. Mesopotamia had grain and textiles but little metal, timber, or stone. So it **traded surplus for what it lacked** — grain out, tin/copper/timber/lapis in. Bronze itself *forced* long-distance trade: tin and copper rarely occur together, so making the era's key metal meant connecting distant mines.\n\nTrade turned isolated city-states into nodes in a network — and networks concentrate wealth and power at their hubs."
+    },
+    {
+      "type": "diagram",
+      "caption": "Bronze demanded ingredients from far-apart places, stitching distant civilizations into one fragile web.",
+      "mermaid": "flowchart LR\n    Tin[\"Tin\\n(Afghanistan)\"] --> Bronze[\"Bronze\"]\n    Cop[\"Copper\\n(Cyprus)\"] --> Bronze\n    Grain[\"Grain & textiles\\n(Mesopotamia)\"] --> Trade[(\"Trade network\")]\n    Bronze --> Trade\n    Trade --> Power[\"Wealthy hub cities\\n+ shared culture\"]\n    style Trade fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "When the network snapped",
+      "body": "Around 1200 BCE the eastern Mediterranean suffered the **Late Bronze Age Collapse** — a cascade of failing states, severed trade routes, and lost cities within a couple of generations. Historians still debate the mix of causes (drought, invasions, internal revolt), but the lesson stands: a tightly-connected system is efficient *and* fragile. Cut the links and the whole web can unravel — an eerily modern warning about supply chains."
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Trade needed money and records",
+      "body": "You can't run long-distance exchange on pure barter — remember the 'double coincidence of wants'? Trade networks pushed societies toward **standardized money** (weighed silver, early coinage) and detailed **written contracts and receipts**. Farming made the surplus, writing tracked it, and trade is where money truly comes alive."
+    },
+    {
+      "type": "video",
+      "youtube_id": "tA6bVpGlKNo",
+      "caption": "Trade in the early Bronze Age — Mesopotamia and its far-flung partners."
+    }
+  ],
+  "takeaways": [
+    "No region has everything, so surplus was **traded** for scarce goods (metal, timber, stone).",
+    "**Bronze** required tin + copper from distant places — forcing long-range trade.",
+    "Trade turned city-states into a **network**, concentrating wealth at the hubs.",
+    "The **Late Bronze Age Collapse** shows connected systems are efficient *and* fragile.",
+    "Long-distance trade pushed societies toward **standardized money** and written contracts."
+  ],
+  "quiz": [
+    {
+      "q": "Why did making bronze force long-distance trade?",
+      "options": ["Bronze is heavy", "Tin and copper are rarely found in the same place", "It needed gold", "Only kings could make it"],
+      "answer": 1,
+      "explain": "Bronze = tin + copper, and those ores sit far apart — so you had to connect distant regions."
+    },
+    {
+      "q": "What does the Late Bronze Age Collapse teach about connected systems?",
+      "options": ["Connection has no downside", "They're efficient but fragile — cut the links and the web can unravel", "Trade prevents all collapse", "Only isolated societies fail"],
+      "answer": 1,
+      "explain": "Tight interdependence boosts prosperity and risk together — a warning that rhymes with modern supply chains."
+    },
+    {
+      "q": "CALLBACK: This ties two earlier ideas together. Which pair?",
+      "options": ["The CPU loop and caching", "Farming's surplus (History) + money killing barter's 'double coincidence' (Money track)", "Bayes and Big-O", "Compounding and cuneiform"],
+      "answer": 1,
+      "explain": "Trade needs surplus to sell and money to avoid barter's matching problem — a History lesson shaking hands with a Money lesson.",
+      "callback": true,
+      "from": "Day 2 surplus + Money Day 1"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Why did bronze force long-distance trade?",
+    "options": ["It was sacred", "Tin & copper are rarely in the same place", "It was too heavy to keep"],
+    "answer": 1,
+    "correct": "Right — you had to connect distant mines to make it.",
+    "wrong": "Because tin and copper rarely occur together — trade connected the mines.",
+    "explain": "Bronze literally required a trade network to exist."
+  },
+  "go_deeper": [
+    {"label": "World History Encyclopedia — Trade in Ancient Mesopotamia", "url": "https://www.worldhistory.org/article/2114/trade-in-ancient-mesopotamia/", "note": "How commerce grew civilization."},
+    {"label": "The Late Bronze Age Collapse", "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse", "note": "When the ancient world's network snapped."}
+  ]
+}

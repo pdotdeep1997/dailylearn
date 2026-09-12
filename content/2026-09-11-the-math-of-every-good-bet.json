@@ -1,0 +1,77 @@
+{
+  "slug": "the-math-of-every-good-bet",
+  "date": "2026-09-11",
+  "slot": 1,
+  "track": "Ideas & Minds",
+  "track_lesson": 3,
+  "read_minutes": 5,
+  "title": "Expected Value: The Math Behind Every Good Decision",
+  "subtitle": "Should you take the bet, buy the insurance, launch the product? One little calculation cuts through the fog — and pros run it constantly.",
+  "hook": "Life is a series of bets under uncertainty — jobs, launches, investments, whether to bring an umbrella. Amateurs decide by gut or by what *feels* likely. Pros run a tiny calculation that folds together *how likely* each outcome is and *how much it's worth*: **expected value**. It's probability's most practical child, and once it's in your bones you'll never look at a decision the same way. (Yes, it uses the odds you learned on Day 1.)",
+  "builds_on": [{"slug": "thinking-in-probabilities", "label": "Thinking in Odds"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The formula: probability × payoff, summed",
+      "body": "**Expected value (EV)** = for every possible outcome, multiply its probability by its payoff, then add them all up. It's the *average* result if you could run the decision many times.\n\nExample: a game costs $10 to play. You win $100 with probability 5%, otherwise nothing.\n- Win: 0.05 × $100 = $5\n- Lose: 0.95 × $0 = $0\n- EV of the prize = **$5**. But it costs **$10** to play → net EV = **–$5**.\n\nSo on average you lose $5 every time. Fun once; ruinous forever. That's the lens: **compare the EV to the cost.**"
+    },
+    {
+      "type": "diagram",
+      "caption": "Weight each outcome by its odds, add them up, compare to what it costs. That's the whole decision.",
+      "mermaid": "flowchart TD\n    Bet[\"Pay $10 to play\"] --> W[\"5% → win $100\\n0.05 × 100 = $5\"]\n    Bet --> L[\"95% → win $0\\n0.95 × 0 = $0\"]\n    W --> EV[\"EV of prize = $5\"]\n    L --> EV\n    EV --> D[\"$5 prize − $10 cost\\n= −$5 per play\"]\n    style D fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why insurance and startups both make sense",
+      "body": "EV explains opposite-looking choices. **Insurance** has *negative* EV (the insurer profits on average) — yet it's smart, because a rare catastrophe would wipe you out and you can't 'replay' your life. **Startups** often have *low odds* but *huge* payoffs, so the EV can be positive even when most fail. The trick: weigh not just the average, but whether you can survive the bad outcomes long enough for the averages to pay off."
+    },
+    {
+      "type": "video",
+      "youtube_id": "BH6A5S1HDcU",
+      "caption": "Expected value made concrete: 'should you play this game?'"
+    }
+  ],
+  "takeaways": [
+    "**EV = Σ (probability × payoff)** — the average outcome over many tries.",
+    "Decide by comparing an option's EV to its **cost**.",
+    "Positive EV ≠ always take it; negative EV ≠ always skip it — **survival matters**.",
+    "Insurance = negative EV but protects against ruin; startups = low odds, huge payoff.",
+    "It's Day 1's probabilities, now weighted by how much each outcome is worth."
+  ],
+  "quiz": [
+    {
+      "q": "A ticket: 10% chance to win $50, else $0. EV of the prize?",
+      "options": ["$50", "$5", "$10", "$0.50"],
+      "answer": 1,
+      "explain": "0.10 × $50 = $5. If the ticket costs more than $5, it's a losing bet on average."
+    },
+    {
+      "q": "Insurance usually has negative EV for you. Why can buying it still be wise?",
+      "options": ["The EV math is wrong", "It protects against a rare outcome that would ruin you — you can't 'replay' a catastrophe", "It always makes money", "Negative EV is always good"],
+      "answer": 1,
+      "explain": "EV is the long-run average, but survival matters. Insurance trades a small sure loss to avoid a fatal one."
+    },
+    {
+      "q": "CALLBACK + BOSS: EV multiplies probabilities by payoffs. Which earlier tool gives you the *probabilities* to plug in — and warns you not to ignore base rates?",
+      "options": ["Compounding", "Probability & Bayes (Days 1 & 3)", "The memory hierarchy", "Cuneiform"],
+      "answer": 1,
+      "explain": "EV is only as good as its probabilities — which come from thinking in odds (Day 1) and updating them with Bayes (Day 3). The tracks interlock.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 1 odds + Day 3 Bayes"
+    }
+  ],
+  "tg_quiz": {
+    "q": "10% chance to win $50. Expected value of the prize?",
+    "options": ["$50", "$5", "$0.50"],
+    "answer": 1,
+    "correct": "Yep — 0.10 × $50 = $5.",
+    "wrong": "It's $5 — probability × payoff = 0.10 × $50.",
+    "explain": "If it costs more than $5 to play, it's a losing bet on average."
+  },
+  "go_deeper": [
+    {"label": "80,000 Hours — expected value in real decisions", "url": "https://80000hours.org/articles/expected-value/", "note": "Using EV when you're genuinely uncertain."},
+    {"label": "The Kelly criterion (how much to bet)", "url": "https://en.wikipedia.org/wiki/Kelly_criterion", "note": "EV tells you *if*; Kelly tells you *how much* — survival built in."}
+  ]
+}

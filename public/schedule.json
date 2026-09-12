@@ -57,5 +57,182 @@
         "explain": "Independent events combine by multiplying."
       }
     }
+  ],
+  "2026-09-09": [
+    {
+      "slug": "the-farming-revolution",
+      "title": "The Worst Good Idea in Human History",
+      "category": "History & Civilization",
+      "subtitle": "Planting seeds made us sicker, shorter, and more overworked than our ancestors. It also built literally everything. Both things are true.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Farming's real superpower was\u2026",
+        "options": [
+          "Tastier meals",
+          "Surplus \u2014 extra food beyond need",
+          "Bigger farms"
+        ],
+        "answer": 1,
+        "correct": "Yes \u2014 surplus is what built civilization.",
+        "wrong": "It's surplus \u2014 the leftover food that freed people to specialize.",
+        "explain": "No surplus, no specialists, no cities."
+      }
+    },
+    {
+      "slug": "why-your-computer-is-always-waiting",
+      "title": "Your Blazing-Fast Computer Spends Most of Its Life Waiting",
+      "category": "Software & Systems",
+      "subtitle": "Yesterday we met the CPU that does billions of things a second. So why is software ever slow? Because the data is stuck in traffic.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "RAM vs L1 cache \u2014 roughly how much slower?",
+        "options": [
+          "Same",
+          "~2\u00d7 slower",
+          "~100\u00d7 slower"
+        ],
+        "answer": 2,
+        "correct": "Yep \u2014 about 100\u00d7 slower. Location is everything.",
+        "wrong": "It's ~100\u00d7 slower \u2014 seconds vs minutes in human time.",
+        "explain": "Which is why caches keep hot data close to the CPU."
+      }
+    },
+    {
+      "slug": "free-money-hiding-in-a-curve",
+      "title": "The Most Important Curve in Finance (It Prints Money While You Sleep)",
+      "category": "Money & Markets",
+      "subtitle": "Would you take $100 now or $100 next year? Pin down *why* you said 'now' and you've unlocked how to value almost anything.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "$100 at 10%, compounded \u2014 after 2 years?",
+        "options": [
+          "$120",
+          "$121",
+          "$110"
+        ],
+        "answer": 1,
+        "correct": "Nice \u2014 $121. That extra $1 is interest on interest.",
+        "wrong": "It's $121 \u2014 you earn 10% on $110, not just the original $100.",
+        "explain": "Compounding: interest earns interest."
+      }
+    }
+  ],
+  "2026-09-10": [
+    {
+      "slug": "how-to-change-your-mind",
+      "title": "Bayes' Theorem: How to Change Your Mind Without Losing It",
+      "category": "Ideas & Minds",
+      "subtitle": "New evidence lands. How much should it move you? There's an exact answer \u2014 and it's the most useful formula you'll ever internalize.",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Rare disease (1/1000), 99%-accurate test, you test positive. Chance you're actually sick?",
+        "options": [
+          "~99%",
+          "~9%",
+          "50%"
+        ],
+        "answer": 1,
+        "correct": "Exactly \u2014 ~9%. False positives swamp the rare true case.",
+        "wrong": "It's ~9% \u2014 the disease is so rare that most positives are false alarms.",
+        "explain": "Always weigh evidence against the base rate. That's Bayes."
+      }
+    },
+    {
+      "slug": "the-killer-app-was-a-spreadsheet",
+      "title": "Humanity's First Killer App Was a Spreadsheet",
+      "category": "History & Civilization",
+      "subtitle": "The earliest writing isn't poetry or scripture. It's receipts \u2014 lists of grain and sheep. And that boring origin explains everything.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "The world's oldest writing was mostly\u2026",
+        "options": [
+          "Epic poetry",
+          "Accounting records",
+          "Religious texts"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 receipts and tallies. History's first spreadsheet.",
+        "wrong": "It was accounting \u2014 grain, sheep, and taxes, not poetry.",
+        "explain": "Writing was invented to track surplus, not to tell stories."
+      }
+    },
+    {
+      "slug": "why-choosing-the-right-box-matters",
+      "title": "The Choice That Makes Code 1,000\u00d7 Faster (or Slower)",
+      "category": "Software & Systems",
+      "subtitle": "Same computer, same data, same task \u2014 but pick the wrong way to store your stuff and it grinds to a halt. Meet Big-O.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "10\u00d7 the data into an O(n\u00b2) algorithm \u2248 how much slower?",
+        "options": [
+          "10\u00d7",
+          "100\u00d7",
+          "Same"
+        ],
+        "answer": 1,
+        "correct": "Yep \u2014 100\u00d7. Quadratic bites hard at scale.",
+        "wrong": "It's 100\u00d7 \u2014 (10)\u00b2. That's why O(n\u00b2) is a trap.",
+        "explain": "Big-O is about how cost grows, not the raw clock."
+      }
+    }
+  ],
+  "2026-09-11": [
+    {
+      "slug": "putting-a-price-on-the-future",
+      "title": "How to Put a Price on the Future",
+      "category": "Money & Markets",
+      "subtitle": "A company is worth the cash it'll throw off for years. A bond is a stream of future payments. So how do you price a river of money that hasn't arrived yet?",
+      "slot": 0,
+      "tg_quiz": {
+        "q": "Rates jump. The present value of far-future cash\u2026",
+        "options": [
+          "Rises",
+          "Falls",
+          "Doesn't change"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 a higher discount rate shrinks future money.",
+        "wrong": "It falls \u2014 bigger r means future cash is worth less today.",
+        "explain": "Why rate hikes hit long-duration assets (like tech stocks) hardest."
+      }
+    },
+    {
+      "slug": "the-math-of-every-good-bet",
+      "title": "Expected Value: The Math Behind Every Good Decision",
+      "category": "Ideas & Minds",
+      "subtitle": "Should you take the bet, buy the insurance, launch the product? One little calculation cuts through the fog \u2014 and pros run it constantly.",
+      "slot": 1,
+      "tg_quiz": {
+        "q": "10% chance to win $50. Expected value of the prize?",
+        "options": [
+          "$50",
+          "$5",
+          "$0.50"
+        ],
+        "answer": 1,
+        "correct": "Yep \u2014 0.10 \u00d7 $50 = $5.",
+        "wrong": "It's $5 \u2014 probability \u00d7 payoff = 0.10 \u00d7 $50.",
+        "explain": "If it costs more than $5 to play, it's a losing bet on average."
+      }
+    },
+    {
+      "slug": "the-bronze-age-internet",
+      "title": "The Bronze Age Internet",
+      "category": "History & Civilization",
+      "subtitle": "4,000 years ago, tin from Afghanistan met copper from Cyprus to make bronze \u2014 via a trade web so tangled its collapse ended an age.",
+      "slot": 2,
+      "tg_quiz": {
+        "q": "Why did bronze force long-distance trade?",
+        "options": [
+          "It was sacred",
+          "Tin & copper are rarely in the same place",
+          "It was too heavy to keep"
+        ],
+        "answer": 1,
+        "correct": "Right \u2014 you had to connect distant mines to make it.",
+        "wrong": "Because tin and copper rarely occur together \u2014 trade connected the mines.",
+        "explain": "Bronze literally required a trade network to exist."
+      }
+    }
   ]
 }

@@ -1,0 +1,82 @@
+{
+  "slug": "the-killer-app-was-a-spreadsheet",
+  "date": "2026-09-10",
+  "slot": 1,
+  "track": "History & Civilization",
+  "track_lesson": 2,
+  "read_minutes": 5,
+  "title": "Humanity's First Killer App Was a Spreadsheet",
+  "subtitle": "The earliest writing isn't poetry or scripture. It's receipts — lists of grain and sheep. And that boring origin explains everything.",
+  "hook": "We picture writing beginning with an epic poem or a sacred law. Nope. The oldest writing on Earth is basically **accounting** — tallies of grain, sheep, and taxes owed. Disappointing? Only until you see *why*: once farming made surplus (yesterday's lesson), somebody had to track who stored what and who owed whom. Writing was invented to handle **information that outgrew human memory.** It was civilization's first killer app — and every tech leap since, right up to the internet, rhymes with it.",
+  "builds_on": [{"slug": "the-farming-revolution", "label": "The Worst Good Idea in History"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "From clay tokens to cuneiform",
+      "body": "In ancient Mesopotamia, traders first tracked goods with little clay **tokens** — one shape per commodity. As trade grew, they pressed the tokens' marks into clay tablets, then simplified those marks into symbols. By ~3200 BCE this became **cuneiform** — wedge-shaped signs in clay. Egypt, China, and Mesoamerica each cooked up their own scripts, too. Independent invention again — same pattern as farming.\n\nCrucially, early writing recorded *quantities and things*, not speech. Only later did symbols come to stand for **sounds** — and then writing could capture anything language could: names, laws, stories, ideas."
+    },
+    {
+      "type": "diagram",
+      "caption": "Same chain as yesterday: surplus → records to keep → the tech to keep them, evolving from tokens to a full writing system.",
+      "mermaid": "flowchart LR\n    Sur[\"Farming surplus\\n(yesterday)\"] --> Need[\"Must track goods,\\ndebts, taxes\"]\n    Need --> Tok[\"Clay tokens\"]\n    Tok --> Marks[\"Marks on tablets\"]\n    Marks --> Cune[\"Cuneiform ~3200 BCE\"]\n    Cune --> Sound[\"Symbols = sounds\\n→ write anything\"]\n    style Cune fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "Why it broke history open",
+      "body": "Writing let information escape a single skull. It could be **stored** longer than memory, **copied** and carried across distance, and **accumulated** across generations. Knowledge stopped dying with the knower. Every information technology since — the printing press, the telegraph, the computer, the internet — does those same three jobs (store, transmit, accumulate) at ever-bigger scale."
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "And it minted power",
+      "body": "Whoever could write could **run things** — levy taxes, enforce contracts, issue laws, manage a bureaucracy bigger than any chief could hold in his head. Writing and the **state** grew up together, which is why literacy was long hoarded by a small scribe class. Control of information has meant power since the very first tablet."
+    },
+    {
+      "type": "video",
+      "youtube_id": "LEsFxHH3oqk",
+      "caption": "How record-keeping became cuneiform — the birth of writing."
+    }
+  ],
+  "takeaways": [
+    "The earliest writing was **accounting**, not literature — grain, sheep, taxes.",
+    "It arose to manage **surplus-driven information** beyond human memory (builds on the farming lesson).",
+    "It evolved tokens → marks → **cuneiform**, and was **independently invented** in several places.",
+    "Only later did symbols encode **sounds**, unlocking writing anything language can say.",
+    "Writing lets knowledge be **stored, copied, accumulated** — and hands power to whoever controls it."
+  ],
+  "quiz": [
+    {
+      "q": "What was most early writing actually used for?",
+      "options": ["Poetry & myths", "Accounting — goods, debts, taxes", "Love letters", "Scripture"],
+      "answer": 1,
+      "explain": "The oldest tablets are economic records. Writing was born to manage surplus-driven information."
+    },
+    {
+      "q": "The three jobs every info technology does (writing → internet)?",
+      "options": ["Encrypt, sell, delete", "Store, transmit, accumulate", "Tax, govern, punish", "Read, write, run"],
+      "answer": 1,
+      "explain": "Store beyond memory, transmit across distance, accumulate across generations."
+    },
+    {
+      "q": "CALLBACK: How does writing connect to the farming lesson?",
+      "options": ["It doesn't", "Farming's surplus created goods and debts worth tracking — writing was the tool to track them", "Writing came before farming", "Farmers invented poetry first"],
+      "answer": 1,
+      "explain": "Surplus → stuff to account for → writing. The History track is one chain: each lesson feeds the next.",
+      "callback": true,
+      "from": "Day 2 · surplus"
+    }
+  ],
+  "tg_quiz": {
+    "q": "The world's oldest writing was mostly…",
+    "options": ["Epic poetry", "Accounting records", "Religious texts"],
+    "answer": 1,
+    "correct": "Right — receipts and tallies. History's first spreadsheet.",
+    "wrong": "It was accounting — grain, sheep, and taxes, not poetry.",
+    "explain": "Writing was invented to track surplus, not to tell stories."
+  },
+  "go_deeper": [
+    {"label": "How writing grew from clay tokens", "url": "https://sites.utexas.edu/dsb/tokens/the-evolution-of-writing/", "note": "The token-to-script theory."},
+    {"label": "World History Encyclopedia — Cuneiform", "url": "https://www.worldhistory.org/cuneiform/", "note": "Deep dive on the first script."}
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "slug": "why-choosing-the-right-box-matters",
+  "date": "2026-09-10",
+  "slot": 2,
+  "track": "Software & Systems",
+  "track_lesson": 3,
+  "read_minutes": 6,
+  "title": "The Choice That Makes Code 1,000× Faster (or Slower)",
+  "subtitle": "Same computer, same data, same task — but pick the wrong way to store your stuff and it grinds to a halt. Meet Big-O.",
+  "hook": "Two programs do the exact same job on the exact same laptop. One finishes instantly; the other takes an hour. The difference isn't the CPU or the language — it's *how the data was organized* and *how the work scales as data grows*. This is the idea that makes senior engineers wince at junior code: **Big-O notation**, the language of 'how does this slow down as things get big?' Yesterday: where data lives. Today: how your choices scale.",
+  "builds_on": [{"slug": "why-your-computer-is-always-waiting", "label": "Why Your Computer Is Always Waiting"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Big-O: how cost grows, not how long it takes",
+      "body": "Big-O ignores the stopwatch and asks: **as the input gets N times bigger, how much more work?** A few flavors you'll meet everywhere:\n\n- **O(1)** — constant. Same cost no matter how big N gets. (Grab item #5 from an array.)\n- **O(log n)** — halve the problem each step. Blazing even for huge N. (Binary search.)\n- **O(n)** — linear. Twice the data, twice the work. (Scan a list.)\n- **O(n²)** — quadratic. 10× the data = **100×** the work. (Compare every pair — the junior-code trap.)\n\nThe magic isn't precision; it's seeing the *shape* of the growth before it bites you at scale."
+    },
+    {
+      "type": "diagram",
+      "caption": "As data grows, these curves diverge violently. O(n²) looks fine on 10 items and dies on 10,000.",
+      "mermaid": "flowchart LR\n    N[\"Input size N grows →\"] --> C[\"O(1): flat\"]\n    N --> L[\"O(log n): barely rises\"]\n    N --> Lin[\"O(n): straight line\"]\n    N --> Q[\"O(n²): explodes\"]\n    style C fill:#d7f0e3,stroke:#2e7d5b,color:#111\n    style Q fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "prose",
+      "heading": "This is why data structures exist",
+      "body": "A **data structure** is just a way of organizing data so the operations you do most are cheap. Need instant lookup by key? A **hash table** gives ~O(1). Need to keep things sorted and searchable? A **tree** gives O(log n). Need order and fast ends? A **list** or **queue**. Choosing the right structure turns an O(n²) disaster into an O(n log n) breeze.\n\nHashing — turning a key into a location so you can jump straight to it — is so important it gets its own lesson later (and it's the seed of 'consistent hashing', which keeps giant systems from falling over). For now: **the structure you pick decides your Big-O.**"
+    },
+    {
+      "type": "video",
+      "youtube_id": "XMUe3zFhM5c",
+      "caption": "Big-O notation in about 6 minutes — the common curves, made intuitive."
+    }
+  ],
+  "takeaways": [
+    "**Big-O** describes how work grows with input size N, not raw time.",
+    "Know the ladder: **O(1) < O(log n) < O(n) < O(n²)** — the last one explodes.",
+    "O(n²) hides on small inputs and detonates at scale — the classic trap.",
+    "A **data structure** organizes data so your common operations are cheap.",
+    "Pick the right structure (hash table, tree, list) and you pick your Big-O."
+  ],
+  "quiz": [
+    {
+      "q": "10× more data makes an O(n²) algorithm roughly how much slower?",
+      "options": ["10× slower", "100× slower", "No change", "Twice as fast"],
+      "answer": 1,
+      "explain": "Quadratic: (10)² = 100×. That's why O(n²) is fine on toy data and deadly at scale."
+    },
+    {
+      "q": "You need instant lookup of a value by its key. Best structure?",
+      "options": ["Scan a list every time — O(n)", "A hash table — ~O(1)", "Compare all pairs — O(n²)", "Sort it first each time"],
+      "answer": 1,
+      "explain": "Hash tables jump straight to the key in ~constant time. The right structure sets your Big-O."
+    },
+    {
+      "q": "CALLBACK: Yesterday's lesson was about the memory hierarchy. How does it relate to Big-O?",
+      "options": ["Unrelated", "Both are about speed: Big-O counts operations; the hierarchy sets how costly each memory touch is — real speed needs both", "Big-O replaces the memory hierarchy", "The hierarchy makes Big-O irrelevant"],
+      "answer": 1,
+      "explain": "Big-O counts steps; locality decides how slow each step's data access is. Fast code minimizes both.",
+      "callback": true,
+      "from": "Day 2 · memory hierarchy"
+    }
+  ],
+  "tg_quiz": {
+    "q": "10× the data into an O(n²) algorithm ≈ how much slower?",
+    "options": ["10×", "100×", "Same"],
+    "answer": 1,
+    "correct": "Yep — 100×. Quadratic bites hard at scale.",
+    "wrong": "It's 100× — (10)². That's why O(n²) is a trap.",
+    "explain": "Big-O is about how cost grows, not the raw clock."
+  },
+  "go_deeper": [
+    {"label": "Big-O cheat sheet", "url": "https://www.bigocheatsheet.com/", "note": "Every common structure and its costs, one page."},
+    {"label": "Why hashing is magic (next A-track lesson preview)", "url": "https://en.wikipedia.org/wiki/Hash_table", "note": "The ~O(1) lookup trick."}
+  ]
+}

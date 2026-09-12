@@ -1,0 +1,80 @@
+{
+  "slug": "the-farming-revolution",
+  "date": "2026-09-09",
+  "slot": 0,
+  "track": "History & Civilization",
+  "track_lesson": 1,
+  "read_minutes": 5,
+  "title": "The Worst Good Idea in Human History",
+  "subtitle": "Planting seeds made us sicker, shorter, and more overworked than our ancestors. It also built literally everything. Both things are true.",
+  "hook": "For ~200,000 years humans were foragers — roaming, grabbing what nature offered, working shockingly few hours. Then, about 12,000 years ago, some genius planted seeds and waited. And here's the twist historians love: for the individual human, it was arguably a *terrible* deal — worse diet, backbreaking labour, new diseases. Yet it produced cities, kings, writing, money, and you reading this. Farming is the deal humanity couldn't refuse. First lesson of the History track.",
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "The one word that changed everything: surplus",
+      "body": "Foragers ate what they found. Farmers *produced* food — and, crucially, produced **more than they needed right now**. That leftover is the hinge of all history: **surplus**.\n\nSurplus meant not everyone had to chase dinner. Suddenly some people could do something *else* full-time — make pots, forge weapons, pray, rule, keep records. That's **specialization**, and it's the engine behind every complex society that followed. No surplus, no specialists, no civilization."
+    },
+    {
+      "type": "diagram",
+      "caption": "The chain reaction the rest of this track is built on: farming → surplus → specialists → cities → states, taxes, writing.",
+      "mermaid": "flowchart TD\n    F[\"Farming\\n(produce, don't just gather)\"] --> S[\"Surplus\"]\n    S --> Sp[\"Specialists\\n(potters, soldiers, priests)\"]\n    S --> Pop[\"Population booms\"]\n    Sp --> C[\"Cities\"]\n    Pop --> C\n    C --> I[\"States · taxes · writing · hierarchy\"]\n    style S fill:#ffe9cc,stroke:#c47f17,color:#111\n    style I fill:#ffe9cc,stroke:#c47f17,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "warning",
+      "label": "The catch nobody mentions",
+      "body": "Early farmers were often *worse off* than foragers: longer hours, a dull grain-heavy diet, shorter stature, and shiny new diseases from crowding together with animals. Stored surplus could also be **stolen** — hello taxes, warfare, and the first real inequality. Farming won not because it made people *happier*, but because it made *more* people and more power. Quantity beat quality."
+    },
+    {
+      "type": "callout",
+      "style": "history",
+      "label": "It happened 7+ times, alone",
+      "body": "Farming was invented **independently** — Fertile Crescent, China, Mesoamerica, the Andes, and more — by peoples who never met. When that many separate groups stumble on the same trick, it's a clue that the *conditions* (a stable, warming climate after the Ice Age) were ripe. History is driven by circumstance, not just heroes."
+    },
+    {
+      "type": "video",
+      "youtube_id": "Yocja_N5s1I",
+      "caption": "Crash Course's legendary opener on the Agricultural Revolution and its brutal trade-offs."
+    }
+  ],
+  "takeaways": [
+    "~12,000 years ago humans went from **foraging to farming** — producing food, not just finding it.",
+    "The real product was **surplus**: more food than needed right now.",
+    "Surplus freed people to **specialize** → cities → states, taxes, writing.",
+    "For individuals it was often a *downgrade* (disease, toil, inequality) — but it made more people and power.",
+    "Invented **independently** in many places → conditions, not lone geniuses, drive history."
+  ],
+  "quiz": [
+    {
+      "q": "What was farming's real game-changing output?",
+      "options": ["Tastier food", "A food surplus", "Bigger animals", "Warmer weather"],
+      "answer": 1,
+      "explain": "Surplus — extra food beyond immediate need — is what freed people to specialize."
+    },
+    {
+      "q": "Why do historians call it a mixed blessing?",
+      "options": ["It made everyone rich overnight", "Early farmers often worked harder, ate worse, and got new diseases", "It shrank the population", "It had no downsides"],
+      "answer": 1,
+      "explain": "The individual deal was rough; the species-level payoff (more people, more power) is why it stuck."
+    },
+    {
+      "q": "BOSS: Farming appeared independently on multiple continents around the same era. Best takeaway?",
+      "options": ["One civilization secretly taught the rest", "Shared conditions (post-Ice-Age climate) made it ripe everywhere — circumstance drives history", "It was random luck each time", "Only the Fertile Crescent counts"],
+      "answer": 1,
+      "explain": "Independent invention screams 'the conditions were right', a theme you'll see repeat across this whole track.",
+      "boss": true
+    }
+  ],
+  "tg_quiz": {
+    "q": "Farming's real superpower was…",
+    "options": ["Tastier meals", "Surplus — extra food beyond need", "Bigger farms"],
+    "answer": 1,
+    "correct": "Yes — surplus is what built civilization.",
+    "wrong": "It's surplus — the leftover food that freed people to specialize.",
+    "explain": "No surplus, no specialists, no cities."
+  },
+  "go_deeper": [
+    {"label": "Sapiens — 'History's Biggest Fraud'", "url": "https://en.wikipedia.org/wiki/Neolithic_Revolution", "note": "The argument that wheat domesticated us."},
+    {"label": "Guns, Germs, and Steel", "url": "https://en.wikipedia.org/wiki/Guns,_Germs,_and_Steel", "note": "Why farming and power spread unevenly."}
+  ]
+}

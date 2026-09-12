@@ -1,0 +1,81 @@
+{
+  "slug": "why-your-computer-is-always-waiting",
+  "date": "2026-09-09",
+  "slot": 1,
+  "track": "Software & Systems",
+  "track_lesson": 2,
+  "read_minutes": 5,
+  "title": "Your Blazing-Fast Computer Spends Most of Its Life Waiting",
+  "subtitle": "Yesterday we met the CPU that does billions of things a second. So why is software ever slow? Because the data is stuck in traffic.",
+  "hook": "We just learned the CPU is a very fast idiot, ripping through billions of instructions a second. So why does *anything* ever feel slow? Here's the secret that separates people who write code from people who make it *fast*: the CPU spends most of its life **waiting** — for data to arrive from memory. And the gap between the fastest and slowest memory isn't 2x. Scaled to human time, it's the difference between **one second and a decade.**",
+  "builds_on": [{"slug": "what-a-computer-really-does", "label": "Your Computer Is a Very Fast Idiot"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Memory is a pyramid, not a box",
+      "body": "There isn't one 'memory' — there's a **hierarchy**, trading speed for size. Close to the CPU: tiny and instant. Far away: huge and glacial.\n\n- **Registers / L1 cache** — microscopic, basically instant.\n- **L2 / L3 cache** — small, very fast.\n- **RAM** — gigabytes, but ~100× slower than cache.\n- **SSD** — roomy, far slower again.\n- **Network / disk far away** — enormous, and painfully slow.\n\nThe CPU can only work on data that's *close*. Need something far down the pyramid? It stalls — doing nothing — until it arrives."
+    },
+    {
+      "type": "callout",
+      "style": "number",
+      "label": "The gaps, in human time",
+      "body": "Multiply every real delay by ~a billion so your brain can feel it. **L1 cache = 1 second.** RAM = a couple of **minutes**. An SSD read = a few **days**. A hard-disk seek = **months**. A network hop around the world = **years**. Same clock ticks, wildly different worlds. When code is slow, it's rarely 'too much math' — it's waiting at the far end of this ladder."
+    },
+    {
+      "type": "diagram",
+      "caption": "Closer to the CPU = faster but smaller. Every step down is a big jump in wait time — which is why *where your data lives* dominates speed.",
+      "mermaid": "flowchart TD\n    CPU[\"CPU\"] --> L1[\"L1/L2 cache\\n~1 ns  ('1 second')\"]\n    L1 --> RAM[\"RAM\\n~100 ns  ('minutes')\"]\n    RAM --> SSD[\"SSD\\n~100 us  ('days')\"]\n    SSD --> NET[\"Disk / network\\nms+  ('months–years')\"]\n    style L1 fill:#cfe3ff,stroke:#2b6cb0,color:#111\n    style NET fill:#ffe0e0,stroke:#c0392b,color:#111"
+    },
+    {
+      "type": "prose",
+      "heading": "The trick that saves us: locality",
+      "body": "The reason computers aren't hopelessly slow is a habit called **locality of reference**: programs tend to reuse the same data (and data near it) over and over. Hardware bets on this by **caching** — quietly keeping recently-used stuff in the fast tiers.\n\nSo the pro move for speed: **keep the data you need close, and touch it in predictable patterns.** Marching through a tidy array is fast (it streams into cache); hopping around chasing pointers is slow (every jump risks a trip down the pyramid). This one idea — mind where your data lives — will come back in caching, databases, and distributed systems all track long."
+    },
+    {
+      "type": "video",
+      "youtube_id": "SAk-6gVkio0",
+      "caption": "Computerphile on how CPU caches work and why this whole pyramid exists."
+    }
+  ],
+  "takeaways": [
+    "A fast CPU is usually **waiting for data**, not out of math.",
+    "Memory is a **hierarchy**: registers/cache → RAM → SSD → network, speed traded for size.",
+    "The gaps are huge — scaled up, L1 ≈ 1 second while a global hop ≈ years.",
+    "**Locality** (reusing recent/nearby data) lets caching hide most of the wait.",
+    "Go fast by keeping hot data **close** and access **predictable** — arrays beat pointer-chasing."
+  ],
+  "quiz": [
+    {
+      "q": "If a program feels slow, the usual culprit is…",
+      "options": ["The CPU can't do the arithmetic fast enough", "Waiting for data from slower memory tiers", "Too many colors on screen", "The keyboard"],
+      "answer": 1,
+      "explain": "CPUs are fast at math; the bottleneck is stalling while data travels up from RAM, disk, or the network."
+    },
+    {
+      "q": "Roughly how much slower is RAM than L1 cache?",
+      "options": ["Same speed", "~2× slower", "~100× slower", "RAM is faster"],
+      "answer": 2,
+      "explain": "About 100× — seconds vs. minutes on the human-time scale. That's why hot data belongs in cache."
+    },
+    {
+      "q": "CALLBACK: Yesterday you learned the CPU just loops fetch→decode→execute. How does *that* connect to today?",
+      "options": ["It doesn't", "Each loop often stalls waiting to FETCH data from slow memory — that wait is the whole story of speed", "The loop runs slower on Tuesdays", "Caches replace the CPU loop"],
+      "answer": 1,
+      "explain": "The dumb loop is fast; the slow part is feeding it. Today's lesson is literally 'what the CPU waits for between loops.'",
+      "callback": true,
+      "from": "Day 1 · the CPU loop"
+    }
+  ],
+  "tg_quiz": {
+    "q": "RAM vs L1 cache — roughly how much slower?",
+    "options": ["Same", "~2× slower", "~100× slower"],
+    "answer": 2,
+    "correct": "Yep — about 100× slower. Location is everything.",
+    "wrong": "It's ~100× slower — seconds vs minutes in human time.",
+    "explain": "Which is why caches keep hot data close to the CPU."
+  },
+  "go_deeper": [
+    {"label": "Latency Numbers Every Programmer Should Know", "url": "https://gist.github.com/jboner/2841832", "note": "The famous table this lesson is built on."},
+    {"label": "The memory hierarchy, visually", "url": "https://algomaster.io/learn/operating-systems/the-memory-hierarchy", "note": "The human-scale analogy in more depth."}
+  ]
+}

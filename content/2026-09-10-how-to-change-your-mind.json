@@ -1,0 +1,82 @@
+{
+  "slug": "how-to-change-your-mind",
+  "date": "2026-09-10",
+  "slot": 0,
+  "track": "Ideas & Minds",
+  "track_lesson": 2,
+  "read_minutes": 6,
+  "title": "Bayes' Theorem: How to Change Your Mind Without Losing It",
+  "subtitle": "New evidence lands. How much should it move you? There's an exact answer — and it's the most useful formula you'll ever internalize.",
+  "hook": "You test positive for a scary-but-rare disease on a test that's '99% accurate.' Panic? Actually… probably not. The math says you're likely fine — and the reason is the single most powerful thinking tool in this whole track: **Bayes' theorem**. It's the rule for updating a belief when new evidence arrives. Yesterday's boss question hinted at it; today we make it click. Master this and you'll stop being fooled by scary headlines and shiny data.",
+  "builds_on": [{"slug": "thinking-in-probabilities", "label": "Thinking in Odds"}],
+  "sections": [
+    {
+      "type": "prose",
+      "heading": "Start with the base rate",
+      "body": "Bayes' big idea: **your new belief depends on what you believed before.** Before any test, how common is the disease? Say **1 in 1,000**. That starting number is the **base rate** (or 'prior'), and ignoring it is the classic blunder.\n\nEvidence doesn't overwrite your prior — it *nudges* it. A positive test makes the disease more likely than 1-in-1,000, but if the disease was fantastically rare to begin with, 'more likely' can still be 'probably not.'"
+    },
+    {
+      "type": "prose",
+      "heading": "Why an accurate test still lies",
+      "body": "Picture 1,000 people. **1** actually has the disease. The test is 99% accurate, so among the 999 healthy people it wrongly flags about **10** (1% false positives). So now ~11 people test positive — but only **1** is truly sick.\n\nYour odds of being sick given a positive test? Roughly **1 in 11 ≈ 9%.** Not 99%. The rareness of the disease drowns the test's accuracy in false alarms. That's Bayes in one gut-punch."
+    },
+    {
+      "type": "diagram",
+      "caption": "1,000 people → 1 sick. A 99%-accurate test flags the 1 real case + ~10 false alarms. Positive ≠ sick; it's ~1-in-11.",
+      "mermaid": "flowchart TD\n    P[\"1,000 people\"] --> Sick[\"1 truly sick\"]\n    P --> Well[\"999 healthy\"]\n    Sick --> TP[\"~1 true positive\"]\n    Well --> FP[\"~10 false positives\"]\n    TP --> R[\"11 positives,\\nonly 1 sick → ~9%\"]\n    FP --> R\n    style R fill:#e6dcff,stroke:#6b46c1,color:#111"
+    },
+    {
+      "type": "callout",
+      "style": "insight",
+      "label": "The one-line version",
+      "body": "**New belief ∝ (how likely the evidence is if true) × (how likely it was true to begin with).** Rare things need *strong* evidence to become likely. It's not that the test is bad — it's that you must weigh it against how rare the thing was. Doctors, juries, and investors get this wrong constantly."
+    },
+    {
+      "type": "video",
+      "youtube_id": "HZGCoVF3YvM",
+      "caption": "3Blue1Brown makes Bayes visual — 'the geometry of changing beliefs.' Genuinely beautiful."
+    }
+  ],
+  "takeaways": [
+    "Bayes updates a belief with evidence — it **nudges your prior**, doesn't replace it.",
+    "The **base rate** (how common it is to begin with) is the piece people forget.",
+    "For rare things, even an accurate test yields mostly **false positives**.",
+    "Belief ∝ likelihood of the evidence × prior probability.",
+    "Rare claims demand **strong** evidence before you should believe them."
+  ],
+  "quiz": [
+    {
+      "q": "What's the 'base rate'?",
+      "options": ["The test's accuracy", "How common the thing is before any evidence", "The cost of the test", "The number of people tested"],
+      "answer": 1,
+      "explain": "It's your starting probability (prior). Ignoring it is the base-rate fallacy."
+    },
+    {
+      "q": "A 99%-accurate test, disease is 1-in-1,000, you test positive. Roughly your chance of being sick?",
+      "options": ["99%", "~90%", "~9%", "50%"],
+      "answer": 2,
+      "explain": "~1 real case vs ~10 false alarms among positives → about 1-in-11 ≈ 9%. Rareness dominates."
+    },
+    {
+      "q": "CALLBACK + BOSS: Yesterday's boss question was exactly this false-positive puzzle. What's the deep lesson linking them?",
+      "options": ["Tests are useless", "Always weigh new evidence against the base rate — that's what Bayes formalizes", "90% means 90% sick", "Probability can't help with medicine"],
+      "answer": 1,
+      "explain": "Yesterday you spotted the trap; today you have the tool. Bayes = evidence × prior. Same idea, now with a formula.",
+      "boss": true,
+      "callback": true,
+      "from": "Day 1 · the base-rate trap"
+    }
+  ],
+  "tg_quiz": {
+    "q": "Rare disease (1/1000), 99%-accurate test, you test positive. Chance you're actually sick?",
+    "options": ["~99%", "~9%", "50%"],
+    "answer": 1,
+    "correct": "Exactly — ~9%. False positives swamp the rare true case.",
+    "wrong": "It's ~9% — the disease is so rare that most positives are false alarms.",
+    "explain": "Always weigh evidence against the base rate. That's Bayes."
+  },
+  "go_deeper": [
+    {"label": "3Blue1Brown — the medical test paradox", "url": "https://www.youtube.com/watch?v=lG4VkPoG3ko", "note": "A follow-up that reframes Bayes even more cleanly."},
+    {"label": "Base rate fallacy", "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy", "note": "The mistake Bayes rescues you from."}
+  ]
+}
