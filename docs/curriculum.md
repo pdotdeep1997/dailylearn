@@ -15,99 +15,92 @@ The four tracks:
 | **History & Civilization** | amber | Explain why civilizations rise and fall — and spot the patterns today |
 | **Ideas & Minds** | purple | A working toolkit for thinking clearly and deciding under uncertainty |
 
-Season 1 is ~12 lessons per track (48 total, ≈ 7 weeks). Each track can then run a
-Season 2 that goes deeper. Existing good lessons are slotted into their natural
-place (marked ✓ already written).
+Season 1 is ~12 lessons per track (48 total, ≈ 7 weeks). Each track then runs a
+Season 2 that goes deeper.
 
 ---
 
-## Track A — Software & Systems  🟦
-*Capstone: design a real-time distributed system and walk through its failure modes.*
+## Track A — Software & Systems  🟦 (Season 1)
+1. What a computer really does · 2. The numbers every programmer should know ·
+3. How data is laid out (Big-O) · 4. Concurrency · 5. The network · 6. Caching ·
+7. Databases & indexes · 8. CAP theorem · 9. Consensus (Raft) ·
+10. Consistent hashing & partitioning (backlog) · 11. Queues & backpressure · 12. Capstone.
 
-1. **What a computer really does** — the fetch–execute loop; why we stack abstractions.
-2. **The numbers every programmer should know** — memory hierarchy, latency, why locality wins.
-3. **How data is laid out** — arrays, hashing, and why data structures are about tradeoffs.
-4. **Concurrency** — race conditions, locks, and why parallelism is genuinely hard.
-5. **The network** — packets, TCP/IP, and what actually happens when you load a URL.
-6. **Caching** — the two hard problems; invalidation; builds on latency + hashing.
-7. **Databases** — indexes, B-trees, and what ACID really guarantees.
-8. **Distributed systems & the CAP theorem** — the tradeoff you can't escape.
-9. **Consensus** — how machines agree (Raft/Paxos intuition).
-10. **Consistent hashing & partitioning** — scaling without reshuffling. ✓ *(already written)*
-11. **Queues, backpressure & idempotency** — designing for overload and retries.
-12. **Capstone: design a system** — put every piece together on one real problem.
+## Track B — Money & Markets  🟩 (Season 1)
+1. What money is · 2. Time value of money · 3. Present value & discounting ·
+4. Risk & return · 5. Diversification · 6. Price discovery · 7. Bonds & yield curve ·
+8. Equities & valuation · 9. Inflation & central banks · 10. Leverage & credit cycles ·
+11. EMH vs behavioral · 12. Capstone.
 
-## Track B — Money & Markets  🟩
-*Capstone: value a company from scratch and read a macro dashboard.*
+## Track C — History & Civilization  🟧 (Season 1)
+1. Farming revolution · 2. Writing · 3. Ancient trade networks · 4. Rise of states ·
+5. Institutions · 6. Printing press · 7. Scientific Revolution · 8. Industrial Revolution ·
+9. Empires & overreach · 10. Money in history · 11. Why civilizations collapse · 12. Capstone.
 
-1. **What money actually is** — medium of exchange, debt, and trust.
-2. **The time value of money** — compounding; why a dollar today beats a dollar tomorrow.
-3. **Present value & discounting** — the one idea behind valuing anything.
-4. **Risk & return** — volatility, and why higher return demands higher risk.
-5. **Diversification** — the only "free lunch"; portfolio thinking.
-6. **Markets & price discovery** — supply, demand, and information in prices.
-7. **Bonds & the yield curve** — and why inversion spooks everyone. ✓ *(already written)*
-8. **Equities & valuation** — DCF and multiples.
-9. **Inflation & central banks** — what they actually control.
-10. **Leverage & credit cycles** — how booms and busts are built.
-11. **Efficient markets vs. behavioral finance** — are prices right?
-12. **Capstone: value a company** — a full back-of-envelope valuation.
-
-## Track C — History & Civilization  🟧
-*Capstone: explain the rise-and-fall pattern and apply it to the present.*
-
-1. **The farming revolution** — why settling down changed everything.
-2. **Writing** — the first information technology.
-3. **Money & trade networks in the ancient world** — connects to Track B, Lesson 1.
-4. **The rise of states & bureaucracy** — how large-scale cooperation was engineered.
-5. **Institutions** — law, property rights, and why they decide prosperity.
-6. **The printing press** — the first information explosion.
-7. **The Scientific Revolution** — why it happened when and where it did.
-8. **The Industrial Revolution** — energy, and the hockey-stick of growth.
-9. **Empires** — how they expand and why they overreach.
-10. **Money in history** — Rome's debasement to Weimar (connects to Track B, Lesson 9).
-11. **Why civilizations collapse** — complexity, energy, and diminishing returns.
-12. **Capstone: patterns of rise & fall** — applied to today.
-
-## Track D — Ideas & Minds  🟪
-*Capstone: a decision-making framework for thinking clearly under uncertainty.*
-
-1. **Thinking in probabilities** — what "chance" really means.
-2. **Bayes' theorem** — updating beliefs when new evidence arrives.
-3. **Expected value** — the core of every good decision.
-4. **Cognitive biases** — the predictable ways reasoning fails.
-5. **Logic & argument** — validity, soundness, and common fallacies.
-6. **Exponential intuition** — why humans underestimate compounding (ties to Track B, Lesson 2).
-7. **Game theory** — incentives, equilibria, the prisoner's dilemma.
-8. **Feedback loops & systems thinking** — stocks, flows, and why systems surprise us.
-9. **Correlation vs. causation** — and how to tell them apart.
-10. **The limits of systems** — Arrow's theorem & voting (connects ranked-choice ✓), Gödel in brief.
-11. **Complexity & emergence** — how simple rules make complex worlds.
-12. **Capstone: a thinking toolkit** — assembling the mental models.
+## Track D — Ideas & Minds  🟪 (Season 1)
+1. Probability · 2. Bayes · 3. Expected value · 4. Cognitive biases · 5. Logic & fallacies ·
+6. Exponential intuition · 7. Game theory · 8. Feedback loops · 9. Correlation vs causation ·
+10. Limits of systems (Arrow/Gödel) · 11. Complexity & emergence · 12. Capstone.
 
 ---
 
-## The interleave schedule (Season 1)
+# Track A — SEASON 2: System Design & Software-Engineering Principles  🟦🟦
 
-Seven lessons a week, rotating through the tracks so each advances steadily and no
-day feels like the last. Pattern repeats, offset each week so every track gets its
-turn early:
+*An ongoing, deepening strand analyzing **software-engineering principles** and
+working through **system-design breakdowns over time**. Modeled on **Hello Interview**
+(hellointerview.com) — its delivery framework, core concepts, key technologies,
+patterns, and problem breakdowns.*
 
-```
-Week 1:  A1  B1  C1  D1  A2  B2  C2      ← the foundation week (written)
-Week 2:  D2  A3  B3  C3  D3  A4  B4
-Week 3:  C4  D4  A5  B5  C5  D5  A6
-Week 4:  B6  C6  D6  A7  B7  C7  D7
-Week 5:  A8  B8  C8  D8  A9  B9  C9
-Week 6:  D9  A10 B10 C10 D10 A11 B11
-Week 7:  C11 D11 A12 B12 C12 D12  +capstone review
-```
+**Season-2 capstone:** run a complete system-design interview end-to-end — take any
+"Design X" prompt through requirements → API → high-level design → deep dives, and
+defend the tradeoffs.
 
-Each Monday-of-the-week authoring run just pulls the next unplayed lesson from each
-track in this order. `schedule.json` maps each date → the lesson that goes out that
-day.
+Three interleaving threads inside the Software track. The Software slot alternates
+between them — **roughly every third Software lesson is a "Design X" breakdown**,
+getting harder as toolkit lessons unlock. Several Hello Interview *core concepts* are
+already covered in Season 1 (caching, databases & indexing, CAP, consensus, consistent
+hashing, networking, concurrency, queues); Season 2 deepens them and adds the rest.
 
-## Week 1 (live)
-A1 What a computer really does · B1 What money actually is · C1 The farming
-revolution · D1 Thinking in probabilities · A2 The numbers every programmer should
-know · B2 The time value of money · C2 Writing, the first information technology.
+### Thread 1 — Engineering Principles
+P1 Abstraction & modularity · P2 Coupling & cohesion · P3 SOLID & DRY (and when they mislead) ·
+P4 API design (REST, pagination, versioning, idempotency keys) · P5 Idempotency, retries & the
+"exactly-once" myth · P6 Failure modes (timeouts, backoff, circuit breakers, graceful degradation) ·
+P7 Observability (logs, metrics, traces) · P8 Testing strategy (the pyramid) ·
+P9 Back-of-the-envelope estimation ("numbers to know") · P10 Simplicity & tradeoffs (YAGNI).
+
+### Thread 2 — System Design Toolkit (core concepts · key technologies · patterns)
+T0 The delivery framework (Requirements → Core Entities → API → [Data Flow] → High-Level Design → Deep Dives) ·
+T1 Scaling axes (vertical vs horizontal, stateless) · T2 Load balancing (L4/L7) ·
+T3 SQL vs NoSQL & data modeling · T4 Indexing deep dive (B-tree/inverted/geospatial) ·
+T5 Sharding & partitioning · T6 Replication & read replicas · T7 Caching strategies (Redis, cache-aside, stampede) ·
+T8 Message queues (Kafka/SQS) · T9 Streams & event processing (Flink/Kinesis, event sourcing) ·
+T10 Blob storage & CDNs (S3, presigned URLs) · T11 Search (Elasticsearch, inverted index) ·
+T12 Distributed locks & coordination (Redis/ZooKeeper) · T13 Rate limiting (token bucket, sliding window).
+**Patterns (HI's 8):** realtime updates · long-running tasks · contention · scaling reads ·
+scaling writes · large blobs · multi-step processes · proximity/geospatial.
+
+### Thread 3 — System Design Breakdowns ("Design X", easy → hard)
+Author each using the **delivery framework as the section layout** (Requirements →
+Core Entities → API → High-Level Design *(the diagram)* → 1–2 Deep Dives), boss quiz
+on the key tradeoff, callback to the toolkit lesson it exercises.
+- **Easy:** Bitly · Dropbox · Yelp · Local Delivery.
+- **Medium:** Rate Limiter · Ticketmaster · Instagram/News Feed · WhatsApp · Distributed Cache ·
+  YouTube · Notification System · Tinder · LeetCode · Strava · Online Auction · Job Scheduler ·
+  FB Live Comments · News Aggregator · Price Tracker.
+- **Hard:** Uber · Web Crawler · Ad Click Aggregator · Google Docs · Payment System ·
+  ChatGPT / LLM-inference serving *(reuse AI-inference backlog)* · Metrics Monitoring ·
+  YouTube Top-K · Robinhood · Online Chess · FB Post Search · Flash Sale.
+
+**Suggested ordering:** `T0 → Bitly → P1 → T1 → Dropbox → P2 → T3 → Rate Limiter →
+P4 → T6 → News Feed → T8 → P5 → WhatsApp → T7 → YouTube → P6 → T9 → Ad Click Aggregator →
+P9 → Uber → T11 → Google Docs → P7 → Payment System → …` — equip, then exercise.
+
+**Reference:** mirror Hello Interview's scope (hellointerview.com). Keep the playful
+voice, a real architecture diagram for breakdowns, the boss quiz on the central
+tradeoff, and callbacks to Season-1 fundamentals. HI pages make great go_deeper links.
+
+---
+
+## Live so far
+Days 1–11 (2026-09-08 → 09-18): 33 lessons, 3/day interleaved. Software reached S1 L9
+(consensus) — near the end of Season 1 and about to enter this Season-2 strand.
